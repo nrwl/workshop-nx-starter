@@ -1,0 +1,166 @@
+@import "./libs/styles/main.scss";
+
+button {
+  cursor: pointer;
+}
+
+.header-bar {
+  background: #cdecf7;
+  box-shadow: 0 4px 6px #a1b5c9;
+  a {
+    color: #1258b9;
+  }
+}
+
+.ticket-header {
+  background: #fad391;
+  font-weight: bold;
+  text-align: right;
+  padding: 10px;
+  cursor: pointer;
+  &.marked {
+    background: #83f27f;
+  }
+}
+.ticket-message {
+  background: #eeeeee;
+  padding: 20px 10px;
+  p {
+    font-size: 1.2em;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+}
+.ticket-timer {
+  padding: 4px 0;
+  button {
+    padding: 0 10px;
+    height: 34px;
+    font-size: 1em;
+    background: #fad391;
+    color: black;
+    border: 0;
+    &:disabled {
+      background: #999999;
+      color: #ccc;
+    }
+  }
+}
+.ticket-meta {
+  background: #ddd;
+  display: flex;
+  padding: 6px;
+  font-size: .8em;
+  > span {
+    flex-grow: 1;
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+.ticket-comments {
+  > div:first-child {
+    margin-top: 10px;
+    text-align: right;
+  }
+}
+.ticket-comment {
+  box-shadow: none;
+  border: 1px solid #d5d5d5;
+  span:last-child {
+    font-size: .8em;
+    font-style: italic;
+    min-width: 180px;
+    text-align: right;
+  }
+}
+.ticket-message-form, .ticket-comment-form {
+  label {
+    display: flex;
+    margin-bottom: 6px;
+    textarea {
+      flex-grow: 1;
+      padding: 10px;
+      font-size: 1em;
+      border:1px solid #d5d5d5;
+    }
+  }
+  button {
+    padding: 0 10px;
+    height: 34px;
+    font-size: 1em;
+    background: #4ec3e3;
+    color: white;
+    border: 0;
+    &:disabled {
+      background: #999999;
+      color: #ccc;
+    }
+  }
+}
+.ticket-comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-search-form {
+  text-align: center;
+  padding: 10px 4px;
+  min-width: 545px;
+  label {
+    font-size: 1.0em;
+    font-weight: bold;
+    input[name=searchTerm] {
+      width: 120px;
+    }
+    input[name=assignedToUser] {
+      width: 120px;
+    }
+  }
+  .assigned-to-user-form-field {
+    display: inline-block;
+    ul {
+      margin-top: 0px;
+      margin-left: 101px;
+      position: absolute;
+      font-size: .8em;
+      list-style: none;
+      background: #e8e8e8;
+      padding: 0;
+      width: 124px;
+      li {
+        margin: 0;
+        padding: 4px 6px;
+        text-align: left;
+        cursor: pointer;
+      }
+    }
+  }
+  input {
+    width: 300px;
+    font-size: 1em;
+  }
+  button {
+    top: 0;
+    position: relative;
+    padding: 0 10px;
+    height: 24px;
+    font-size: 1em;
+    background: #4ec3e3;
+    color: white;
+    border: 0;
+    &:disabled {
+      background: #999999;
+      color: #ccc;
+    }
+  }
+}
+.ticket-search-results {
+  div {
+    span:last-child {
+      color: #333;
+      font-style: italic;
+    }
+  }
+}

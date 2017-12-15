@@ -1,0 +1,10 @@
+<section>
+  <a routerLink="ticket/{{ticket.id}}" *ngFor="let ticket of tickets$ | async">
+    <div class="card">
+      <span>{{ticket.message}}</span>
+      <div>
+        ID: {{ticket.id}}
+      </div>
+    </div>
+  </a>
+</section>

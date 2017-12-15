@@ -1,11 +1,123 @@
 {
   "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
   "project": {
-    "name": "workshop-project-nx-enterprise",
-    "npmScope": "workshop-project-nx-enterprise",
-    "latestMigration": "20171213-update-tsconfig-spec-to-exclude-e2e"
+    "name": "tuskdesk-suite",
+    "npmScope": "tuskdesk-suite",
+    "latestMigration": "20180405-add-workspace-schematic-command"
   },
-  "apps": [],
+  "apps": [
+    {
+      "name": "customer-portal",
+      "root": "apps/customer-portal/src",
+      "outDir": "dist/apps/customer-portal",
+      "assets": [
+        {
+          "input": "../../../libs/shared-assets/",
+          "output": "assets/",
+          "glob": "**/*"
+        },
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.scss"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "tags": []
+    },
+    {
+      "name": "reporting",
+      "root": "apps/reporting/src",
+      "outDir": "dist/apps/reporting",
+      "assets": [
+        {
+          "input": "../../../libs/shared-assets/",
+          "output": "assets/",
+          "glob": "**/*"
+        },
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.scss"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "tags": []
+    },
+    {
+      "name": "authentication-state",
+      "appRoot": "",
+      "root": "libs/authentication-state/src",
+      "test": "../../../test.js",
+      "tags": []
+    },
+    {
+      "name": "backend",
+      "appRoot": "",
+      "root": "libs/backend/src",
+      "test": "../../../test.js",
+      "tags": []
+    },
+    {
+      "name": "data-models",
+      "appRoot": "",
+      "root": "libs/data-models/src",
+      "test": "../../../test.js",
+      "tags": []
+    },
+    {
+      "name": "reporting-dashboard-view",
+      "root": "libs/reporting-dashboard-view/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
+      "name": "ticket-list-view",
+      "appRoot": "",
+      "root": "libs/ticket-list-view/src",
+      "test": "../../../test.js",
+      "tags": []
+    },
+    {
+      "name": "ticket-list-view",
+      "appRoot": "",
+      "root": "libs/ticket-list-view/src",
+      "test": "../../../test.js",
+      "tags": []
+    },
+    {
+      "name": "tickets-state",
+      "appRoot": "",
+      "root": "libs/tickets-state/src",
+      "test": "../../../test.js",
+      "tags": []
+    }
+  ],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
@@ -14,6 +126,22 @@
   "lint": [
     {
       "project": "./tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/customer-portal/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/customer-portal/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/reporting/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/reporting/e2e/tsconfig.e2e.json",
       "exclude": "**/node_modules/**"
     }
   ],
@@ -26,9 +154,12 @@
     "schematics": {
       "collection": "@nrwl/schematics",
       "postGenerate": "npm run format",
-      "newProject": ["app", "lib"]
+      "newProject": [
+        "app",
+        "lib"
+      ]
     },
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   },
   "warnings": {

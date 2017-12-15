@@ -1,44 +1,45 @@
-# WorkshopProjectNxEnterprise
+# TuskDesk Suite
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0 using [Nrwl Nx](https://nrwl.io/nx).
+This is the demo project for the Taking Angular to Production workshop at ng-conf 2018. This repository uses [Nx](https://nrwl.io/nx) on top of [Angular CLI](https://cli.angular.io). It is a suite of apps for a help desk type of solution. There is an application for users to view their tickets and one for reporting. There is also a legacy AngularJS application for agents to manage tickets.
 
-## Nrwl Extensions for Angular (Nx)
+## Requirements
 
-<a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
+If you don't already have [Node](https://nodejs.org) installed, please install any stable version 6.9.0 or above.
 
-Nx is an open source toolkit for enterprise Angular applications.
+Install the Angular CLI globally
+```shell
+npm install -g @angular/cli
+```
+or
+```shell
+yarn global add @angular/cli
+```
 
-Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.
+If you don't already have it, install an up-to-date [Google Chrome browser](https://www.google.com/chrome/).
 
-## Quick Start & Documentation
+## Initial setup
+cd into the local repo directory and run:
+```shell
+npm install
+```
+or
+```shell
+yarn
+```
 
-[Watch a 5-minute video on how to get started with Nx.](http://nrwl.io/nx)
+## Running the applications in the suite
+Please run the following commands to make sure your environment is functional.
 
-## Generate your first application
-
-Run `ng generate app myapp` to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace. Read more [here](http://nrwl.io/nx).
-
-## Development server
-
-Run `ng serve --app=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name --app=myapp` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build --app=myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+There is a server for the backend data that needs to be running for any of the front end apps to run. Please run this command in a separate terminal window:
+```shell
+npm run server
+```
+The front end (Angular) apps can be run with the following commands:
+```shell
+npm run reporting # serves app at localhost:4202
+npm run customer-portal # serves app at localhost:4203
+```
+The front end (AngularJS) app can be run with the following command:
+```shell
+npm run legacy-agent-workdesk # serves app at localhost:8000
+```
