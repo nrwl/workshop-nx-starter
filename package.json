@@ -20,6 +20,7 @@
     "server:throttled": "tsc -p ./server && node dist/server/server.js --throttle",
     "reporting": "ng serve --proxy-config=proxy.config.json -a=reporting -p=4202",
     "customer-portal": "ng serve --proxy-config=proxy.config.json -a=customer-portal -p=4203",
+    "logs": "ng serve --proxy-config=proxy.config.json -a=logs -p=4204",
     "postinstall": "./node_modules/.bin/nx postinstall",
     "update": "./node_modules/.bin/nx update",
     "update:check": "./node_modules/.bin/nx update check",

@@ -1,1 +1,1 @@
-export { Ticket, TicketComment, Company, User } from './src/data-models';
+export { Ticket, TicketComment, Company, User, EventLog } from './src/data-models';

@@ -38,6 +38,31 @@
       "tags": []
     },
     {
+      "name": "logs",
+      "root": "apps/logs/src",
+      "outDir": "dist/apps/logs",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
       "name": "reporting",
       "root": "apps/reporting/src",
       "outDir": "dist/apps/reporting",
@@ -90,17 +115,22 @@
       "tags": []
     },
     {
+      "name": "logs-backend",
+      "root": "libs/logs-backend/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "logs-view",
+      "root": "libs/logs-view/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "reporting-dashboard-view",
       "root": "libs/reporting-dashboard-view/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
-    },
-    {
-      "name": "ticket-list-view",
-      "appRoot": "",
-      "root": "libs/ticket-list-view/src",
-      "test": "../../../test.js",
       "tags": []
     },
     {
@@ -142,6 +172,14 @@
     },
     {
       "project": "apps/reporting/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/logs/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/logs/e2e/tsconfig.e2e.json",
       "exclude": "**/node_modules/**"
     }
   ],

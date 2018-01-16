@@ -111,6 +111,9 @@
     "nx-enforce-module-boundaries": [
       true,
       {
+        "lazyLoad": [
+          "logs-view"
+        ],
         "allow": [],
         "depConstraints": [
           {
