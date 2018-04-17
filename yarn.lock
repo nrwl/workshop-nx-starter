@@ -20,29 +20,12 @@
     rxjs "^5.5.6"
     source-map "^0.5.6"
 
-"@angular-devkit/core@0.5.6":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-0.5.6.tgz#f7c9d550c86e924f2d75fe728e17e280be63d5ad"
-  dependencies:
-    ajv "~5.5.1"
-    chokidar "^1.7.0"
-    rxjs "^6.0.0-beta.3"
-    source-map "^0.5.6"
-
 "@angular-devkit/schematics@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.3.2.tgz#09a2268fad61f4f956f42db87913b8748c512a78"
   dependencies:
     "@ngtools/json-schema" "^1.1.0"
     rxjs "^5.5.6"
-
-"@angular-devkit/schematics@^0.5.6":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.5.6.tgz#25ecacc619579a9e54be854e28ae302b116f47d0"
-  dependencies:
-    "@angular-devkit/core" "0.5.6"
-    "@ngtools/json-schema" "^1.1.0"
-    rxjs "^6.0.0-beta.3"
 
 "@angular/animations@5.2.7":
   version "5.2.7"
@@ -6022,12 +6005,6 @@ rxjs@^5.5.6:
   dependencies:
     symbol-observable "1.0.1"
 
-rxjs@^6.0.0-beta.3:
-  version "6.0.0-uncanny-rc.7"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.0.0-uncanny-rc.7.tgz#e5d6ebe2c538c583bf4b3600b60112d64a7a6991"
-  dependencies:
-    tslib "^1.9.0"
-
 safe-buffer@5.1.1, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
@@ -7000,10 +6977,6 @@ tsickle@^0.27.2:
 tslib@^1.7.1, tslib@^1.8.0:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.1.tgz#6946af2d1d651a7b1863b531d6e5afa41aa44eac"
-
-tslib@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
 
 tslint@~5.9.1:
   version "5.9.1"
