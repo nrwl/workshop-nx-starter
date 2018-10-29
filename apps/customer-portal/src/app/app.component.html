@@ -1,0 +1,15 @@
+<header class="header-bar" fxLayoutAlign="start center">
+  <h1>TuskDesk</h1>
+
+  <a routerLink="/"
+     routerLinkActive="current"
+     [routerLinkActiveOptions]="{exact: true}">Tickets</a>
+  <a routerLink="/search"
+     routerLinkActive="current"
+     [routerLinkActiveOptions]="{exact: true}">Search</a>
+  <div fxFlex="80"></div>
+  <img src="assets/logo.png" alt="TuskDesk Logo">
+</header>
+<section class="content">
+  <router-outlet></router-outlet>
+</section>

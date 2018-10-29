@@ -1,0 +1,54 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "importHelpers": true,
+    "sourceMap": true,
+    "declaration": false,
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@tuskdesk-suite/*": [
+        "libs/*"
+      ],
+      "@tuskdesk-suite/authentication-state": [
+        "libs/authentication-state/src/index.ts"
+      ],
+      "@tuskdesk-suite/backend": [
+        "libs/backend/src/index.ts"
+      ],
+      "@tuskdesk-suite/data-models": [
+        "libs/data-models/src/index.ts"
+      ],
+      "@tuskdesk-suite/reporting-dashboard-view": [
+        "libs/reporting-dashboard-view/src/index.ts"
+      ],
+      "@tuskdesk-suite/ticket-list-view": [
+        "libs/ticket-list-view/src/index.ts"
+      ],
+      "@tuskdesk-suite/tickets-state": [
+        "libs/tickets-state/src/index.ts"
+      ],
+      "@tuskdesk-suite/utils": [
+        "libs/utils/src/index.ts"
+      ],
+      "@tuskdesk-suite/ui-material": [
+        "libs/ui-material/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

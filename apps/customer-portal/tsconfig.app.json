@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/customer-portal",
+    "module": "es2015"
+  },
+  "include": [
+    "**/*.ts",
+    "../../libs/ticket-list-view/src/index.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "src/test.ts"
+  ]
+}

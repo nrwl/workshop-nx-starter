@@ -1,0 +1,48 @@
+{
+  "npmScope": "tuskdesk-suite",
+  "projects": {
+    "customer-portal": {
+      "tags": []
+    },
+    "customer-portal-e2e": {
+      "tags": []
+    },
+    "reporting": {
+      "tags": []
+    },
+    "reporting-e2e": {
+      "tags": []
+    },
+    "authentication-state": {
+      "tags": []
+    },
+    "backend": {
+      "tags": []
+    },
+    "data-models": {
+      "tags": []
+    },
+    "reporting-dashboard-view": {
+      "tags": []
+    },
+    "ticket-list-view": {
+      "tags": []
+    },
+    "tickets-state": {
+      "tags": []
+    },
+    "utils": {
+      "tags": []
+    },
+    "ui-material": {
+      "tags": []
+    }
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  }
+}
