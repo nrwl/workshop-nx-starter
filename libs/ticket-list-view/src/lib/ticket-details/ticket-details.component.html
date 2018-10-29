@@ -1,0 +1,70 @@
+<section *ngIf="ticket$ | async; let ticket">
+
+  <div class="ticket-bar" fxLayoutAlign="end center" fxLayoutGap="30px">
+    <div *ngIf="timer$ | async as time; else timerButton">
+      Time: <strong>{{time}}</strong>
+    </div>
+    <ng-template #timerButton>
+      <button (click)="startTimer()">Start a Timer</button>
+    </ng-template>
+    <div fxFlex></div>
+    <button class="marked" (click)="markToWork(ticket.id)">Add to Work List</button>
+    <button (click)="switchToEdit()">Edit Ticket</button>
+  </div>
+
+  <header class="ticket-header">
+    <span>
+      Ticket Id: {{ticket.id}}
+    </span>
+    <div fxFlex=""></div>
+    <div>
+      <div fxLayout="column" class="ticket-meta">
+        <span>
+      Status:
+      <span class="ticket-status ticket-status-{{ticket.status}}">
+        {{ticket.status}}
+      </span>
+    </span>
+        <ng-container *ngIf="ticket.assignedToUserId; else notAssigned">
+      <span>
+        Assigned To:
+        <span class="ticket-status ticket-assigned-to">
+          {{ticket.assignedToUserFullName}}
+        </span>
+      </span>
+        </ng-container>
+        <ng-template #notAssigned>
+          <span class="ticket-not-assigned">Not Assigned</span>
+        </ng-template>
+      </div>
+    </div>
+  </header>
+  <div class="ticket-message">
+    <ng-container *ngIf="true">
+      <p>{{ticket.message}}</p>
+    </ng-container>
+    <ng-template #editTicketMessage>
+      <div class="ticket-message-form">
+        <label>
+          <textarea name="ticketMessage" cols="30" rows="4"
+                    [formControl]="ticketMessage"
+                    [value]="ticket.message"></textarea>
+        </label>
+        <button (click)="cancelEdit()">Cancel</button>
+        <button (click)="saveEdit()">Save</button>
+      </div>
+    </ng-template>
+  </div>
+  <footer class="ticket-comments">
+    <div class="ticket-comment card" *ngFor="let comment of comments$ | async">
+      <span>{{comment.message}}</span>
+      <span>by {{comment.userFullName}}</span>
+    </div>
+    <div class="ticket-comment-form">
+      <label>
+        <textarea name="newTicketComment" cols="30" rows="10"></textarea>
+      </label>
+      <button>Add Comment</button>
+    </div>
+  </footer>
+</section>

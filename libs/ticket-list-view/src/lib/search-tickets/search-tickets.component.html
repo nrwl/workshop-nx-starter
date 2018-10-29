@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Find Tickets:"
+           [formControl]="searchTerm">
+  </mat-form-field>
+
+  <mat-form-field style="margin-left: 30px;">
+    <input type="text" matInput placeholder=" Assigned To:"
+           [formControl]="assignedToUser"
+           [matAutocomplete]="users">
+  </mat-form-field>
+
+  <mat-autocomplete #users="matAutocomplete">
+
+  </mat-autocomplete>
+
+  <button mat-raised-button
+          color="primary"
+          [disabled]="!searchTerm.value && !assignedToUser.value"
+          (click)="submit()">
+    Search
+  </button>
+
+</mat-toolbar>
+
+<section class="ticket-search-results">
+  <a routerLink="/ticket/{{result.id}}" *ngFor="let result of searchResults$ | async">
+    <div class="card">
+      <span>{{result.message}}</span>
+      <span>Status: {{result.status}}</span>
+    </div>
+  </a>
+</section>

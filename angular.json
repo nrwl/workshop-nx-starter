@@ -1,0 +1,472 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "customer-portal": {
+      "root": "apps/customer-portal",
+      "sourceRoot": "apps/customer-portal/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/customer-portal",
+            "index": "apps/customer-portal/src/index.html",
+            "main": "apps/customer-portal/src/main.ts",
+            "tsConfig": "apps/customer-portal/tsconfig.app.json",
+            "polyfills": "apps/customer-portal/src/polyfills.ts",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "libs/shared-assets",
+                "output": "/assets"
+              },
+              "apps/customer-portal/src/assets",
+              "apps/customer-portal/src/favicon.ico"
+            ],
+            "styles": [
+              "apps/customer-portal/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/customer-portal/src/environments/environment.ts",
+                  "with": "apps/customer-portal/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "customer-portal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "customer-portal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "customer-portal:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/customer-portal/tsconfig.app.json",
+              "apps/customer-portal/tsconfig.spec.json",
+              "apps/customer-portal/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/customer-portal/jest.config.js",
+            "tsConfig": "apps/customer-portal/tsconfig.spec.json",
+            "setupFile": "apps/customer-portal/src/test-setup.ts"
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "customer-portal-e2e": {
+      "root": "apps/customer-portal-e2e",
+      "sourceRoot": "apps/customer-portal-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/customer-portal-e2e/protractor.conf.js",
+            "devServerTarget": "customer-portal:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/customer-portal-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "reporting": {
+      "root": "apps/reporting",
+      "sourceRoot": "apps/reporting/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/reporting",
+            "index": "apps/reporting/src/index.html",
+            "main": "apps/reporting/src/main.ts",
+            "tsConfig": "apps/reporting/tsconfig.app.json",
+            "polyfills": "apps/reporting/src/polyfills.ts",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "libs/shared-assets",
+                "output": "/assets"
+              },
+              "apps/reporting/src/assets",
+              "apps/reporting/src/favicon.ico"
+            ],
+            "styles": [
+              "apps/reporting/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/reporting/src/environments/environment.ts",
+                  "with": "apps/reporting/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "reporting:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "reporting:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "reporting:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/reporting/tsconfig.app.json",
+              "apps/reporting/tsconfig.spec.json",
+              "apps/reporting/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/reporting/jest.config.js",
+            "tsConfig": "apps/reporting/tsconfig.spec.json",
+            "setupFile": "apps/reporting/src/test-setup.ts"
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "reporting-e2e": {
+      "root": "apps/reporting-e2e",
+      "sourceRoot": "apps/reporting-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/reporting-e2e/protractor.conf.js",
+            "devServerTarget": "reporting:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/reporting-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "authentication-state": {
+      "root": "libs/authentication-state",
+      "sourceRoot": "libs/authentication-state/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/authentication-state/tsconfig.lib.json",
+              "libs/authentication-state/tsconfig.spec.json",
+              "libs/authentication-state/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/authentication-state/jest.config.js",
+            "tsConfig": "libs/authentication-state/tsconfig.spec.json",
+            "setupFile": "libs/authentication-state/src/test-setup.ts"
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "backend": {
+      "root": "libs/backend",
+      "sourceRoot": "libs/backend/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/tsconfig.lib.json",
+              "libs/backend/tsconfig.spec.json",
+              "libs/backend/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/backend/jest.config.js",
+            "tsConfig": "libs/backend/tsconfig.spec.json",
+            "setupFile": "libs/backend/src/test-setup.ts"
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "data-models": {
+      "root": "libs/data-models",
+      "sourceRoot": "libs/data-models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/data-models/tsconfig.lib.json",
+              "libs/data-models/tsconfig.spec.json",
+              "libs/data-models/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/data-models/jest.config.js",
+            "tsConfig": "libs/data-models/tsconfig.spec.json",
+            "setupFile": "libs/data-models/src/test-setup.ts"
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "reporting-dashboard-view": {
+      "root": "libs/reporting-dashboard-view",
+      "sourceRoot": "libs/reporting-dashboard-view/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/reporting-dashboard-view/tsconfig.lib.json",
+              "libs/reporting-dashboard-view/tsconfig.spec.json",
+              "libs/reporting-dashboard-view/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/reporting-dashboard-view/jest.config.js",
+            "tsConfig": "libs/reporting-dashboard-view/tsconfig.spec.json",
+            "setupFile": "libs/reporting-dashboard-view/src/test-setup.ts"
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "ticket-list-view": {
+      "root": "libs/ticket-list-view",
+      "sourceRoot": "libs/ticket-list-view/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ticket-list-view/tsconfig.lib.json",
+              "libs/ticket-list-view/tsconfig.spec.json",
+              "libs/ticket-list-view/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ticket-list-view/jest.config.js",
+            "tsConfig": "libs/ticket-list-view/tsconfig.spec.json",
+            "setupFile": "libs/ticket-list-view/src/test-setup.ts"
+          }
+        }
+      },
+      "prefix": "app"
+    },
+    "tickets-state": {
+      "root": "libs/tickets-state",
+      "sourceRoot": "libs/tickets-state/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/tickets-state/tsconfig.lib.json",
+              "libs/tickets-state/tsconfig.spec.json",
+              "libs/tickets-state/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/tickets-state/jest.config.js",
+            "tsConfig": "libs/tickets-state/tsconfig.spec.json",
+            "setupFile": "libs/tickets-state/src/test-setup.ts"
+          }
+        }
+      },
+      "prefix": "tickets"
+    },
+    "utils": {
+      "root": "libs/utils",
+      "sourceRoot": "libs/utils/src",
+      "projectType": "library",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/utils/tsconfig.lib.json",
+              "libs/utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/utils/jest.config.js",
+            "tsConfig": "libs/utils/tsconfig.spec.json",
+            "setupFile": "libs/utils/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ui-material": {
+      "root": "libs/ui-material",
+      "sourceRoot": "libs/ui-material/src",
+      "projectType": "library",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-material/tsconfig.lib.json",
+              "libs/ui-material/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ui-material/jest.config.js",
+            "tsConfig": "libs/ui-material/tsconfig.spec.json",
+            "setupFile": "libs/ui-material/src/test-setup.ts"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "customer-portal",
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics"
+  }
+}
