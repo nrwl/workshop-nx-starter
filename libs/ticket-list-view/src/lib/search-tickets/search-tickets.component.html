@@ -8,7 +8,7 @@
     </label>
     <ul>
       <li *ngFor="let user of users"
-          (click)="setAssignedToUser(user.fullName)">{{user.fullName}}</li>
+          (click)="setAssignedToUser(user)">{{user}}</li>
     </ul>
   </div>
   <button [disabled]="!searchTerm.value && !assignedToUser.value"
