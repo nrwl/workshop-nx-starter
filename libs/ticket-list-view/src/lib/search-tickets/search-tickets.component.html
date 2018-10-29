@@ -7,10 +7,14 @@
       Assigned To: <input type="text" name="assignedToUser" [formControl]="assignedToUser">
     </label>
     <ul>
-      <li (click)="setAssignedToUser('name')">{{'name'}}</li>
+      <li *ngFor="let user of users"
+          (click)="setAssignedToUser(user.fullName)">{{user.fullName}}</li>
     </ul>
   </div>
-  <button [disabled]="!searchTerm.value && !assignedToUser.value" (click)="submit()">Search</button>
+  <button [disabled]="!searchTerm.value && !assignedToUser.value"
+          (click)="submit()">
+    Search
+  </button>
 </div>
 <section class="ticket-search-results">
   <a routerLink="/ticket/{{result.id}}" *ngFor="let result of searchResults$ | async">
