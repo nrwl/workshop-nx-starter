@@ -25,6 +25,5 @@ export class SearchTicketsComponent implements OnInit {
   constructor(private ticketService: TicketService, private userService: UserService) {}
 
   ngOnInit() {}
-
   submit() {}
 }

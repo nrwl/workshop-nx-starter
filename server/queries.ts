@@ -31,7 +31,7 @@ export function ticketByStatus(value) {
 // *********************************
 
 export function getRequestParams(req) {
-  let currentUser = getCurrentUser(req);
+  const currentUser = getCurrentUser(req);
   return {
     currentUser,
     status: getStatus(req),
