@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { TicketService, UserService } from '@tuskdesk-suite/backend';
 import { User } from '@tuskdesk-suite/data-models';
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
+import { of, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs/operators';
 
 interface SearchResult {
   id: number;
@@ -23,38 +23,24 @@ interface SearchResult {
   templateUrl: './search-tickets.component.html',
   styleUrls: ['./search-tickets.component.scss']
 })
-export class SearchTicketsComponent implements OnInit, OnDestroy {
-  users: string[];
+export class SearchTicketsComponent {
   searchTerm = new FormControl();
   assignedToUser = new FormControl();
   searchResults$: Observable<SearchResult[]>;
-  subscription: Subscription;
+
+  users$: Observable<string[]> = this.assignedToUser.valueChanges.pipe(
+    debounceTime(230),
+    distinctUntilChanged(),
+    filter(value => value.length > 0),
+    switchMap(searchTerm => {
+      const extractFullNames = users => users.map(it => it.fullName);
+      const request$ = this.userService.users(searchTerm);
+
+      return !searchTerm ? of([]) : request$.pipe(map(extractFullNames));
+    })
+  );
 
   constructor(private ticketService: TicketService, private userService: UserService) {}
-
-  ngOnInit() {
-    this.subscription = this.assignedToUser.valueChanges
-      .pipe(
-        debounceTime(230),
-        distinctUntilChanged(),
-        tap(value => {
-          this.users = !value.length ? [] : this.users;
-        }),
-        filter(value => value.length > 0)
-      )
-      .subscribe(searchTerm => {
-        this.userService
-          .users(searchTerm)
-          .pipe(map(users => users.map(it => it.fullName)))
-          .subscribe(fullNames => {
-            this.users = fullNames;
-          });
-      });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 
   setAssignedToUser(value) {
     this.assignedToUser.patchValue(value, { emitEvent: false });

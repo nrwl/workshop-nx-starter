@@ -7,7 +7,7 @@
       Assigned To: <input type="text" name="assignedToUser" [formControl]="assignedToUser">
     </label>
     <ul>
-      <li *ngFor="let user of users"
+      <li *ngFor="let user of (users$ | async)"
           (click)="setAssignedToUser(user)">{{user}}</li>
     </ul>
   </div>
