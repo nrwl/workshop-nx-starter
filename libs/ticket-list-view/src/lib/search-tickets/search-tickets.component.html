@@ -1,0 +1,22 @@
+<div class="ticket-search-form">
+  <label>
+    Find Tickets: <input type="text" name="searchTerm" [formControl]="searchTerm">
+  </label>
+  <div class="assigned-to-user-form-field">
+    <label>
+      Assigned To: <input type="text" name="assignedToUser" [formControl]="assignedToUser">
+    </label>
+    <ul>
+      <li (click)="setAssignedToUser('name')">{{'name'}}</li>
+    </ul>
+  </div>
+  <button [disabled]="!searchTerm.value && !assignedToUser.value" (click)="submit()">Search</button>
+</div>
+<section class="ticket-search-results">
+  <a routerLink="/ticket/{{result.id}}" *ngFor="let result of searchResults$ | async">
+    <div class="card">
+      <span>{{result.message}}</span>
+      <span>Status: {{result.status}}</span>
+    </div>
+  </a>
+</section>

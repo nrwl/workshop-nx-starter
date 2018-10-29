@@ -1,0 +1,195 @@
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+
+<style>
+  body {
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+  }
+
+  p {
+    font-weight: bold;
+  }
+
+  h2, h3 {
+    padding-left: 25px;
+  }
+
+  h3 {
+    font-size: 0.9em;
+    color: darkgray;
+    margin-top: -10px;
+    padding-bottom: 10px;
+  }
+
+  li {
+    line-height: 30px;
+    vertical-align: middle;
+  }
+
+  .name {
+    min-width: 200px;
+    display: inline-block;
+  }
+
+  .url {
+    padding-left: 25px;
+    width: 250px;
+    text-align: left;
+    background-color: rgba(180, 212, 255, 0.7);
+    display: inline-block;
+  }
+
+  .action {
+    width: 50px;
+    padding-left: 20px;
+    color: #314bd3;
+  }
+</style>
+
+<h2>Nx Enterprise Workshop - REST Server</h2>
+<h3>REST API documentation for custom HTTP/REST server.</h3>
+
+<div style="padding-left: 25px;">
+<p>Lookup API  <span style="padding-left: 180px;">EndPoint URL</span></p>
+
+<ul>
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/users">
+        getAllUsers()
+      </a>
+    </span>
+    <span class="url">/api/users </span>
+    <span class="action"> GET </span>
+  </li>
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/tickets">
+        getAllTickets()
+      </a>
+    </span>
+    <span class="url">/api/tickets </span>
+    <span class="action"> GET </span>
+  </li>
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/companies">
+        getAllCompanies()
+      </a>
+    </span>
+    <span class="url">/api/companies </span>
+    <span class="action"> GET </span>
+  </li>
+
+
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/eventlogs">
+        getAllEvents()
+      </a>
+    </span>
+    <span class="url">/api/eventlogs </span>
+    <span class="action"> GET </span>
+  </li>
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/comments">
+        getAllComments()
+      </a>
+    </span>
+    <span class="url">/api/comments </span>
+    <span class="action"> GET </span>
+  </li>
+</ul>
+
+<ul>
+
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/tickets/4">
+        getTicketById(4)
+      </a>
+    </span>
+    <span class="url">/api/tickets/:id </span>
+    <span class="action"> GET </span>
+  </li>
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/tickets/5/comments">
+        getTicketComments(5)
+      </a>
+    </span>
+    <span class="url">/api/tickets/:id/comments </span>
+    <span class="action"> GET </span>
+  </li>
+  <li>
+      <span class="name">
+        <a href="http://localhost:3000/api/users/8">
+          getUserById(8)
+        </a>
+      </span>
+    <span class="url">/api/users/:id </span>
+    <span class="action"> GET </span>
+  </li>
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/users?searchTerm=je">
+        getUsersByName('je')
+      </a>
+    </span>
+    <span class="url">/api/users?searchTerm=&lt;val&gt; </span>
+    <span class="action"> GET </span>
+  </li>
+
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/companies/3">
+        getCompanyById(3)
+      </a>
+    </span>
+    <span
+      class="url">/api/companies/:id </span>
+    <span class="action"> GET </span>
+  </li>
+  <li>
+    <span class="name">
+      <a href="http://localhost:3000/api/companies/3/users">
+        getUsersAtCompany(3)
+      </a>
+    </span>
+    <span
+      class="url">/api/companies/:id/users </span>
+    <span class="action"> GET </span>
+  </li>
+
+</ul>
+
+<p>Ticket API</p>
+
+<ul>
+  <li>
+    <span class="name"> updateTicket(ticket) </span>
+    <span
+      class="url"> /api/tickets</span>
+    <span class="action"> PUT </span>
+  </li>
+  <li>
+    <span class="name"> markAsComplete(tId)      </span>
+    <span
+      class="url"> /api/complete </span>
+    <span class="action"> PUT </span>
+  </li>
+  <li>
+    <span class="name"> addComment(tId, text) </span>
+    <span
+      class="url"> /api/comments     </span>
+    <span class="action"> PUT </span>
+  </li>
+  <li>
+    <span class="name"> assignToUser(tId,userId)      </span>
+    <span
+      class="url"> /api/assign </span>
+    <span class="action"> PUT </span>
+  </li>
+</ul>
+
+</div>

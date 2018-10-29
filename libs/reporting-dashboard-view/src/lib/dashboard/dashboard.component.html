@@ -1,0 +1,23 @@
+<section *ngIf="model$ | async; let model" class="dashboard">
+  <div class="dashboard-card">
+    <span>{{model.totalTickets}}</span>
+    <div>
+      Total<br/>
+      Tickets
+    </div>
+  </div>
+  <div class="dashboard-card">
+    <span>{{model.totalOpenTickets}}</span>
+    <div>
+      Open<br/>
+      Tickets
+    </div>
+  </div>
+  <div class="dashboard-card">
+    <span>{{model.totalCompanies}}</span>
+    <div>
+      Total<br/>
+      Companies
+    </div>
+  </div>
+</section>
