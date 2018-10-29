@@ -11,7 +11,7 @@
   </mat-form-field>
 
   <mat-autocomplete #users="matAutocomplete">
-
+    <mat-option *ngFor="let user of usersFound" [value]="user.fullName">{{user.fullName}}</mat-option>
   </mat-autocomplete>
 
   <button mat-raised-button
