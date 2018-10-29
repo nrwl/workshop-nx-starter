@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { TicketService, UserService } from '@tuskdesk-suite/backend';
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
+import { User } from '@tuskdesk-suite/data-models';
+import { of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 
 interface SearchResult {
   id: number;
@@ -16,41 +17,29 @@ interface SearchResult {
   templateUrl: './search-tickets.component.html',
   styleUrls: ['./search-tickets.component.scss']
 })
-export class SearchTicketsComponent implements OnInit, OnDestroy {
+export class SearchTicketsComponent {
   searchTerm = new FormControl();
   assignedToUser = new FormControl();
 
-  users: string[];
   searchResults$: Observable<SearchResult[]>;
-  subscription: Subscription;
+
+  users$: Observable<string[]> = this.assignedToUser.valueChanges.pipe(
+    debounceTime(230),
+    distinctUntilChanged(),
+    filter(value => value.length > 0),
+    switchMap(searchTerm => {
+      const request$ = this.userService.users(searchTerm);
+      return !searchTerm ? of([]) : request$.pipe(map(extractFullNames));
+    })
+  );
 
   constructor(private ticketService: TicketService, private userService: UserService) {}
-
-  ngOnInit() {
-    this.subscription = this.assignedToUser.valueChanges
-      .pipe(
-        debounceTime(230),
-        distinctUntilChanged(),
-        tap(value => {
-          this.users = !value.length ? [] : this.users;
-        }),
-        filter(value => value.length > 0)
-      )
-      .subscribe(searchTerm => {
-        this.userService
-          .users(searchTerm)
-          .pipe(map(users => users.map(it => it.fullName)))
-          .subscribe(fullNames => {
-            this.users = fullNames;
-          });
-      });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 
   submit() {
     this.searchResults$ = this.ticketService.searchTickets(this.searchTerm.value, this.assignedToUser.value);
   }
+}
+
+function extractFullNames(users: User[]): string[] {
+  return users.map(it => it.fullName);
 }
