@@ -15,7 +15,6 @@ export function ticketsReducer(state: TicketsState, action: TicketsAction): Tick
     case TicketActionTypes.LOAD_TICKET_DONE: {
       const list = [...state.list];
       const ticket = (action as LoadTicketDone).ticket;
-
       if (!list.some(it => it.id === ticket.id)) {
         list.push(ticket);
       }

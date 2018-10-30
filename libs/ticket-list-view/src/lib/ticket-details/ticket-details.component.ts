@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
 import { TicketService } from '@tuskdesk-suite/backend';
 import { TicketTimerService } from '../ticket-timer.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ticket-details',
@@ -17,16 +18,23 @@ export class TicketDetailsComponent implements OnInit {
   comments$: Observable<TicketComment[]>;
   ticketMessage = new FormControl();
   timer$: Observable<number>;
+  markedToWork$: Observable<boolean>;
 
   constructor(
     private service: TicketService,
     private route: ActivatedRoute,
-    private tickerTimerService: TicketTimerService
+    private ticketTimerService: TicketTimerService
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const id = +params['id'];
+      this.markedToWork$ = this.ticketTimerService.ticketsToWork$.pipe(
+        map(tickets => {
+          return tickets.indexOf(id) !== -1;
+        })
+      );
+
       this.ticket$ = this.service.ticketById(id);
     });
   }
@@ -38,8 +46,10 @@ export class TicketDetailsComponent implements OnInit {
   saveEdit() {}
 
   startTimer() {
-    this.timer$ = this.tickerTimerService.timer$;
+    this.timer$ = this.ticketTimerService.timer$;
   }
 
-  markToWork(ticketId: number) {}
+  markToWork(ticketId: number) {
+    this.ticketTimerService.addTicketToWork(ticketId);
+  }
 }

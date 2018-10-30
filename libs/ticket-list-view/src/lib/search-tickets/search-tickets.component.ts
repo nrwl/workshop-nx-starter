@@ -31,7 +31,6 @@ export class SearchTicketsComponent {
   users$: Observable<string[]> = this.assignedToUser.valueChanges.pipe(
     debounceTime(230),
     distinctUntilChanged(),
-    filter(value => value.length > 0),
     switchMap(searchTerm => {
       const extractFullNames = users => users.map(it => it.fullName);
       const request$ = this.userService.users(searchTerm);
