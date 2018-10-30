@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+
+import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
 import { TicketService } from '@tuskdesk-suite/backend';
+import { TicketTimerService } from '../ticket-timer.service';
 
 @Component({
   selector: 'app-ticket-details',
@@ -16,7 +18,11 @@ export class TicketDetailsComponent implements OnInit {
   ticketMessage = new FormControl();
   timer$: Observable<number>;
 
-  constructor(private service: TicketService, private route: ActivatedRoute) {}
+  constructor(
+    private service: TicketService,
+    private route: ActivatedRoute,
+    private tickerTimerService: TicketTimerService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -31,7 +37,9 @@ export class TicketDetailsComponent implements OnInit {
 
   saveEdit() {}
 
-  startTimer() {}
+  startTimer() {
+    this.timer$ = this.tickerTimerService.timer$;
+  }
 
   markToWork(ticketId: number) {}
 }

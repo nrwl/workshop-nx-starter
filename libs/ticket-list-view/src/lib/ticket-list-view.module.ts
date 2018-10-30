@@ -10,6 +10,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { TicketsStateModule } from '@tuskdesk-suite/tickets-state';
 
 import { TicketListViewRoutingModule } from './ticket-list-view.routing.module';
+import { TicketTimerService } from './ticket-timer.service';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { SearchTicketsComponent } from './search-tickets/search-tickets.component';
@@ -25,6 +26,7 @@ import { SearchTicketsComponent } from './search-tickets/search-tickets.componen
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule
   ],
-  declarations: [TicketListComponent, TicketDetailsComponent, SearchTicketsComponent]
+  declarations: [TicketListComponent, TicketDetailsComponent, SearchTicketsComponent],
+  providers: [TicketTimerService]
 })
 export class TicketListViewModule {}
