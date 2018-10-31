@@ -12,6 +12,13 @@ export const initialState: TicketsState = {
 
 export function ticketsReducer(state: TicketsState, action: TicketsAction): TicketsState {
   switch (action.type) {
+    case TicketActionTypes.LOAD_ALL_TICKETS_DONE: {
+      return {
+        ...state,
+        list: action.tickets
+      };
+    }
+
     case TicketActionTypes.LOAD_TICKET_DONE: {
       const list = [...state.list];
       const ticket = action.ticket;

@@ -3,11 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
-import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
-import { TicketService } from '@tuskdesk-suite/backend';
-import { TicketTimerService } from '../ticket-timer.service';
 import { map } from 'rxjs/operators';
 import { untilViewDestroyed } from '@tuskdesk-suite/utils';
+import { select, Store } from '@ngrx/store';
+
+import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
+import { LoadTicketDone, PartialAppState, ticketsQuery } from '@tuskdesk-suite/tickets-state';
+import { TicketTimerService } from '../ticket-timer.service';
+import { TicketService } from '@tuskdesk-suite/backend';
 
 @Component({
   selector: 'app-ticket-details',
@@ -22,8 +25,9 @@ export class TicketDetailsComponent implements OnInit {
   markedToWork$: Observable<boolean>;
 
   constructor(
-    private service: TicketService,
+    private store: Store<PartialAppState>,
     private route: ActivatedRoute,
+    private service: TicketService,
     private ticketTimerService: TicketTimerService,
     private elRef: ElementRef
   ) {}
@@ -38,7 +42,14 @@ export class TicketDetailsComponent implements OnInit {
         })
       );
 
-      this.ticket$ = this.service.ticketById(id);
+      this.ticket$ = this.store.pipe(
+        select(ticketsQuery.getAllTickets),
+        map(tickets => tickets.find(ticket => ticket.id === id))
+      );
+
+      this.service.ticketById(id).subscribe(ticket => {
+        this.store.dispatch(new LoadTicketDone(ticket));
+      });
     });
   }
 

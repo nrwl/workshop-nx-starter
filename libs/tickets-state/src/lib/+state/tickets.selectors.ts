@@ -1,13 +1,14 @@
 import { Ticket } from '@tuskdesk-suite/data-models';
 
-import { PartialAppState } from './tickets.interfaces';
 import { FEATURE_TICKETS } from './tickets.reducer';
+import { PartialAppState } from './tickets.interfaces';
 
 export namespace ticketsQuery {
-  export const getIsLoading = (state: PartialAppState) => state[FEATURE_TICKETS].loading;
   export const getError = (state: PartialAppState) => state[FEATURE_TICKETS].error;
-  export const getSelectedId = (state: PartialAppState) => state[FEATURE_TICKETS].selectedId;
+  export const getIsLoading = (state: PartialAppState) => state[FEATURE_TICKETS].loading;
+
   export const getAllTickets = (state: PartialAppState) => state[FEATURE_TICKETS].list;
+  export const getSelectedId = (state: PartialAppState) => state[FEATURE_TICKETS].selectedId;
 
   export const getSelectedTicket = (state: PartialAppState) => {
     const selectedId = getSelectedId(state);
