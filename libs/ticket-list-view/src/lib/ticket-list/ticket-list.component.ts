@@ -5,9 +5,8 @@ import { map } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 
 import { Ticket } from '@tuskdesk-suite/data-models';
-import { TicketService } from '@tuskdesk-suite/backend';
 import { TicketTimerService } from '../ticket-timer.service';
-import { LoadTicketsDone, PartialAppState, ticketsQuery } from '@tuskdesk-suite/tickets-state';
+import { LoadTickets, PartialAppState, ticketsQuery } from '@tuskdesk-suite/tickets-state';
 
 @Component({
   selector: 'app-ticket-list',
@@ -25,14 +24,8 @@ export class TicketListComponent {
 
   markedToWork$: Observable<number[]> = this.timerService.ticketsToWork$;
 
-  constructor(
-    private store: Store<PartialAppState>,
-    private service: TicketService,
-    private timerService: TicketTimerService
-  ) {
-    this.service.getTickets().subscribe(tickets => {
-      this.store.dispatch(new LoadTicketsDone(tickets));
-    });
+  constructor(private store: Store<PartialAppState>, private timerService: TicketTimerService) {
+    this.store.dispatch(new LoadTickets());
   }
 }
 

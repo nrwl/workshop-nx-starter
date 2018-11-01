@@ -8,9 +8,8 @@ import { untilViewDestroyed } from '@tuskdesk-suite/utils';
 import { select, Store } from '@ngrx/store';
 
 import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
-import { LoadTicketDone, PartialAppState, ticketsQuery } from '@tuskdesk-suite/tickets-state';
+import { LoadTicket, PartialAppState, ticketsQuery } from '@tuskdesk-suite/tickets-state';
 import { TicketTimerService } from '../ticket-timer.service';
-import { TicketService } from '@tuskdesk-suite/backend';
 
 @Component({
   selector: 'app-ticket-details',
@@ -27,7 +26,6 @@ export class TicketDetailsComponent implements OnInit {
   constructor(
     private store: Store<PartialAppState>,
     private route: ActivatedRoute,
-    private service: TicketService,
     private ticketTimerService: TicketTimerService,
     private elRef: ElementRef
   ) {}
@@ -47,9 +45,7 @@ export class TicketDetailsComponent implements OnInit {
         map(tickets => tickets.find(ticket => ticket.id === id))
       );
 
-      this.service.ticketById(id).subscribe(ticket => {
-        this.store.dispatch(new LoadTicketDone(ticket));
-      });
+      this.store.dispatch(new LoadTicket(id));
     });
   }
 
