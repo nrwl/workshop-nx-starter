@@ -4,7 +4,8 @@ import { TicketActionTypes, LoadTicketDone, TicketsAction, LoadTicketsDone } fro
 export const FEATURE_TICKETS = 'tickets';
 
 export const initialState: TicketsState = {
-  list: [],
+  entities: {},
+  ids: [],
   selectedId: -1,
   loading: false,
   error: ''
@@ -13,23 +14,34 @@ export const initialState: TicketsState = {
 export function ticketsReducer(state: TicketsState, action: TicketsAction): TicketsState {
   switch (action.type) {
     case TicketActionTypes.LOAD_ALL_TICKETS_DONE: {
+      const tickets = action.tickets;
+      const registry = tickets.reduce(
+        (entities, contact) => {
+          return { ...entities, [contact.id]: contact };
+        },
+        { ...state.entities }
+      );
+
       return {
         ...state,
-        list: action.tickets
+        entities: registry,
+        ids: tickets.map(ticket => ticket.id)
       };
     }
 
     case TicketActionTypes.LOAD_TICKET_DONE: {
-      const list = [...state.list];
       const ticket = action.ticket;
-      if (!list.some(it => it.id === ticket.id)) {
-        list.push(ticket);
-      }
+      const found = state.entities[ticket.id];
 
-      return {
-        ...state,
-        list
-      };
+      return !found
+        ? {
+            ...state,
+            entities: {
+              ...state.entities,
+              [ticket.id]: ticket
+            }
+          }
+        : state;
     }
   }
 

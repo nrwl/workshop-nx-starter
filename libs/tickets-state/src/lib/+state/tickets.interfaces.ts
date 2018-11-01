@@ -1,8 +1,13 @@
 import { Ticket } from '@tuskdesk-suite/data-models';
 import { FEATURE_TICKETS } from '@tuskdesk-suite/tickets-state/src/lib/+state/tickets.reducer';
 
+export interface TicketDictionary {
+  [key: number]: Ticket;
+}
+
 export interface TicketsState {
-  list: Ticket[];
+  entities: TicketDictionary;
+  ids: number[];
   selectedId: number;
   loading: boolean;
   error: any;
