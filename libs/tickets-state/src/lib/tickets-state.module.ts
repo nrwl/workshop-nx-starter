@@ -5,12 +5,12 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { TicketsEffects } from './+state/tickets.effects';
 
-import { FEATURE_TICKETS, initialState, ticketsReducer } from './+state/tickets.reducer';
+import { FEATURE_TICKETS, getInitialState, ticketsReducer } from './+state/tickets.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature(FEATURE_TICKETS, ticketsReducer, { initialState }),
+    StoreModule.forFeature(FEATURE_TICKETS, ticketsReducer, { initialState: getInitialState }),
     EffectsModule.forFeature([TicketsEffects])
   ],
   providers: []

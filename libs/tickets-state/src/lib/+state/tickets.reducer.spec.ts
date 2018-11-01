@@ -10,9 +10,15 @@
  *
  */
 
-import { ticketsReducer, initialState } from './tickets.reducer';
+import { ticketsReducer, getInitialState } from './tickets.reducer';
 
 describe('Tickets Reducer', () => {
+  let initialState;
+
+  beforeEach(() => {
+    initialState = getInitialState();
+  });
+
   describe('unknown action', () => {
     it('should return the initial state', () => {
       const action = {} as any; // tslint:disable-line:no-any

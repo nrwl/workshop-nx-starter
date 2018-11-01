@@ -40,10 +40,7 @@ export class TicketDetailsComponent implements OnInit {
         })
       );
 
-      this.ticket$ = this.store.pipe(
-        select(ticketsQuery.getAllTickets),
-        map(tickets => tickets.find(ticket => ticket.id === id))
-      );
+      this.ticket$ = this.store.pipe(select(ticketsQuery.getTicketAsEntities), map(tickets => tickets[id]));
 
       this.store.dispatch(new LoadTicket(id));
     });
