@@ -36,6 +36,17 @@
     },
     "ui-material": {
       "tags": []
+    },
+    "logs": {
+      "tags": [
+        "log"
+      ]
+    },
+    "logs-e2e": {
+      "tags": []
+    },
+    "logs-backend": {
+      "tags": []
     }
   },
   "implicitDependencies": {

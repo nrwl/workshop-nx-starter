@@ -44,6 +44,9 @@
       ],
       "@tuskdesk-suite/ui-material": [
         "libs/ui-material/src/index.ts"
+      ],
+      "@tuskdesk-suite/logs-backend": [
+        "libs/logs-backend/src/index.ts"
       ]
     }
   },

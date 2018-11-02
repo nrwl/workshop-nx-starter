@@ -21,6 +21,7 @@
     "server:throttled": "tsc -p ./server && node dist/server/server.js --throttle",
     "server:test": "jest server",
     "reporting": "ng serve reporting --proxy-config=proxy.config.json --port=4202",
+    "logs": "ng serve logs --proxy-config=proxy.config.json --port=4204",
     "customer-portal": "ng serve customer-portal --proxy-config=proxy.config.json --port=4203",
     "update": "ng update @nrwl/schematics",
     "update:check": "ng update",
