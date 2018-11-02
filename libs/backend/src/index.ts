@@ -1,3 +1,4 @@
+export { ApiConfig } from './lib/api-config';
 export { BackendModule } from './lib/backend.module';
 export { CompanyService } from './lib/company.service';
 export { TicketService } from './lib/ticket.service';
