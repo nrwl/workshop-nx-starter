@@ -47,6 +47,9 @@
       ],
       "@tuskdesk-suite/logs-backend": [
         "libs/logs-backend/src/index.ts"
+      ],
+      "@tuskdesk-suite/logs-view": [
+        "libs/logs-view/src/index.ts"
       ]
     }
   },

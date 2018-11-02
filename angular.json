@@ -611,6 +611,34 @@
           }
         }
       }
+    },
+    "logs-view": {
+      "root": "libs/logs-view",
+      "sourceRoot": "libs/logs-view/src",
+      "projectType": "library",
+      "prefix": "logs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logs-view/tsconfig.lib.json",
+              "libs/logs-view/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/logs-view/jest.config.js",
+            "tsConfig": "libs/logs-view/tsconfig.spec.json",
+            "setupFile": "libs/logs-view/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "defaultProject": "customer-portal",

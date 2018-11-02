@@ -10,5 +10,7 @@
   ],
   "include": [
     "**/*.ts"
-  ]
+  
+    , "../../libs/logs-view/src/index.ts"
+]
 }

@@ -47,6 +47,12 @@
     },
     "logs-backend": {
       "tags": []
+    },
+    "logs-view": {
+      "tags": [
+        "ui",
+        "logs"
+      ]
     }
   },
   "implicitDependencies": {
