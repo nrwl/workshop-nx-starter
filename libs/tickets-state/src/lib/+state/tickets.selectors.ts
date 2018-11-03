@@ -1,21 +1,20 @@
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { Ticket } from '@tuskdesk-suite/data-models';
 
+import { TicketsState } from './tickets.interfaces';
 import { FEATURE_TICKETS } from './tickets.reducer';
-import { PartialAppState } from './tickets.interfaces';
 
 export namespace ticketsQuery {
-  export const getError = (state: PartialAppState) => state[FEATURE_TICKETS].error;
-  export const getIsLoading = (state: PartialAppState) => state[FEATURE_TICKETS].loading;
+  const getTicketsState = createFeatureSelector<TicketsState>(FEATURE_TICKETS);
 
-  export const getAllTickets = (state: PartialAppState) => state[FEATURE_TICKETS].list;
-  export const getSelectedId = (state: PartialAppState) => state[FEATURE_TICKETS].selectedId;
+  export const getIsLoading = createSelector(getTicketsState, (state: TicketsState) => state.loading);
+  export const getError = createSelector(getTicketsState, (state: TicketsState) => state.error);
+  export const getSelectedId = createSelector(getTicketsState, (state: TicketsState) => state.selectedId);
 
-  export const getSelectedTicket = (state: PartialAppState) => {
-    const selectedId = getSelectedId(state);
-    const tickets = getAllTickets(state);
-    const matchingIds = (it: Ticket) => it.id === selectedId;
-    const ticket = selectedId ? tickets.find(matchingIds) : null;
-
+  export const getAllTickets = createSelector(getTicketsState, (state: TicketsState) => state.list);
+  export const getSelectedTicket = createSelector(getAllTickets, getSelectedId, (tickets: Ticket[], id: number) => {
+    const ticket = id ? tickets.find((it: Ticket) => it.id === id) : null; // tslint:disable-line
     return ticket ? ({ ...ticket } as Ticket) : null;
-  };
+  });
 }
