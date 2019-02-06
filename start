@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 npm run server &
-npm run customer-portal -- -o &
+npm run customer-portal -- -o
