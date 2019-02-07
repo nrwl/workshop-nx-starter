@@ -1,5 +1,4 @@
 <section *ngIf="ticket$ | async; let ticket">
-
   <div class="ticket-bar" fxLayoutAlign="end center" fxLayoutGap="30px">
     <div *ngIf="timer$ | async as time; else timerButton">
       Time: <strong>{{time}}</strong>
@@ -12,7 +11,7 @@
     <button (click)="switchToEdit()">Edit Ticket</button>
   </div>
 
-  <header class="ticket-header">
+  <header class="ticket-header" [class.marked]="markedToWork$ | async">
     <span>
       Ticket Id: {{ticket.id}}
     </span>

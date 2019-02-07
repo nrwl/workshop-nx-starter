@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class TicketTimerService {
@@ -13,4 +13,16 @@ export class TicketTimerService {
 
     return () => clearInterval(intervalId);
   });
+
+  private ticketsToWork = new BehaviorSubject<number[]>([]);
+  readonly workRegistry = [];
+  readonly ticketsToWork$ = this.ticketsToWork.asObservable();
+
+  addTicketToWork(ticketId: number) {
+    const list = this.workRegistry;
+    if (list.indexOf(ticketId) === -1) {
+      list.push(ticketId);
+    }
+    this.ticketsToWork.next([...list]);
+  }
 }

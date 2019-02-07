@@ -1,11 +1,12 @@
-<section>
+<section *ngIf="markedToWork$ | async as markedItems">
   <a routerLink="ticket/{{ticket.id}}"
      *ngFor="let ticket of tickets$ | async">
-    <div class="card">
+    <div class="card" [class.marked]="markedItems.indexOf(ticket.id) > -1">
       <span>{{ticket.message}}</span>
       <div>
         ID: {{ticket.id}}
       </div>
     </div>
   </a>
+  <div>Tickets to Work: {{markedItems.length}}</div>
 </section>
