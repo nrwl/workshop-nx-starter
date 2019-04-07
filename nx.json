@@ -36,6 +36,9 @@
     },
     "ui-material": {
       "tags": []
+    },
+    "ui-shared": {
+      "tags": []
     }
   },
   "implicitDependencies": {

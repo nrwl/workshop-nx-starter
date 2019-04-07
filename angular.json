@@ -19,7 +19,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "libs/shared-assets",
+                "input": "libs/ui-shared/src/assets",
                 "output": "/assets"
               },
               "apps/customer-portal/src/assets",
@@ -133,7 +133,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "libs/shared-assets",
+                "input": "libs/ui-shared/src/assets",
                 "output": "/assets"
               },
               "apps/reporting/src/assets",
@@ -458,6 +458,33 @@
             "tsConfig": "libs/ui-material/tsconfig.spec.json",
             "setupFile": "libs/ui-material/src/test-setup.ts"
           }
+        }
+      }
+    },
+    "ui-shared": {
+      "root": "libs/ui-shared",
+      "sourceRoot": "libs/ui-shared/src",
+      "projectType": "library",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/ui-shared/tsconfig.lib.json", "libs/ui-shared/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ui-shared/jest.config.js",
+            "tsConfig": "libs/ui-shared/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
         }
       }
     }
