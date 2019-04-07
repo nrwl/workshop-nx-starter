@@ -24,7 +24,6 @@ npm install
 ```
 or
 ```console
-<<<<<<< HEAD
 yarn install
 ```
 
@@ -47,11 +46,6 @@ yarn reporting
 * customer-portal: Angular SPA for tickets
 * reporting: Angular SPA for admin dashboard
 
-
-=======
-yarn
-```
-
 ## Running the applications in the suite
 Please run the following commands to make sure your environment is functional.
 
@@ -68,4 +62,3 @@ The front end (AngularJS) app can be run with the following command:
 ```shell
 npm run legacy-agent-workdesk # serves app at localhost:8000
 ```
->>>>>>> 193aeb5... (initial): angular v7.x starting point
