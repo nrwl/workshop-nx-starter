@@ -25,9 +25,7 @@
               "apps/customer-portal/src/assets",
               "apps/customer-portal/src/favicon.ico"
             ],
-            "styles": [
-              "apps/customer-portal/src/styles.scss"
-            ],
+            "styles": ["apps/customer-portal/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -75,9 +73,7 @@
               "apps/customer-portal/tsconfig.spec.json",
               "apps/customer-portal/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -106,12 +102,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/customer-portal-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["apps/customer-portal-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -139,9 +131,7 @@
               "apps/reporting/src/assets",
               "apps/reporting/src/favicon.ico"
             ],
-            "styles": [
-              "apps/reporting/src/styles.scss"
-            ],
+            "styles": ["apps/reporting/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -189,9 +179,7 @@
               "apps/reporting/tsconfig.spec.json",
               "apps/reporting/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -220,12 +208,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/reporting-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["apps/reporting-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -244,9 +228,7 @@
               "libs/authentication-state/tsconfig.spec.json",
               "libs/authentication-state/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -273,9 +255,7 @@
               "libs/backend/tsconfig.spec.json",
               "libs/backend/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -302,9 +282,7 @@
               "libs/data-models/tsconfig.spec.json",
               "libs/data-models/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -331,9 +309,7 @@
               "libs/reporting-dashboard-view/tsconfig.spec.json",
               "libs/reporting-dashboard-view/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -360,9 +336,7 @@
               "libs/ticket-list-view/tsconfig.spec.json",
               "libs/ticket-list-view/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -389,9 +363,7 @@
               "libs/tickets-state/tsconfig.spec.json",
               "libs/tickets-state/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -414,13 +386,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/utils/tsconfig.lib.json",
-              "libs/utils/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/utils/tsconfig.lib.json", "libs/utils/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -442,13 +409,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/ui-material/tsconfig.lib.json",
-              "libs/ui-material/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/ui-material/tsconfig.lib.json", "libs/ui-material/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -468,5 +430,18 @@
       "typescriptMismatch": false
     },
     "defaultCollection": "@nrwl/schematics"
+  },
+  "schematics": {
+    "@nrwl/schematics:library": {
+      "unitTestRunner": "karma",
+      "framework": "angular"
+    },
+    "@nrwl/schematics:application": {
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
+    },
+    "@nrwl/schematics:node-application": {
+      "framework": "express"
+    }
   }
 }
