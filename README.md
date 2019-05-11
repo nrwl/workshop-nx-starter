@@ -67,4 +67,3 @@ The front end (AngularJS) app can be run with the following command:
 ```shell
 npm run legacy-agent-workdesk # serves app at localhost:8000
 ```
->>>>>>> 193aeb5... (initial): angular v7.x starting point
