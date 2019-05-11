@@ -24,7 +24,6 @@ npm install
 ```
 or
 ```console
-<<<<<<< HEAD
 yarn install
 ```
 
