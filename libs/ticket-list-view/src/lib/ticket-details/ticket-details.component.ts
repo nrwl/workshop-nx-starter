@@ -8,7 +8,7 @@ import { untilViewDestroyed } from '@tuskdesk-suite/utils';
 
 import { TicketsFacade } from '@tuskdesk-suite/tickets-state';
 import { TicketTimerService } from '../ticket-timer.service';
-import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
+import { TicketComment } from '@tuskdesk-suite/data-models';
 
 @Component({
   selector: 'app-ticket-details',
@@ -16,10 +16,13 @@ import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TicketDetailsComponent implements OnInit {
-  ticket$: Observable<Ticket>;
-  comments$: Observable<TicketComment[]>;
   ticketMessage = new FormControl();
+
+  loading$ = this.facade.isLoading$;
+  ticket$ = this.facade.selectedTicket$;
+
   timer$: Observable<number>;
+  comments$: Observable<TicketComment[]>;
   markedToWork$: Observable<boolean>;
 
   constructor(
@@ -32,11 +35,6 @@ export class TicketDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const id = +params['id'];
-      this.ticket$ = this.facade.entities$.pipe(
-        map(tickets => {
-          return tickets[id];
-        })
-      );
 
       this.markedToWork$ = this.ticketTimerService.ticketsToWork$.pipe(
         untilViewDestroyed(this.elRef),
@@ -46,12 +44,6 @@ export class TicketDetailsComponent implements OnInit {
       );
     });
   }
-
-  switchToEdit() {}
-
-  cancelEdit() {}
-
-  saveEdit() {}
 
   startTimer() {
     this.timer$ = this.ticketTimerService.timer$;

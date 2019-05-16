@@ -26,19 +26,35 @@ export function ticketsReducer(state: TicketsState, action: TicketsAction): Tick
       };
     }
 
-    case TicketActionTypes.LOAD_ALL_TICKETS_DONE: {
-      const tickets = action.tickets;
+    case TicketActionTypes.LOAD_ALL_TICKETS:
+    case TicketActionTypes.LOAD_TICKET: {
       return {
         ...state,
-        ...ticketsAdapter.addAll(tickets, state)
+        loading: true
+      };
+    }
+
+    case TicketActionTypes.LOAD_ALL_TICKETS_DONE: {
+      return {
+        ...state,
+        ...ticketsAdapter.addAll(action.tickets, state),
+        loading: false
       };
     }
 
     case TicketActionTypes.LOAD_TICKET_DONE: {
-      const ticket = action.ticket;
       return {
         ...state,
-        ...ticketsAdapter.upsertOne(ticket, state)
+        ...ticketsAdapter.upsertOne(action.ticket, state),
+        loading: false
+      };
+    }
+
+    case TicketActionTypes.SELECT_TICKET: {
+      const { selectedId } = action;
+      return {
+        ...state,
+        selectedId
       };
     }
   }

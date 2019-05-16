@@ -14,9 +14,9 @@ import { TicketTimerService } from './ticket-timer.service';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { SearchTicketsComponent } from './search-tickets/search-tickets.component';
-import { UiMaterialModule } from '@tuskdesk-suite/ui-material';
 
 import { RouterEffects } from './+state/router.effects';
+import { UiMaterialModule } from '@tuskdesk-suite/ui-material';
 
 @NgModule({
   imports: [

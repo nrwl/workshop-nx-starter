@@ -1,3 +1,5 @@
+<div *ngIf="!(loading$ | async); else loading">
+
 <section *ngIf="ticket$ | async; let ticket">
   <div class="ticket-bar" fxLayoutAlign="end center" fxLayoutGap="30px">
     <div *ngIf="timer$ | async as time; else timerButton">
@@ -67,3 +69,9 @@
     </div>
   </footer>
 </section>
+
+</div>
+
+<ng-template #loading>
+  <mat-spinner class="nrwl"></mat-spinner>
+</ng-template>

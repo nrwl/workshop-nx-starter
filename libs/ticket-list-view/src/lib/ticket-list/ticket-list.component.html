@@ -1,3 +1,4 @@
+<div *ngIf="!(loading$ | async) else loading" >
 <section *ngIf="markedToWork$ | async as markedItems">
   <a routerLink="ticket/{{ticket.id}}"
      *ngFor="let ticket of tickets$ | async">
@@ -10,3 +11,10 @@
   </a>
   <div>Tickets to Work: {{markedItems.length}}</div>
 </section>
+</div>
+
+
+<ng-template #loading>
+  <mat-spinner class="nrwl"></mat-spinner>
+</ng-template>
+

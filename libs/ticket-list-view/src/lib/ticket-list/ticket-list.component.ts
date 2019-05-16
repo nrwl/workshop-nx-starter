@@ -14,6 +14,7 @@ import { TicketsFacade } from '@tuskdesk-suite/tickets-state';
 })
 export class TicketListComponent {
   tickets$: Observable<Ticket[]> = this.facade.openItems$;
+  loading$ = this.facade.isLoading$;
 
   markedToWork$: Observable<number[]> = this.timerService.ticketsToWork$;
 
