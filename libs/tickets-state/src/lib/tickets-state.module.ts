@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { TicketsEffects } from './+state/tickets.effects';
+import { TicketsFacade } from './+state/tickets.facade';
 
 import { FEATURE_TICKETS, getInitialState, ticketsReducer } from './+state/tickets.reducer';
 
@@ -13,6 +14,6 @@ import { FEATURE_TICKETS, getInitialState, ticketsReducer } from './+state/ticke
     StoreModule.forFeature(FEATURE_TICKETS, ticketsReducer, { initialState: getInitialState }),
     EffectsModule.forFeature([TicketsEffects])
   ],
-  providers: []
+  providers: [TicketsFacade]
 })
 export class TicketsStateModule {}

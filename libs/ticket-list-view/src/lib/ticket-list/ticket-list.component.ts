@@ -1,12 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
-import { select, Store } from '@ngrx/store';
 
 import { Ticket } from '@tuskdesk-suite/data-models';
 import { TicketTimerService } from '../ticket-timer.service';
-import { LoadTickets, PartialAppState, ticketsQuery } from '@tuskdesk-suite/tickets-state';
+import { TicketsFacade } from '@tuskdesk-suite/tickets-state';
 
 @Component({
   selector: 'app-ticket-list',
@@ -15,19 +13,9 @@ import { LoadTickets, PartialAppState, ticketsQuery } from '@tuskdesk-suite/tick
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TicketListComponent {
-  tickets$: Observable<Ticket[]> = this.store.pipe(
-    select(ticketsQuery.getAllTickets),
-    map(tickets => {
-      return tickets.filter(isOpen);
-    })
-  );
+  tickets$: Observable<Ticket[]> = this.facade.openItems$;
 
   markedToWork$: Observable<number[]> = this.timerService.ticketsToWork$;
 
-  constructor(private store: Store<PartialAppState>, private timerService: TicketTimerService) {}
-}
-
-// Filter function
-function isOpen(ticket: Ticket) {
-  return ticket.status === 'open';
+  constructor(private facade: TicketsFacade, private timerService: TicketTimerService) {}
 }
