@@ -1,10 +1,11 @@
-// tickets.effects.ts
-
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 
-import { catchError, exhaustMap, map, mergeMap } from 'rxjs/operators';
+import { DataPersistence } from '@nrwl/nx';
+import { map } from 'rxjs/operators';
+
 import { TicketService } from '@tuskdesk-suite/backend';
+import { PartialAppState } from './tickets.interfaces';
 
 import {
   LoadTicket,
@@ -13,44 +14,55 @@ import {
   LoadTicketsDone,
   LoadTicketDone,
   LoadTicketsError,
-  LoadTicketError
+  RouterLoadTicket
 } from './tickets.actions';
-import { of } from 'rxjs';
 
 @Injectable()
 export class TicketsEffects {
   /**
+   * Action switcher...
+   */
+  @Effect()
+  routeToTicket$ = this.actions$.pipe(
+    ofType<RouterLoadTicket>(TicketActionTypes.ROUTER_LOAD_TICKET),
+    map(event => new LoadTicket(event.ticketId))
+  );
+
+  /**
    * Load All Tickets and update state upon server response
    */
   @Effect()
-  loadTickets$ = this.actions.pipe(
-    ofType<LoadTickets>(TicketActionTypes.LOAD_ALL_TICKETS),
-    exhaustMap(() => {
+  loadTickets$ = this.d.fetch<LoadTickets>(TicketActionTypes.LOAD_ALL_TICKETS, {
+    run: (a: LoadTickets, state: PartialAppState) => {
       return this.ticketService.getTickets().pipe(
-        map(tickets => new LoadTicketsDone(tickets)),
-        catchError(err => {
-          return of(new LoadTicketsError(err.toString()));
+        map(tickets => {
+          return new LoadTicketsDone(tickets);
         })
       );
-    })
-  );
+    },
+    onError: (a: LoadTickets, error) => {
+      return new LoadTicketsError(error.toString());
+    }
+  });
 
   /**
    * Load Ticket by Id and update state upon server response
    */
   @Effect()
-  loadTicketById$ = this.actions.pipe(
-    ofType<LoadTicket>(TicketActionTypes.LOAD_TICKET),
-    map(action => action.ticketId),
-    mergeMap(ticketId => {
-      return this.ticketService.ticketById(ticketId).pipe(
-        map(ticket => new LoadTicketDone(ticket)),
-        catchError(err => {
-          return of(new LoadTicketError(err.toString()));
+  loadTicket$ = this.d.fetch<LoadTicket>(TicketActionTypes.LOAD_TICKET, {
+    run: (a: LoadTicket, state: PartialAppState) => {
+      return this.ticketService.ticketById(a.ticketId).pipe(
+        map(ticket => {
+          return new LoadTicketDone(ticket);
         })
       );
-    })
-  );
+    },
+    onError: (a: LoadTicket, error) => {}
+  });
 
-  constructor(private actions: Actions, private ticketService: TicketService) {}
+  constructor(
+    private actions$: Actions,
+    private d: DataPersistence<PartialAppState>,
+    private ticketService: TicketService
+  ) {}
 }

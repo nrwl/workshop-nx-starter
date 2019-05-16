@@ -24,9 +24,7 @@ export class TicketListComponent {
 
   markedToWork$: Observable<number[]> = this.timerService.ticketsToWork$;
 
-  constructor(private store: Store<PartialAppState>, private timerService: TicketTimerService) {
-    this.store.dispatch(new LoadTickets());
-  }
+  constructor(private store: Store<PartialAppState>, private timerService: TicketTimerService) {}
 }
 
 // Filter function
