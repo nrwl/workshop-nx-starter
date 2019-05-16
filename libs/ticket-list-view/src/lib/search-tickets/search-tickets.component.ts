@@ -1,49 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { TicketService, UserService } from '@tuskdesk-suite/backend';
-import { User } from '@tuskdesk-suite/data-models';
-import { of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, switchMap, combineLatest, startWith, filter } from 'rxjs/operators';
 
-interface SearchResult {
-  id: number;
-  message: string;
-  status: string;
-}
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+
+import { User } from '@tuskdesk-suite/data-models';
+import { SearchFacade, SearchResult } from '../search.facade';
+import { untilViewDestroyed } from '@tuskdesk-suite/utils';
 
 @Component({
   selector: 'app-search-tickets',
   templateUrl: './search-tickets.component.html',
   styleUrls: ['./search-tickets.component.scss']
 })
-export class SearchTicketsComponent {
+export class SearchTicketsComponent implements OnInit {
   searchTerm = new FormControl();
   assignedToUser = new FormControl();
 
-  searchResults$: Observable<SearchResult[]> = of([]).pipe(
-    combineLatest(
-      limitCalls(this.searchTerm.valueChanges).pipe(startWith('')),
-      limitCalls(this.assignedToUser.valueChanges).pipe(startWith(''))
-    ),
-    filter(([_, description, user]) => description.length || user.length),
-    switchMap(([_, description, user]) => this.ticketService.searchTickets(description, user))
-  );
+  users$: Observable<string[]> = this.facade
+    .searchUsers(this.assignedToUser.valueChanges)
+    .pipe(untilViewDestroyed(this.elRef), map(extractFullName));
 
-  users$: Observable<string[]> = limitCalls(this.assignedToUser.valueChanges).pipe(
-    switchMap(searchTerm => {
-      const request$ = this.userService.users(searchTerm);
-      return !searchTerm ? of([]) : request$.pipe(map(extractFullNames));
-    })
-  );
+  searchResults$: Observable<SearchResult[]> = this.facade
+    .searchTickets(this.searchTerm.valueChanges, this.assignedToUser.valueChanges)
+    .pipe(untilViewDestroyed(this.elRef));
 
-  constructor(private ticketService: TicketService, private userService: UserService) {}
+  constructor(private facade: SearchFacade, private elRef: ElementRef) {}
+
+  ngOnInit() {
+    this.facade.searchCriteria$.pipe(take(1)).subscribe(criteria => {
+      this.searchTerm.patchValue(criteria.ticket, { emitEvent: false });
+      this.assignedToUser.patchValue(criteria.user, { emitEvent: false });
+    });
+  }
 }
 
-function extractFullNames(users: User[]): string[] {
+function extractFullName(users: User[]) {
   return users.map(it => it.fullName);
-}
-
-function limitCalls(source$: Observable<any>): Observable<any> {
-  return source$.pipe(debounceTime(230), distinctUntilChanged());
 }
