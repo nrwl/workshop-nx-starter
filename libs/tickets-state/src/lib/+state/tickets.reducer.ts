@@ -3,7 +3,7 @@ import { createEntityAdapter } from '@ngrx/entity';
 import { Ticket } from '@tuskdesk-suite/data-models';
 
 import { TicketsState } from './tickets.interfaces';
-import { TicketActionTypes, LoadTicketDone, TicketsAction, LoadTicketsDone } from './tickets.actions';
+import { TicketActionTypes, TicketsAction } from './tickets.actions';
 
 export const FEATURE_TICKETS = 'tickets';
 
@@ -18,6 +18,14 @@ export const getInitialState = () =>
 
 export function ticketsReducer(state: TicketsState, action: TicketsAction): TicketsState {
   switch (action.type) {
+    case TicketActionTypes.SELECT_TICKET: {
+      const { selectedId } = action;
+      return {
+        ...state,
+        selectedId
+      };
+    }
+
     case TicketActionTypes.LOAD_ALL_TICKETS_DONE: {
       const tickets = action.tickets;
       return {

@@ -8,7 +8,7 @@ import { untilViewDestroyed } from '@tuskdesk-suite/utils';
 import { select, Store } from '@ngrx/store';
 
 import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
-import { LoadTicket, PartialAppState, ticketsQuery } from '@tuskdesk-suite/tickets-state';
+import { LoadTicket, PartialAppState, SelectTicket, ticketsQuery } from '@tuskdesk-suite/tickets-state';
 import { TicketTimerService } from '../ticket-timer.service';
 
 @Component({
@@ -33,6 +33,8 @@ export class TicketDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const id = +params['id'];
+      this.store.dispatch(new SelectTicket(id));
+
       this.markedToWork$ = this.ticketTimerService.ticketsToWork$.pipe(
         untilViewDestroyed(this.elRef),
         map(tickets => {
@@ -40,7 +42,9 @@ export class TicketDetailsComponent implements OnInit {
         })
       );
 
-      this.ticket$ = this.store.pipe(select(ticketsQuery.getTicketAsEntities), map(tickets => tickets[id]));
+      this.ticket$ = this.store.pipe(select(ticketsQuery.getSelectedTicket));
+
+      this.store.dispatch(new LoadTicket(id));
     });
   }
 
