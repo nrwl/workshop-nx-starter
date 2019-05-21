@@ -44,6 +44,9 @@
       ],
       "@tuskdesk-suite/ui-material": [
         "libs/ui-material/src/index.ts"
+      ],
+      "@tuskdesk-suite/ui-shared": [
+        "libs/ui-shared/src/index.ts"
       ]
     }
   },

@@ -12,7 +12,7 @@ $light-theme: mat-light-theme($primary, $accent);
 @include mat-core();
 @include angular-material-theme($light-theme);
 
-@import "./libs/styles/main.scss";
+@import "./libs/ui-shared/src/main.scss";
 
 button {
   cursor: pointer;
