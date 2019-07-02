@@ -10,7 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
-import { storeFreeze } from 'ngrx-store-freeze';
+
 
 import { BackendModule, BackendUserIdService, LoggedInUserInterceptor } from '@tuskdesk-suite/backend';
 import { AuthenticationStateModule } from '@tuskdesk-suite/authentication-state';
@@ -21,7 +21,7 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-const metaReducers = !environment.production ? [storeFreeze] : [];
+const metaReducers = !environment.production ? [] : [];
 const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument() : [];
 
 @NgModule({
@@ -32,10 +32,10 @@ const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument()
     FlexLayoutModule,
     NxModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES, { initialNavigation: true }),
-    StoreModule.forRoot({}, { metaReducers }),
+    StoreModule.forRoot({}, { metaReducers, runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true } }),
     EffectsModule.forRoot([]),
     AuthenticationStateModule,
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot(),
     StoreDevTools
   ],
   declarations: [AppComponent],
