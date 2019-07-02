@@ -25,7 +25,7 @@ import { UiMaterialModule } from '@tuskdesk-suite/ui-material';
     TicketListViewRoutingModule,
     TicketsStateModule,
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule.forRoot()
   ],
   declarations: [TicketListComponent, TicketDetailsComponent, SearchTicketsComponent]
 })
