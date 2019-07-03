@@ -585,31 +585,6 @@
         }
       }
     },
-    "api-comments": {
-      "root": "libs/api/comments",
-      "sourceRoot": "libs/api/comments/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/api/comments/tsconfig.lib.json",
-              "libs/api/comments/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/api/comments/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/api/comments/jest.config.js",
-            "tsConfig": "libs/api/comments/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "comment-utils": {
       "root": "libs/comment-utils",
       "sourceRoot": "libs/comment-utils/src",
@@ -894,6 +869,59 @@
           "options": {
             "jestConfig": "libs/api/companies/data-access/jest.config.js",
             "tsConfig": "libs/api/companies/data-access/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "api-comments-feature": {
+      "root": "libs/api/comments/feature",
+      "sourceRoot": "libs/api/comments/feature/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/comments/feature/tsconfig.lib.json",
+              "libs/api/comments/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api/comments/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/comments/feature/jest.config.js",
+            "tsConfig": "libs/api/comments/feature/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "api-comments-data-access": {
+      "root": "libs/api/comments/data-access",
+      "sourceRoot": "libs/api/comments/data-access/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/comments/data-access/tsconfig.lib.json",
+              "libs/api/comments/data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api/comments/data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/comments/data-access/jest.config.js",
+            "tsConfig": "libs/api/comments/data-access/tsconfig.spec.json"
           }
         }
       }

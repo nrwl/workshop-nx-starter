@@ -33,7 +33,6 @@
       "@tuskdesk-suite/user-utils": ["libs/user-utils/src/index.ts"],
       "@tuskdesk-suite/event-log-utils": ["libs/event-log-utils/src/index.ts"],
       "@tuskdesk-suite/company-utils": ["libs/company-utils/src/index.ts"],
-      "@tuskdesk-suite/api/comments": ["libs/api/comments/src/index.ts"],
       "@tuskdesk-suite/comment-utils": ["libs/comment-utils/src/index.ts"],
       "@tuskdesk-suite/api/tickets/feature": [
         "libs/api/tickets/feature/src/index.ts"
@@ -58,6 +57,12 @@
       ],
       "@tuskdesk-suite/api/companies/data-access": [
         "libs/api/companies/data-access/src/index.ts"
+      ],
+      "@tuskdesk-suite/api/comments/feature": [
+        "libs/api/comments/feature/src/index.ts"
+      ],
+      "@tuskdesk-suite/api/comments/data-access": [
+        "libs/api/comments/data-access/src/index.ts"
       ]
     }
   },

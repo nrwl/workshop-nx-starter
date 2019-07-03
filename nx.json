@@ -52,9 +52,6 @@
     "company-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
-    "api-comments": {
-      "tags": ["platform:server"]
-    },
     "comment-utils": {
       "tags": ["platform:server", "type:util"]
     },
@@ -88,6 +85,12 @@
       "tags": ["type:feature", "platform:server"]
     },
     "api-companies-data-access": {
+      "tags": ["type:data-access", "platform:server"]
+    },
+    "api-comments-feature": {
+      "tags": ["type:feature", "platform:server"]
+    },
+    "api-comments-data-access": {
       "tags": ["type:data-access", "platform:server"]
     }
   },

@@ -3,7 +3,7 @@ import { ApiTicketsFeatureModule } from '@tuskdesk-suite/api/tickets/feature';
 import { ApiUsersFeatureModule } from '@tuskdesk-suite/api/users/feature';
 import { ApiEventLogsFeatureModule } from '@tuskdesk-suite/api/event-logs/feature';
 import { ApiCompaniesFeatureModule } from '@tuskdesk-suite/api/companies/feature';
-import { CommentsModule } from '@tuskdesk-suite/api/comments';
+import { ApiCommentsFeatureModule } from '@tuskdesk-suite/api/comments/feature';
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import { CommentsModule } from '@tuskdesk-suite/api/comments';
     ApiUsersFeatureModule,
     ApiEventLogsFeatureModule,
     ApiCompaniesFeatureModule,
-    CommentsModule
+    ApiCommentsFeatureModule
   ],
   controllers: [],
   providers: []
