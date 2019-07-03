@@ -484,6 +484,31 @@
           }
         }
       }
+    },
+    "api-tickets": {
+      "root": "libs/api/tickets",
+      "sourceRoot": "libs/api/tickets/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/tickets/tsconfig.lib.json",
+              "libs/api/tickets/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api/tickets/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/tickets/jest.config.js",
+            "tsConfig": "libs/api/tickets/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "defaultProject": "customer-portal",

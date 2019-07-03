@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
+import { TicketsModule } from '@tuskdesk-suite/api/tickets';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [],
+  imports: [TicketsModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
 export class AppModule {}
