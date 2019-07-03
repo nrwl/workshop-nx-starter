@@ -5,6 +5,7 @@ import { UsersModule } from '@tuskdesk-suite/api/users';
 @Module({
   imports: [UsersModule],
   controllers: [],
-  providers: [EventLogService]
+  providers: [EventLogService],
+  exports: [EventLogService]
 })
 export class EventLogModule {}

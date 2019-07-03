@@ -13,7 +13,7 @@ import { Request } from 'express';
 
 @Injectable()
 export class TicketService {
-  private tickets = TICKETS;
+  private tickets = [...TICKETS];
 
   constructor(private userService: UserService) {}
 
@@ -35,5 +35,9 @@ export class TicketService {
       .filter(byMessage(ticketRequest.searchTerm))
       .filter(byStatus(ticketRequest.status));
     return ticketsToReturn;
+  }
+
+  findTicketById(id: number): Ticket {
+    return this.tickets.find(ticket => ticket.id === id);
   }
 }
