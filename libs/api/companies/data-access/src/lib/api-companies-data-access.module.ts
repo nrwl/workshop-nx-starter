@@ -3,7 +3,7 @@ import { CompanyService } from './company.service';
 
 @Module({
   imports: [],
-  controllers: [],
-  providers: [CompanyService]
+  providers: [CompanyService],
+  exports: [CompanyService]
 })
-export class CompaniesModule {}
+export class ApiCompaniesDataAccessModule {}
