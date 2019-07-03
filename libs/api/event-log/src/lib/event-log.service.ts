@@ -5,7 +5,7 @@ import {
   ResourceType
 } from '@tuskdesk-suite/event-log-utils';
 import { Request } from 'express';
-import { UserService } from '@tuskdesk-suite/api/users';
+import { UserService } from '@tuskdesk-suite/api/users/data-access';
 
 @Injectable()
 export class EventLogService {

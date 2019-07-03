@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { EventLogService } from './event-log.service';
-import { UsersModule } from '@tuskdesk-suite/api/users';
+import { ApiUsersDataAccessModule } from '@tuskdesk-suite/api/users/data-access';
 
 @Module({
-  imports: [UsersModule],
+  imports: [ApiUsersDataAccessModule],
   controllers: [],
   providers: [EventLogService],
   exports: [EventLogService]
