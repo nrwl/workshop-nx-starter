@@ -1,3 +1,3 @@
-import { bootstrap } from '../../api/src/main';
+import { bootstrap } from '../../api/src/app/bootstrap';
 
 bootstrap(1337);
