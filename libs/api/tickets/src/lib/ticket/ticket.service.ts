@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserService } from '@tuskdesk-suite/api/users/src';
+import { UserService } from '@tuskdesk-suite/api/users';
 import {
   byMessage,
   byStatus,

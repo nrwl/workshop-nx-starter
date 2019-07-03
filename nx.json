@@ -51,6 +51,12 @@
     },
     "api-users": {
       "tags": []
+    },
+    "api-event-log": {
+      "tags": []
+    },
+    "event-log-utils": {
+      "tags": ["type:util"]
     }
   },
   "implicitDependencies": {

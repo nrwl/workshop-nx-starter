@@ -32,7 +32,9 @@
       "@tuskdesk-suite/api/tickets": ["libs/api/tickets/src/index.ts"],
       "@tuskdesk-suite/ticket-utils": ["libs/ticket-utils/src/index.ts"],
       "@tuskdesk-suite/user-utils": ["libs/user-utils/src/index.ts"],
-      "@tuskdesk-suite/api/users": ["libs/api/users/src/index.ts"]
+      "@tuskdesk-suite/api/users": ["libs/api/users/src/index.ts"],
+      "@tuskdesk-suite/api/event-log": ["libs/api/event-log/src/index.ts"],
+      "@tuskdesk-suite/event-log-utils": ["libs/event-log-utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
