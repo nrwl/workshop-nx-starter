@@ -63,6 +63,12 @@
     },
     "company-utils": {
       "tags": ["type:utils"]
+    },
+    "api-comments": {
+      "tags": []
+    },
+    "comment-utils": {
+      "tags": ["type:utils"]
     }
   },
   "implicitDependencies": {

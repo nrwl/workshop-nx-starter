@@ -684,6 +684,56 @@
           }
         }
       }
+    },
+    "api-comments": {
+      "root": "libs/api/comments",
+      "sourceRoot": "libs/api/comments/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/comments/tsconfig.lib.json",
+              "libs/api/comments/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api/comments/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/comments/jest.config.js",
+            "tsConfig": "libs/api/comments/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "comment-utils": {
+      "root": "libs/comment-utils",
+      "sourceRoot": "libs/comment-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/comment-utils/tsconfig.lib.json",
+              "libs/comment-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/comment-utils/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/comment-utils/jest.config.js",
+            "tsConfig": "libs/comment-utils/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "defaultProject": "customer-portal",

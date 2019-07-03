@@ -36,7 +36,9 @@
       "@tuskdesk-suite/api/event-log": ["libs/api/event-log/src/index.ts"],
       "@tuskdesk-suite/event-log-utils": ["libs/event-log-utils/src/index.ts"],
       "@tuskdesk-suite/api/companies": ["libs/api/companies/src/index.ts"],
-      "@tuskdesk-suite/company-utils": ["libs/company-utils/src/index.ts"]
+      "@tuskdesk-suite/company-utils": ["libs/company-utils/src/index.ts"],
+      "@tuskdesk-suite/api/comments": ["libs/api/comments/src/index.ts"],
+      "@tuskdesk-suite/comment-utils": ["libs/comment-utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
