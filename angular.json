@@ -560,31 +560,6 @@
         }
       }
     },
-    "api-companies": {
-      "root": "libs/api/companies",
-      "sourceRoot": "libs/api/companies/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/api/companies/tsconfig.lib.json",
-              "libs/api/companies/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/api/companies/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/api/companies/jest.config.js",
-            "tsConfig": "libs/api/companies/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "company-utils": {
       "root": "libs/company-utils",
       "sourceRoot": "libs/company-utils/src",
@@ -866,6 +841,59 @@
           "options": {
             "jestConfig": "libs/api/event-logs/data-access/jest.config.js",
             "tsConfig": "libs/api/event-logs/data-access/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "api-companies-feature": {
+      "root": "libs/api/companies/feature",
+      "sourceRoot": "libs/api/companies/feature/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/companies/feature/tsconfig.lib.json",
+              "libs/api/companies/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api/companies/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/companies/feature/jest.config.js",
+            "tsConfig": "libs/api/companies/feature/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "api-companies-data-access": {
+      "root": "libs/api/companies/data-access",
+      "sourceRoot": "libs/api/companies/data-access/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/companies/data-access/tsconfig.lib.json",
+              "libs/api/companies/data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api/companies/data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/companies/data-access/jest.config.js",
+            "tsConfig": "libs/api/companies/data-access/tsconfig.spec.json"
           }
         }
       }

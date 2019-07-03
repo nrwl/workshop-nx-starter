@@ -47,18 +47,10 @@
       "tags": ["platform:server", "type:util"]
     },
     "event-log-utils": {
-      "tags": ["platform:server", "platform:server", "type:util"]
-    },
-    "api-companies": {
-      "tags": ["platform:server", "platform:server"]
+      "tags": ["platform:server", "type:util"]
     },
     "company-utils": {
-      "tags": [
-        "platform:server",
-        "platform:server",
-        "platform:client",
-        "type:util"
-      ]
+      "tags": ["platform:server", "platform:client", "type:util"]
     },
     "api-comments": {
       "tags": ["platform:server"]
@@ -90,6 +82,12 @@
       "tags": ["type:feature", "platform:server"]
     },
     "api-event-logs-data-access": {
+      "tags": ["type:data-access", "platform:server"]
+    },
+    "api-companies-feature": {
+      "tags": ["type:feature", "platform:server"]
+    },
+    "api-companies-data-access": {
       "tags": ["type:data-access", "platform:server"]
     }
   },
