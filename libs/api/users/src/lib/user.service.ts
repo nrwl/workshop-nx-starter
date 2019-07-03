@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { User, USERS } from '@tuskdesk-suite/user-utils';
+import { Request } from 'express';
 
 @Injectable()
 export class UserService {
@@ -15,5 +16,9 @@ export class UserService {
 
   findByFullName(fullName: string) {
     return this.users.find(user => user.fullName === fullName);
+  }
+
+  currentUserForRequest(request: Request) {
+    return this.users.find(user => user.id === +request.header('userid'));
   }
 }

@@ -584,6 +584,56 @@
           }
         }
       }
+    },
+    "api-event-log": {
+      "root": "libs/api/event-log",
+      "sourceRoot": "libs/api/event-log/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/event-log/tsconfig.lib.json",
+              "libs/api/event-log/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api/event-log/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/event-log/jest.config.js",
+            "tsConfig": "libs/api/event-log/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "event-log-utils": {
+      "root": "libs/event-log-utils",
+      "sourceRoot": "libs/event-log-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/event-log-utils/tsconfig.lib.json",
+              "libs/event-log-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/event-log-utils/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/event-log-utils/jest.config.js",
+            "tsConfig": "libs/event-log-utils/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "defaultProject": "customer-portal",
