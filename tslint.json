@@ -73,8 +73,46 @@
         "allow": [],
         "depConstraints": [
           {
-            "sourceTag": "*",
-            "onlyDependOnLibsWithTags": ["*"]
+            "sourceTag": "type:e2e-app",
+            "onlyDependOnLibsWithTags": ["type:app"]
+          },
+          {
+            "sourceTag": "type:app",
+            "onlyDependOnLibsWithTags": [
+              "type:util",
+              "type:ui",
+              "type:data-access",
+              "type:feature"
+            ]
+          },
+          {
+            "sourceTag": "type:util",
+            "onlyDependOnLibsWithTags": ["type:util"]
+          },
+          {
+            "sourceTag": "type:feature",
+            "onlyDependOnLibsWithTags": [
+              "type:util",
+              "type:ui",
+              "type:data-access",
+              "type:feature"
+            ]
+          },
+          {
+            "sourceTag": "type:data-access",
+            "onlyDependOnLibsWithTags": ["type:util", "type:data-access"]
+          },
+          {
+            "sourceTag": "type:ui",
+            "onlyDependOnLibsWithTags": ["type:util", "type:ui"]
+          },
+          {
+            "sourceTag": "platform:server",
+            "onlyDependOnLibsWithTags": ["platform:server"]
+          },
+          {
+            "sourceTag": "platform:client",
+            "onlyDependOnLibsWithTags": ["platform:client"]
           }
         ]
       }
