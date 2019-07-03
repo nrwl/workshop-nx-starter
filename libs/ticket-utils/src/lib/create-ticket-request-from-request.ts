@@ -17,7 +17,7 @@ export const createTicketRequestFromRequest = (
         ? req.query['assignedToUser']
         : null,
     isAgent: currentUser ? currentUser.isAgent : false,
-    queryId: +req.params.id,
+    queryId: req.params && req.params.id ? +req.params.id : null,
     body: req.body
   };
 };

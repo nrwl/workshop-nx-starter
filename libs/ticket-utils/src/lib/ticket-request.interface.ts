@@ -4,7 +4,7 @@ export interface TicketRequest {
   currentUser: User;
   status: string;
   searchTerm: string;
-  assignedToUser: boolean;
+  assignedToUser: string;
   isAgent: boolean;
   queryId: number;
   body: any;

@@ -8,4 +8,12 @@ export class UserService {
   findAll(): User[] {
     return this.users;
   }
+
+  findById(id: number) {
+    return this.users.find(user => user.id === id);
+  }
+
+  findByFullName(fullName: string) {
+    return this.users.find(user => user.fullName === fullName);
+  }
 }
