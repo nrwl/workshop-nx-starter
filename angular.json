@@ -509,6 +509,81 @@
           }
         }
       }
+    },
+    "ticket-utils": {
+      "root": "libs/ticket-utils",
+      "sourceRoot": "libs/ticket-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ticket-utils/tsconfig.lib.json",
+              "libs/ticket-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ticket-utils/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ticket-utils/jest.config.js",
+            "tsConfig": "libs/ticket-utils/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "user-utils": {
+      "root": "libs/user-utils",
+      "sourceRoot": "libs/user-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/user-utils/tsconfig.lib.json",
+              "libs/user-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/user-utils/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/user-utils/jest.config.js",
+            "tsConfig": "libs/user-utils/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "api-users": {
+      "root": "libs/api/users",
+      "sourceRoot": "libs/api/users/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/users/tsconfig.lib.json",
+              "libs/api/users/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api/users/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/users/jest.config.js",
+            "tsConfig": "libs/api/users/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "defaultProject": "customer-portal",
