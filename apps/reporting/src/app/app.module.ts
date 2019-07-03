@@ -1,14 +1,23 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NxModule } from '@nrwl/nx';
+import { NxModule } from '@nrwl/angular';
 import { Route, RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoggedInUserIdService } from './logged-in-user-id.service';
-import { BackendModule, BackendUserIdService, LoggedInUserInterceptor } from '@tuskdesk-suite/backend';
-import { DashboardComponent, ReportingDashboardViewModule } from '@tuskdesk-suite/reporting-dashboard-view';
+import {
+  BackendModule,
+  BackendUserIdService,
+  LoggedInUserInterceptor
+} from '@tuskdesk-suite/backend';
+import {
+  DashboardComponent,
+  ReportingDashboardViewModule
+} from '@tuskdesk-suite/reporting-dashboard-view';
 
-const routes: Route[] = [{ path: '', component: DashboardComponent, pathMatch: 'full' }];
+const routes: Route[] = [
+  { path: '', component: DashboardComponent, pathMatch: 'full' }
+];
 
 @NgModule({
   imports: [
