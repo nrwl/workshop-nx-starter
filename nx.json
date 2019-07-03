@@ -42,6 +42,15 @@
     },
     "api-tickets": {
       "tags": []
+    },
+    "ticket-utils": {
+      "tags": ["type:utils"]
+    },
+    "user-utils": {
+      "tags": ["type:utils"]
+    },
+    "api-users": {
+      "tags": []
     }
   },
   "implicitDependencies": {
