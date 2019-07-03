@@ -46,9 +46,6 @@
     "user-utils": {
       "tags": ["platform:server", "type:util"]
     },
-    "api-event-log": {
-      "tags": ["platform:server", "platform:server"]
-    },
     "event-log-utils": {
       "tags": ["platform:server", "platform:server", "type:util"]
     },
@@ -87,6 +84,12 @@
       "tags": ["type:feature", "platform:server"]
     },
     "api-users-data-access": {
+      "tags": ["type:data-access", "platform:server"]
+    },
+    "api-event-logs-feature": {
+      "tags": ["type:feature", "platform:server"]
+    },
+    "api-event-logs-data-access": {
       "tags": ["type:data-access", "platform:server"]
     }
   },

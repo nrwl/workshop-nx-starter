@@ -1,7 +1,7 @@
 import { Controller, Get, Req, BadRequestException } from '@nestjs/common';
 import { Request } from 'express';
 import { TicketService } from '@tuskdesk-suite/api/tickets/data-access';
-import { EventLogService } from '@tuskdesk-suite/api/event-log';
+import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access';
 import { CommentService } from '@tuskdesk-suite/api/comments';
 
 @Controller('tickets')
