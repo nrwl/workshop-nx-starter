@@ -634,6 +634,56 @@
           }
         }
       }
+    },
+    "api-companies": {
+      "root": "libs/api/companies",
+      "sourceRoot": "libs/api/companies/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api/companies/tsconfig.lib.json",
+              "libs/api/companies/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api/companies/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api/companies/jest.config.js",
+            "tsConfig": "libs/api/companies/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "company-utils": {
+      "root": "libs/company-utils",
+      "sourceRoot": "libs/company-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/company-utils/tsconfig.lib.json",
+              "libs/company-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/company-utils/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/company-utils/jest.config.js",
+            "tsConfig": "libs/company-utils/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "defaultProject": "customer-portal",

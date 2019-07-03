@@ -57,6 +57,12 @@
     },
     "event-log-utils": {
       "tags": ["type:util"]
+    },
+    "api-companies": {
+      "tags": []
+    },
+    "company-utils": {
+      "tags": ["type:utils"]
     }
   },
   "implicitDependencies": {
