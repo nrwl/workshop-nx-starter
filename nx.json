@@ -40,9 +40,6 @@
     "api": {
       "tags": ["type:app", "platform:server"]
     },
-    "api-tickets": {
-      "tags": ["platform:server", "platform:server"]
-    },
     "ticket-utils": {
       "tags": ["platform:server", "type:util"]
     },
@@ -82,6 +79,12 @@
         "type:e2e-app",
         "scope:api"
       ]
+    },
+    "api-tickets-feature": {
+      "tags": ["type:feature", "platform:server"]
+    },
+    "api-tickets-data-access": {
+      "tags": ["type:data-access", "platform:server"]
     }
   },
   "implicitDependencies": {
