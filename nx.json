@@ -2,16 +2,16 @@
   "npmScope": "tuskdesk-suite",
   "projects": {
     "customer-portal": {
-      "tags": []
+      "tags": ["type:app", "platform:client"]
     },
     "customer-portal-e2e": {
-      "tags": []
+      "tags": ["type:e2e-app", "platform:client"]
     },
     "reporting": {
-      "tags": []
+      "tags": ["type:app", "platform:client"]
     },
     "reporting-e2e": {
-      "tags": []
+      "tags": ["type:e2e-app", "platform:client"]
     },
     "authentication-state": {
       "tags": []
@@ -38,37 +38,50 @@
       "tags": []
     },
     "api": {
-      "tags": []
+      "tags": ["type:app", "platform:server"]
     },
     "api-tickets": {
-      "tags": []
+      "tags": ["platform:server", "platform:server"]
     },
     "ticket-utils": {
-      "tags": ["type:utils"]
+      "tags": ["platform:server", "type:util"]
     },
     "user-utils": {
-      "tags": ["type:utils"]
+      "tags": ["platform:server", "type:util"]
     },
     "api-users": {
-      "tags": []
+      "tags": ["platform:server", "platform:server"]
     },
     "api-event-log": {
-      "tags": []
+      "tags": ["platform:server", "platform:server"]
     },
     "event-log-utils": {
-      "tags": ["type:util"]
+      "tags": ["platform:server", "platform:server", "type:util"]
     },
     "api-companies": {
-      "tags": []
+      "tags": ["platform:server", "platform:server"]
     },
     "company-utils": {
-      "tags": ["type:utils"]
+      "tags": [
+        "platform:server",
+        "platform:server",
+        "platform:client",
+        "type:util"
+      ]
     },
     "api-comments": {
-      "tags": []
+      "tags": ["platform:server"]
     },
     "comment-utils": {
-      "tags": ["type:utils"]
+      "tags": ["platform:server", "type:util"]
+    },
+    "api-e2e": {
+      "tags": [
+        "platform:server",
+        "platform:server",
+        "type:e2e-app",
+        "scope:api"
+      ]
     }
   },
   "implicitDependencies": {
