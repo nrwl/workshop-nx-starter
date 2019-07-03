@@ -4,15 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { NxModule } from '@nrwl/nx';
+import { NxModule } from '@nrwl/angular';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 
-
-import { BackendModule, BackendUserIdService, LoggedInUserInterceptor } from '@tuskdesk-suite/backend';
+import {
+  BackendModule,
+  BackendUserIdService,
+  LoggedInUserInterceptor
+} from '@tuskdesk-suite/backend';
 import { AuthenticationStateModule } from '@tuskdesk-suite/authentication-state';
 import { LoggedInUserIdService } from './logged-in-user-id.service';
 import { APP_ROUTES } from './app.routes';
@@ -22,7 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const metaReducers = !environment.production ? [] : [];
-const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument() : [];
+const StoreDevTools = !environment.production
+  ? StoreDevtoolsModule.instrument()
+  : [];
 
 @NgModule({
   imports: [
@@ -32,7 +37,16 @@ const StoreDevTools = !environment.production ? StoreDevtoolsModule.instrument()
     FlexLayoutModule,
     NxModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES, { initialNavigation: true }),
-    StoreModule.forRoot({}, { metaReducers, runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true } }),
+    StoreModule.forRoot(
+      {},
+      {
+        metaReducers,
+        runtimeChecks: {
+          strictStateImmutability: true,
+          strictActionImmutability: true
+        }
+      }
+    ),
     EffectsModule.forRoot([]),
     AuthenticationStateModule,
     StoreRouterConnectingModule.forRoot(),
