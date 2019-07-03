@@ -29,10 +29,8 @@
       "@tuskdesk-suite/tickets-state": ["libs/tickets-state/src/index.ts"],
       "@tuskdesk-suite/utils": ["libs/utils/src/index.ts"],
       "@tuskdesk-suite/ui-material": ["libs/ui-material/src/index.ts"],
-      "@tuskdesk-suite/api/tickets": ["libs/api/tickets/src/index.ts"],
       "@tuskdesk-suite/ticket-utils": ["libs/ticket-utils/src/index.ts"],
       "@tuskdesk-suite/user-utils": ["libs/user-utils/src/index.ts"],
-      "@tuskdesk-suite/api/users": ["libs/api/users/src/index.ts"],
       "@tuskdesk-suite/api/event-log": ["libs/api/event-log/src/index.ts"],
       "@tuskdesk-suite/event-log-utils": ["libs/event-log-utils/src/index.ts"],
       "@tuskdesk-suite/api/companies": ["libs/api/companies/src/index.ts"],
@@ -44,6 +42,12 @@
       ],
       "@tuskdesk-suite/api/tickets/data-access": [
         "libs/api/tickets/data-access/src/index.ts"
+      ],
+      "@tuskdesk-suite/api/users/feature": [
+        "libs/api/users/feature/src/index.ts"
+      ],
+      "@tuskdesk-suite/api/users/data-access": [
+        "libs/api/users/data-access/src/index.ts"
       ]
     }
   },
