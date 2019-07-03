@@ -39,6 +39,9 @@
     },
     "api": {
       "tags": []
+    },
+    "api-tickets": {
+      "tags": []
     }
   },
   "implicitDependencies": {
