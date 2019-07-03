@@ -1,16 +1,13 @@
 import { Controller, Get, Req } from '@nestjs/common';
 import { Request } from 'express';
-import { createTicketRequestFromRequest } from '@tuskdesk-suite/ticket-utils';
-import { UserService } from '@tuskdesk-suite/api/users';
+import { TicketService } from './ticket/ticket.service';
 
-@Controller('ticket')
+@Controller('tickets')
 export class TicketController {
-  constructor(private userService: UserService) {}
+  constructor(private ticketService: TicketService) {}
 
   @Get()
   getData(@Req() request: Request) {
-    // const ticketRequest = createTicketRequestFromRequest(request, []);
-    // return { data: 'data' };
-    return this.userService.findAll();
+    return this.ticketService.findMatchingTickets(request);
   }
 }
