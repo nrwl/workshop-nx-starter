@@ -14,6 +14,10 @@ export class CompanyService {
     return this.companies;
   }
 
+  findById(id: number): Company {
+    return this.companies.find(company => company.id === id);
+  }
+
   trackEvent(
     request: Request,
     context: ResourceType,
