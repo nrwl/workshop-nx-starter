@@ -12,4 +12,16 @@ export class CompaniesController {
     this.companyService.trackEvent(request, 'company', 'viewed all COMPANIES');
     return companies;
   }
+
+  @Get(':id')
+  getCompany(@Req() request: Request) {
+    const company = this.companyService.findById(+request.params.id);
+    this.companyService.trackEvent(
+      request,
+      'company',
+      `viewed COMPANY at id: ${company.id}`,
+      company.id
+    );
+    return company;
+  }
 }

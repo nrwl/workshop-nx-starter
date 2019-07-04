@@ -173,3 +173,9 @@ export const EXPECTED_ALL_COMPANIES = [
     userIds: [7]
   }
 ];
+
+export const EXPECTED_SINGLE_COMPANY = {
+  id: 1,
+  name: 'Lake Farms',
+  userIds: [1, 2, 3]
+};

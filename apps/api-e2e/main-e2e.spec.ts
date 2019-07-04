@@ -8,7 +8,8 @@ import {
   EXPECTED_SINGLE_TICKET_COMMENTS,
   EXPECTED_ALL_EVENT_LOGS,
   EXPECTED_ALL_COMMENTS,
-  EXPECTED_ALL_COMPANIES
+  EXPECTED_ALL_COMPANIES,
+  EXPECTED_SINGLE_COMPANY
 } from './test-constants';
 
 describe('api', () => {
@@ -67,5 +68,12 @@ describe('api', () => {
       .get('/companies')
       .expect(200)
       .expect(EXPECTED_ALL_COMPANIES);
+  });
+
+  it('/GET companies at id', () => {
+    return request(app.getHttpServer())
+      .get('/companies/1')
+      .expect(200)
+      .expect(EXPECTED_SINGLE_COMPANY);
   });
 });
