@@ -10,7 +10,9 @@ import {
   EXPECTED_SINGLE_COMPANY,
   EXPECTED_SINGLE_COMPANY_USERS,
   EXPECTED_SINGLE_TICKET,
-  EXPECTED_SINGLE_TICKET_COMMENTS
+  EXPECTED_SINGLE_TICKET_COMMENTS,
+  EXPECTED_USERS,
+  EXPECTED_USERS_WITH_SEARCH_TERM
 } from './test-constants';
 
 describe('api', () => {
@@ -107,5 +109,19 @@ describe('api', () => {
     return request(app.getHttpServer())
       .get('/companies/10/users')
       .expect(400);
+  });
+
+  it('/GET users', () => {
+    return request(app.getHttpServer())
+      .get('/users')
+      .expect(200)
+      .expect(EXPECTED_USERS);
+  });
+
+  it('/GET users with search term', () => {
+    return request(app.getHttpServer())
+      .get('/users?searchTerm=zac')
+      .expect(200)
+      .expect(EXPECTED_USERS_WITH_SEARCH_TERM);
   });
 });

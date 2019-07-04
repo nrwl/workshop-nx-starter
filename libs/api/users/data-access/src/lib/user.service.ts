@@ -15,6 +15,14 @@ export class UserService {
     return this.users.find(user => user.id === id);
   }
 
+  findByPartialName(searchTerm: string) {
+    return this.users.filter(user =>
+      searchTerm
+        ? user.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+        : true
+    );
+  }
+
   findByFullName(fullName: string) {
     return this.users.find(user => user.fullName === fullName);
   }

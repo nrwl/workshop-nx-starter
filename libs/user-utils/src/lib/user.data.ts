@@ -9,5 +9,6 @@ export const USERS: User[] = [
   { id: 6, username: 'optin88', fullName: 'Mark Press', isAgent: false },
   { id: 7, username: 'tinycap', fullName: 'Terry Cruz', isAgent: false },
   { id: 8, username: 'jeffnrwl', fullName: 'Jeff Nrwl', isAgent: true },
-  { id: 9, username: 'justinnrwl', fullName: 'Justin Nrwl', isAgent: true }
+  { id: 9, username: 'justinnrwl', fullName: 'Justin Nrwl', isAgent: true },
+  { id: 10, username: 'zacknrwl', fullName: 'Zack Nrwl', isAgent: true }
 ];
