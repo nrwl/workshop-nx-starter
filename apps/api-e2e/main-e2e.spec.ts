@@ -12,7 +12,8 @@ import {
   EXPECTED_SINGLE_TICKET,
   EXPECTED_SINGLE_TICKET_COMMENTS,
   EXPECTED_USERS,
-  EXPECTED_USERS_WITH_SEARCH_TERM
+  EXPECTED_USERS_WITH_SEARCH_TERM,
+  EXPECTED_SINGLE_USER
 } from './test-constants';
 
 describe('api', () => {
@@ -123,5 +124,18 @@ describe('api', () => {
       .get('/users?searchTerm=zac')
       .expect(200)
       .expect(EXPECTED_USERS_WITH_SEARCH_TERM);
+  });
+
+  it('/GET users at id', () => {
+    return request(app.getHttpServer())
+      .get('/users/10')
+      .expect(200)
+      .expect(EXPECTED_SINGLE_USER);
+  });
+
+  it('/GET users at invalid id', () => {
+    return request(app.getHttpServer())
+      .get('/users/4000')
+      .expect(400);
   });
 });

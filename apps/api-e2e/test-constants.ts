@@ -202,3 +202,10 @@ export const EXPECTED_USERS = [
 export const EXPECTED_USERS_WITH_SEARCH_TERM = [
   { id: 10, username: 'zacknrwl', fullName: 'Zack Nrwl', isAgent: true }
 ];
+
+export const EXPECTED_SINGLE_USER = {
+  id: 10,
+  username: 'zacknrwl',
+  fullName: 'Zack Nrwl',
+  isAgent: true
+};
