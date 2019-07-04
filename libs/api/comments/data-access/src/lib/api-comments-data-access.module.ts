@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { CommentService } from './comment.service';
-import { ApiEventLogsDataAccessModule } from '@tuskdesk-suite/api/event-logs/data-access';
+import { ApiUsersDataAccessModule } from '@tuskdesk-suite/api/users/data-access';
 
 @Module({
   providers: [CommentService],
   exports: [CommentService],
-  imports: [ApiEventLogsDataAccessModule]
+  imports: [ApiUsersDataAccessModule]
 })
 export class ApiCommentsDataAccessModule {}

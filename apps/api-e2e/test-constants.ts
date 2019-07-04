@@ -949,3 +949,86 @@ export const EVENTLOG_AFTER_UPDATE_TICKET = [
     resourceId: null
   }
 ];
+
+export const EXPECTED_COMMENTS_AFTER_CREATE = [
+  {
+    id: 1,
+    message: 'Booted into safe mode but not sure what to do from there',
+    ticketId: 1,
+    userId: 1,
+    userFullName: 'Carter Moss'
+  },
+  {
+    id: 2,
+    message: 'Log in as an admin and manage USERS, enable root',
+    ticketId: 5,
+    userId: 8,
+    userFullName: 'Jeff Nrwl'
+  },
+  {
+    id: 3,
+    message: 'Choose rollback - last good known config',
+    ticketId: 2,
+    userId: 9,
+    userFullName: 'Justin Nrwl'
+  },
+  {
+    id: 4,
+    message: 'test',
+    ticketId: 1,
+    userId: 10,
+    userFullName: 'Zack Nrwl'
+  }
+];
+
+export const EVENTLOG_AFTER_CREATE_COMMENT = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'created COMMENT at id: 4.',
+    resourceType: 'comment',
+    userId: 10,
+    resourceId: 4
+  },
+  {
+    id: 7,
+    message: 'viewed all COMMENTS',
+    resourceType: 'comment',
+    userId: 10,
+    resourceId: null
+  }
+];

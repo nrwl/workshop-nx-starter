@@ -28,7 +28,9 @@ import {
   EVENTLOG_AFTER_USER_WITH_SEARCH_TERM,
   EVENTLOG_AFTER_USER_WITH_ID,
   EVENTLOG_AFTER_CREATE_TICKET,
-  EVENTLOG_AFTER_UPDATE_TICKET
+  EVENTLOG_AFTER_UPDATE_TICKET,
+  EXPECTED_COMMENTS_AFTER_CREATE,
+  EVENTLOG_AFTER_CREATE_COMMENT
 } from './test-constants';
 import { resolve } from 'url';
 
@@ -383,6 +385,96 @@ describe('api', () => {
           .get('/tickets')
           .expect(200)
           .expect(EXPECTED_ALL_TICKETS)
+      );
+  });
+
+  it('/POST to create comment', () => {
+    const update = { message: 'test', ticketId: 1 };
+    return request(app.getHttpServer())
+      .post('/comments')
+      .set({ userid: 10 })
+      .send(update)
+      .expect(201)
+      .expect({
+        id: 4,
+        message: 'test',
+        ticketId: 1,
+        userId: 10,
+        userFullName: 'Zack Nrwl'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/comments')
+          .set({ userid: 10 })
+          .expect(200)
+          .expect(EXPECTED_COMMENTS_AFTER_CREATE)
+      )
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .set({ userid: 10 })
+          .expect(200)
+          .expect(EVENTLOG_AFTER_CREATE_COMMENT)
+      );
+  });
+
+  it('/POST create comment; bad user id', () => {
+    const comment = { message: 'test', ticketId: 1 };
+    return request(app.getHttpServer())
+      .post('/comments')
+      .set({ userid: 10000 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No user exists at id: 10000'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/comments')
+          .expect(200)
+          .expect(EXPECTED_ALL_COMMENTS)
+      );
+  });
+
+  it('/POST create comment; bad user ticketId', () => {
+    const comment = { message: 'test', ticketId: 100 };
+    return request(app.getHttpServer())
+      .post('/comments')
+      .set({ userid: 10 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No ticket exists at id: 100'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/comments')
+          .expect(200)
+          .expect(EXPECTED_ALL_COMMENTS)
+      );
+  });
+
+  it('/POST create comment; missing ticketId', () => {
+    const comment = { message: 'test' };
+    return request(app.getHttpServer())
+      .post('/comments')
+      .set({ userid: 10 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'Invalid request body'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/comments')
+          .expect(200)
+          .expect(EXPECTED_ALL_COMMENTS)
       );
   });
 });
