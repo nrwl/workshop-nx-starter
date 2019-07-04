@@ -1,21 +1,15 @@
 import { Controller, Get, Req, BadRequestException } from '@nestjs/common';
 import { Request } from 'express';
 import { TicketService } from '@tuskdesk-suite/api/tickets/data-access';
-import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access';
-import { CommentService } from '@tuskdesk-suite/api/comments/data-access';
 
 @Controller('tickets')
 export class TicketController {
-  constructor(
-    private ticketService: TicketService,
-    private eventLogService: EventLogService,
-    private commentService: CommentService
-  ) {}
+  constructor(private ticketService: TicketService) {}
 
   @Get()
   getMatchingTickets(@Req() request: Request) {
     const matchingTickets = this.ticketService.findMatchingTickets(request);
-    this.eventLogService.trackEvent(
+    this.ticketService.trackEvent(
       request,
       'ticket',
       `viewed TICKETS at ids [ ${matchingTickets
@@ -33,10 +27,11 @@ export class TicketController {
     if (!ticket) {
       throw new BadRequestException(`No Ticket exists at id: ${ticketId}.`);
     }
-    this.eventLogService.trackEvent(
+    this.ticketService.trackEvent(
       request,
       'ticket',
-      `viewed TICKET at id ${ticket.id}.`
+      `viewed TICKET at id ${ticket.id}.`,
+      ticket.id
     );
     return ticket;
   }
@@ -48,6 +43,6 @@ export class TicketController {
     if (!ticket) {
       throw new BadRequestException(`No Ticket exists at id: ${ticketId}.`);
     }
-    const ticketComments = this.commentService;
+    // const ticketComments = this.commentService;
   }
 }

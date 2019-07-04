@@ -14,9 +14,19 @@ export class EventLogService {
 
   constructor(private userService: UserService) {}
 
-  trackEvent(request: Request, context: ResourceType, intent = 'viewed') {
+  trackEvent(
+    request: Request,
+    context: ResourceType,
+    intent = 'viewed',
+    itemId?: number
+  ) {
     const currentUser = this.userService.currentUserForRequest(request);
-    this.addEventLog(currentUser ? currentUser.id : null, intent, context);
+    this.addEventLog(
+      currentUser ? currentUser.id : null,
+      intent,
+      context,
+      itemId
+    );
   }
 
   private addEventLog(
