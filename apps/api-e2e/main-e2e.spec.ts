@@ -15,7 +15,20 @@ import {
   EXPECTED_USERS_WITH_SEARCH_TERM,
   EXPECTED_SINGLE_USER,
   EXPECTED_CREATE_TICKET,
-  EXPECTED_UPDATED_TICKETS
+  EXPECTED_UPDATED_TICKETS,
+  EVENTLOG_AFTER_VIEWING_TICKETS,
+  EVENT_LOG_AFTER_ONE_TICKET_VIEW,
+  EVENT_LOG_AFTER_VIEWING_COMMENTS_FOR_TICKETS,
+  EVENTLOG_AFTER_VIEWING_EVENTLOG,
+  EVENTLOG_AFTER_VIEWING_COMMENTS,
+  EVENTLOG_AFTER_VIEWING_COMPANIES,
+  EVENTLOG_AFTER_VIEWING_ONE_COMPANY,
+  EVENTLOG_AFTER_VIEWING_COMPANY_USERS,
+  EVENTLOG_AFTER_VIEWING_USERS,
+  EVENTLOG_AFTER_USER_WITH_SEARCH_TERM,
+  EVENTLOG_AFTER_USER_WITH_ID,
+  EVENTLOG_AFTER_CREATE_TICKET,
+  EVENTLOG_AFTER_UPDATE_TICKET
 } from './test-constants';
 import { resolve } from 'url';
 
@@ -38,15 +51,29 @@ describe('api', () => {
   it('/GET tickets', () => {
     return request(app.getHttpServer())
       .get('/tickets')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_ALL_TICKETS);
+      .expect(EXPECTED_ALL_TICKETS)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_VIEWING_TICKETS)
+      );
   });
 
   it('/GET ticket at id', () => {
     return request(app.getHttpServer())
       .get('/tickets/1')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_SINGLE_TICKET);
+      .expect(EXPECTED_SINGLE_TICKET)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENT_LOG_AFTER_ONE_TICKET_VIEW)
+      );
   });
 
   it('/GET tickets at invalid id', () => {
@@ -58,8 +85,15 @@ describe('api', () => {
   it('/GET ticket comments at id', () => {
     return request(app.getHttpServer())
       .get('/tickets/1/comments')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_SINGLE_TICKET_COMMENTS);
+      .expect(EXPECTED_SINGLE_TICKET_COMMENTS)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENT_LOG_AFTER_VIEWING_COMMENTS_FOR_TICKETS)
+      );
   });
 
   it('/GET ticket comments at invalid id', () => {
@@ -71,29 +105,57 @@ describe('api', () => {
   it('/GET event logs', () => {
     return request(app.getHttpServer())
       .get('/event-logs')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_ALL_EVENT_LOGS);
+      .expect(EXPECTED_ALL_EVENT_LOGS)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_VIEWING_EVENTLOG)
+      );
   });
 
   it('/GET comments', () => {
     return request(app.getHttpServer())
       .get('/comments')
+      .set({ userId: 10 })
       .expect(200)
-      .expect(EXPECTED_ALL_COMMENTS);
+      .expect(EXPECTED_ALL_COMMENTS)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_VIEWING_COMMENTS)
+      );
   });
 
   it('/GET companies', () => {
     return request(app.getHttpServer())
       .get('/companies')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_ALL_COMPANIES);
+      .expect(EXPECTED_ALL_COMPANIES)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_VIEWING_COMPANIES)
+      );
   });
 
   it('/GET companies at id', () => {
     return request(app.getHttpServer())
       .get('/companies/1')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_SINGLE_COMPANY);
+      .expect(EXPECTED_SINGLE_COMPANY)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_VIEWING_ONE_COMPANY)
+      );
   });
 
   it('/GET company at invalid company id', () => {
@@ -105,8 +167,15 @@ describe('api', () => {
   it('/GET users at company id', () => {
     return request(app.getHttpServer())
       .get('/companies/1/users')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_SINGLE_COMPANY_USERS);
+      .expect(EXPECTED_SINGLE_COMPANY_USERS)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_VIEWING_COMPANY_USERS)
+      );
   });
 
   it('/GET users at invalid company id', () => {
@@ -118,22 +187,43 @@ describe('api', () => {
   it('/GET users', () => {
     return request(app.getHttpServer())
       .get('/users')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_USERS);
+      .expect(EXPECTED_USERS)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_VIEWING_USERS)
+      );
   });
 
   it('/GET users with search term', () => {
     return request(app.getHttpServer())
       .get('/users?searchTerm=zac')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_USERS_WITH_SEARCH_TERM);
+      .expect(EXPECTED_USERS_WITH_SEARCH_TERM)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_USER_WITH_SEARCH_TERM)
+      );
   });
 
   it('/GET users at id', () => {
     return request(app.getHttpServer())
       .get('/users/10')
+      .set({ userid: 10 })
       .expect(200)
-      .expect(EXPECTED_SINGLE_USER);
+      .expect(EXPECTED_SINGLE_USER)
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .expect(200)
+          .expect(EVENTLOG_AFTER_USER_WITH_ID)
+      );
   });
 
   it('/GET users at invalid id', () => {
@@ -146,6 +236,7 @@ describe('api', () => {
     const ticket = { message: 'test', companyId: 1, submittedByUserId: 1 };
     return request(app.getHttpServer())
       .post('/tickets')
+      .set({ userid: 10 })
       .send(ticket)
       .expect(201)
       .expect({
@@ -157,11 +248,19 @@ describe('api', () => {
         assignedToUserId: null,
         assignedToUserFullName: null
       })
-      .then(res =>
+      .then(() =>
         request(app.getHttpServer())
           .get('/tickets')
+          .set({ userid: 10 })
           .expect(200)
           .expect(EXPECTED_CREATE_TICKET)
+      )
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .set({ userid: 10 })
+          .expect(200)
+          .expect(EVENTLOG_AFTER_CREATE_TICKET)
       );
   });
 
@@ -169,6 +268,7 @@ describe('api', () => {
     const update = { id: 7, assignedToUserId: 10, status: 'closed' };
     return request(app.getHttpServer())
       .post('/tickets')
+      .set({ userid: 10 })
       .send(update)
       .expect(201)
       .expect({
@@ -183,8 +283,16 @@ describe('api', () => {
       .then(() =>
         request(app.getHttpServer())
           .get('/tickets')
+          .set({ userid: 10 })
           .expect(200)
           .expect(EXPECTED_UPDATED_TICKETS)
+      )
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .set({ userid: 10 })
+          .expect(200)
+          .expect(EVENTLOG_AFTER_UPDATE_TICKET)
       );
   });
 
