@@ -52,7 +52,7 @@ export class TicketController {
     this.ticketService.trackEvent(
       request,
       'comment',
-      `viewed comments for TICKET at id: ${ticketId}`
+      `viewed COMMENT for TICKET at id: ${ticketId}`
     );
     return ticketComments;
   }
