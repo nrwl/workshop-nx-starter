@@ -350,3 +350,602 @@ export const EXPECTED_UPDATED_TICKETS = [
     assignedToUserFullName: 'Zack Nrwl'
   }
 ];
+
+export const EVENTLOG_AFTER_VIEWING_TICKETS = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed TICKETS at ids [ 1, 2, 3, 4, 5, 6, 7 ].',
+    resourceType: 'ticket',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENT_LOG_AFTER_ONE_TICKET_VIEW = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed TICKET at id 1.',
+    resourceType: 'ticket',
+    userId: 10,
+    resourceId: 1
+  }
+];
+
+export const EVENT_LOG_AFTER_VIEWING_COMMENTS_FOR_TICKETS = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed COMMENT for TICKET at id: 1',
+    resourceType: 'comment',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENTLOG_AFTER_VIEWING_EVENTLOG = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed all EVENTLOGS',
+    resourceType: 'event-log',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENTLOG_AFTER_VIEWING_COMMENTS = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed all COMMENTS',
+    resourceType: 'comment',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENTLOG_AFTER_VIEWING_COMPANIES = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed all COMPANIES',
+    resourceType: 'company',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENTLOG_AFTER_VIEWING_ONE_COMPANY = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed COMPANY at id: 1',
+    resourceType: 'company',
+    userId: 10,
+    resourceId: 1
+  }
+];
+
+export const EVENTLOG_AFTER_VIEWING_COMPANY_USERS = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed USERS at COMPANY id: 1',
+    resourceType: 'user',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENTLOG_AFTER_VIEWING_USERS = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'view USERS at ids: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ].',
+    resourceType: 'user',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENTLOG_AFTER_USER_WITH_SEARCH_TERM = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'view USERS at ids: [ 10 ].',
+    resourceType: 'user',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENTLOG_AFTER_USER_WITH_ID = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'viewed USER at id: 10',
+    resourceType: 'user',
+    userId: 10,
+    resourceId: 10
+  }
+];
+
+export const EVENTLOG_AFTER_CREATE_TICKET = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'CREATE TICKET at id: 8',
+    resourceType: 'ticket',
+    userId: 10,
+    resourceId: 8
+  },
+  {
+    id: 7,
+    message: 'viewed TICKETS at ids [ 1, 2, 3, 4, 5, 6, 7, 8 ].',
+    resourceType: 'ticket',
+    userId: 10,
+    resourceId: null
+  }
+];
+
+export const EVENTLOG_AFTER_UPDATE_TICKET = [
+  {
+    id: 1,
+    message: 'viewed open TICKETS',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: null
+  },
+  {
+    id: 2,
+    message: 'created ticket',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 3,
+    message: 'viewed COMPANIES',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: null
+  },
+  {
+    id: 4,
+    message: 'viewed company details',
+    userId: 9,
+    resourceType: 'company',
+    resourceId: 2
+  },
+  {
+    id: 5,
+    message: 'viewed ticket details',
+    userId: 1,
+    resourceType: 'ticket',
+    resourceId: 1
+  },
+  {
+    id: 6,
+    message: 'UPDATE TICKET at id: 7',
+    resourceType: 'ticket',
+    userId: 10,
+    resourceId: 7
+  },
+  {
+    id: 7,
+    message: 'viewed TICKETS at ids [ 1, 2, 3, 4, 5, 6, 7 ].',
+    resourceType: 'ticket',
+    userId: 10,
+    resourceId: null
+  }
+];

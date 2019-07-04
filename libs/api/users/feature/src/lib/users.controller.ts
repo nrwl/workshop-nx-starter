@@ -1,7 +1,7 @@
-import { Controller, Get, Req, BadRequestException } from '@nestjs/common';
-import { UserService } from '@tuskdesk-suite/api/users/data-access/src';
+import { BadRequestException, Controller, Get, Req } from '@nestjs/common';
+import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access';
+import { UserService } from '@tuskdesk-suite/api/users/data-access';
 import { Request } from 'express';
-import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access/src';
 
 @Controller('users')
 export class UsersController {
@@ -32,6 +32,12 @@ export class UsersController {
     if (!user) {
       throw new BadRequestException(`No User exists at id: ${userId}`);
     }
+    this.eventLogService.trackEvent(
+      request,
+      'user',
+      `viewed USER at id: ${user.id}`,
+      user.id
+    );
     return user;
   }
 }

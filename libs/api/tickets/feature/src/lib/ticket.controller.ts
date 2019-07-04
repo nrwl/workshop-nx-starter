@@ -71,10 +71,24 @@ export class TicketController {
   postTicket(@Req() request: Request) {
     const body = request.body;
     if (this.ticketService.validateBodyForCreate(body)) {
-      return this.ticketService.createTicket(body);
+      const newTicket = this.ticketService.createTicket(body);
+      this.eventLogService.trackEvent(
+        request,
+        'ticket',
+        `CREATE TICKET at id: ${newTicket.id}`,
+        newTicket.id
+      );
+      return newTicket;
     }
     if (this.ticketService.validateBodyForUpdate(body)) {
-      return this.ticketService.updateTicket(body);
+      const updatedTicket = this.ticketService.updateTicket(body);
+      this.eventLogService.trackEvent(
+        request,
+        'ticket',
+        `UPDATE TICKET at id: ${updatedTicket.id}`,
+        updatedTicket.id
+      );
+      return updatedTicket;
     }
     throw new BadRequestException(
       'Invalid body; could not validate a create or update request'
