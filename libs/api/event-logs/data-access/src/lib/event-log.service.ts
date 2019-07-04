@@ -29,6 +29,10 @@ export class EventLogService {
     );
   }
 
+  findAll(): EventLog[] {
+    return this.eventLogs;
+  }
+
   private addEventLog(
     userId: number,
     message: string,

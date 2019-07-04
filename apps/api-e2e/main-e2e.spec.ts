@@ -5,7 +5,8 @@ import * as request from 'supertest';
 import {
   EXPECTED_ALL_TICKETS,
   EXPECTED_SINGLE_TICKET,
-  EXPECTED_SINGLE_TICKET_COMMENTS
+  EXPECTED_SINGLE_TICKET_COMMENTS,
+  EXPECTED_ALL_EVENT_LOGS
 } from './test-constants';
 
 describe('api', () => {
@@ -43,5 +44,12 @@ describe('api', () => {
       .get('/tickets/1/comments')
       .expect(200)
       .expect(EXPECTED_SINGLE_TICKET_COMMENTS);
+  });
+
+  it('/GET event logs', () => {
+    return request(app.getHttpServer())
+      .get('/event-logs')
+      .expect(200)
+      .expect(EXPECTED_ALL_EVENT_LOGS);
   });
 });
