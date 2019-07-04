@@ -73,3 +73,13 @@ export const EXPECTED_SINGLE_TICKET = {
   assignedToUserId: null,
   assignedToUserFullName: null
 };
+
+export const EXPECTED_SINGLE_TICKET_COMMENTS = [
+  {
+    id: 1,
+    message: 'Booted into safe mode but not sure what to do from there',
+    ticketId: 1,
+    userId: 1,
+    userFullName: 'Carter Moss'
+  }
+];

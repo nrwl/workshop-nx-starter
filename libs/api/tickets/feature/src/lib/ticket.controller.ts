@@ -36,13 +36,24 @@ export class TicketController {
     return ticket;
   }
 
-  @Get(':id')
+  @Get(':id/comments')
   getTicketComments(@Req() request: Request) {
     const ticketId = +request.params.id;
     const ticket = this.ticketService.findTicketById(ticketId);
     if (!ticket) {
       throw new BadRequestException(`No Ticket exists at id: ${ticketId}.`);
     }
-    // const ticketComments = this.commentService;
+    const ticketComments = this.ticketService.getComments(ticket);
+    if (!ticketComments) {
+      throw new BadRequestException(
+        `No Comments exists at Ticket id: ${ticketId}.`
+      );
+    }
+    this.ticketService.trackEvent(
+      request,
+      'comment',
+      `viewed comments for TICKET at id: ${ticketId}`
+    );
+    return ticketComments;
   }
 }

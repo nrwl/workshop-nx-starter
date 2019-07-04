@@ -12,7 +12,7 @@ import {
 import { Request } from 'express';
 import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access';
 import { CommentService } from '@tuskdesk-suite/api/comments/data-access';
-import { ResourceType } from '@tuskdesk-suite/event-log-utils/src';
+import { ResourceType } from '@tuskdesk-suite/event-log-utils';
 
 @Injectable()
 export class TicketService {
@@ -55,5 +55,9 @@ export class TicketService {
     itemId?: number
   ) {
     this.eventLogService.trackEvent(request, context, intent, itemId);
+  }
+
+  getComments(ticket: Ticket) {
+    return this.commentService.findByTicketId(ticket.id);
   }
 }
