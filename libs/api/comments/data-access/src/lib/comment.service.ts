@@ -8,4 +8,8 @@ export class CommentService {
   findById(id: number): Comment {
     return this.comments.find(comment => comment.id === id);
   }
+
+  findByTicketId(ticketId: number): Comment[] {
+    return this.comments.filter(comment => comment.ticketId === ticketId);
+  }
 }

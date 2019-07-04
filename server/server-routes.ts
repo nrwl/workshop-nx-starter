@@ -40,10 +40,17 @@ export function loadAppRoutes(enableDelays = true) {
         res.send(fs.readFileSync(file).toString());
       },
       '/api/tickets': (req, res) => {
-        const { currentUser, status, searchTerm, assignedToUser } = Query.getRequestParams(req);
+        const {
+          currentUser,
+          status,
+          searchTerm,
+          assignedToUser
+        } = Query.getRequestParams(req);
 
         delayResponse(() => {
-          const who = assignedToUser ? USERS.find(Query.byFullName(assignedToUser)) : null;
+          const who = assignedToUser
+            ? USERS.find(Query.byFullName(assignedToUser))
+            : null;
           let ticketsToReturn = TICKETS.filter(Query.isSubmittedBy(currentUser))
             .filter(Query.isAssignedTo(who))
             .filter(Query.ticketByMessage(searchTerm))
@@ -78,9 +85,18 @@ export function loadAppRoutes(enableDelays = true) {
           const matching = COMPANIES.filter(t => t.id === queryId)[0];
           if (matching) {
             res.send(matching);
-            return trackEvent(req, `/api/companies/${queryId}`, 'getCompanyById()');
+            return trackEvent(
+              req,
+              `/api/companies/${queryId}`,
+              'getCompanyById()'
+            );
           } else {
-            announceError(res, `/api/companies/${queryId}`, 404, `Cannot find company ${queryId}`);
+            announceError(
+              res,
+              `/api/companies/${queryId}`,
+              404,
+              `Cannot find company ${queryId}`
+            );
           }
         });
       },
@@ -92,9 +108,18 @@ export function loadAppRoutes(enableDelays = true) {
 
           if (matchingCompanies) {
             res.send(matchingCompanies.userIds.map(findUserByID));
-            return trackEvent(req, `/api/companies/${queryId}/users`, 'getUsersForCompany()');
+            return trackEvent(
+              req,
+              `/api/companies/${queryId}/users`,
+              'getUsersForCompany()'
+            );
           } else {
-            announceError(res, `/api/companies/${queryId}/users`, 404, `Cannot find company ${queryId}`);
+            announceError(
+              res,
+              `/api/companies/${queryId}/users`,
+              404,
+              `Cannot find company ${queryId}`
+            );
           }
         });
       },
@@ -104,9 +129,15 @@ export function loadAppRoutes(enableDelays = true) {
           const matching = TICKETS.filter(t => t.id === queryId)[0];
           if (matching) {
             res.send(matching);
-            return trackEvent(req, `/api/tickets/${queryId}`, 'getTicketById()');
+            return trackEvent(
+              req,
+              `/api/tickets/${queryId}`,
+              'getTicketById()'
+            );
           } else {
-            res.status(404).send({ error: `Cannot find ticket ${+req.params.id}` });
+            res
+              .status(404)
+              .send({ error: `Cannot find ticket ${+req.params.id}` });
           }
         });
       },
@@ -116,9 +147,18 @@ export function loadAppRoutes(enableDelays = true) {
           const matching = COMMENTS.filter(t => t.ticketId === queryId);
           if (matching) {
             res.send(matching);
-            return trackEvent(req, `/api/tickets/${queryId}/comments`, 'getCommentsForTicket()');
+            return trackEvent(
+              req,
+              `/api/tickets/${queryId}/comments`,
+              'getCommentsForTicket()'
+            );
           } else {
-            announceError(res, `/api/tickets/${queryId}/comments`, 404, `comments not available`);
+            announceError(
+              res,
+              `/api/tickets/${queryId}/comments`,
+              404,
+              `comments not available`
+            );
           }
         });
       },
@@ -126,7 +166,11 @@ export function loadAppRoutes(enableDelays = true) {
         const { searchTerm } = Query.getRequestParams(req);
 
         delayResponse(() => {
-          res.send(searchTerm ? USERS.filter(Query.byPartialFullName(searchTerm)) : USERS);
+          res.send(
+            searchTerm
+              ? USERS.filter(Query.byPartialFullName(searchTerm))
+              : USERS
+          );
           return trackEvent(req, '/api/users', 'getAllUsers()');
         });
       },
@@ -149,11 +193,18 @@ export function loadAppRoutes(enableDelays = true) {
         delayResponse(function() {
           const { body } = Query.getRequestParams(req);
           if (body.message) {
-            const existingTicket = TICKETS.find(ticket => ticket.id === body.id);
+            const existingTicket = TICKETS.find(
+              ticket => ticket.id === body.id
+            );
             res.send({ ...existingTicket, message: body.message });
             return trackEvent(req, '/api/tickets', 'POST update');
           } else {
-            announceError(res, 'POST /api/tickets', 500, `'message' is a required field`);
+            announceError(
+              res,
+              'POST /api/tickets',
+              500,
+              `'message' is a required field`
+            );
           }
         });
       },
@@ -172,7 +223,12 @@ export function loadAppRoutes(enableDelays = true) {
             res.send(newComment);
             return trackEvent(req, '/api/comments', 'POST update');
           } else {
-            announceError(res, 'POST /api/comments', 500, `'message' is a required field`);
+            announceError(
+              res,
+              'POST /api/comments',
+              500,
+              `'message' is a required field`
+            );
           }
         });
       },
@@ -185,9 +241,19 @@ export function loadAppRoutes(enableDelays = true) {
           const matchingUser = USERS.filter(u => u.id === assignToUserId)[0];
 
           if (!matchingTicket) {
-            announceError(res, 'POST /api/assign', 404, `Cannot find ticket ${ticketId}`);
+            announceError(
+              res,
+              'POST /api/assign',
+              404,
+              `Cannot find ticket ${ticketId}`
+            );
           } else if (!matchingUser) {
-            announceError(res, 'POST /api/assign', 404, `Cannot find user ${assignToUserId}`);
+            announceError(
+              res,
+              'POST /api/assign',
+              404,
+              `Cannot find user ${assignToUserId}`
+            );
           } else {
             matchingTicket.assignedToUserId = assignToUserId;
             res.send(matchingTicket);
@@ -206,7 +272,12 @@ export function loadAppRoutes(enableDelays = true) {
             res.send(matchingTicket);
             return trackEvent(req, '/api/complete', 'POST update');
           } else {
-            announceError(res, 'POST /api/assign', 404, `Cannot find ticket ${ticketId}`);
+            announceError(
+              res,
+              'POST /api/assign',
+              404,
+              `Cannot find ticket ${ticketId}`
+            );
           }
         });
       }

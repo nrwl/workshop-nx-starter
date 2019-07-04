@@ -2,7 +2,11 @@ import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { AppModule } from '../api/src/app/app.module';
 import * as request from 'supertest';
-import { EXPECTED_ALL_TICKETS, EXPECTED_SINGLE_TICKET } from './test-constants';
+import {
+  EXPECTED_ALL_TICKETS,
+  EXPECTED_SINGLE_TICKET,
+  EXPECTED_SINGLE_TICKET_COMMENTS
+} from './test-constants';
 
 describe('api', () => {
   let app: INestApplication;
@@ -32,5 +36,12 @@ describe('api', () => {
       .get('/tickets/1')
       .expect(200)
       .expect(EXPECTED_SINGLE_TICKET);
+  });
+
+  it('/GET ticket comments at id', () => {
+    return request(app.getHttpServer())
+      .get('/tickets/1/comments')
+      .expect(200)
+      .expect(EXPECTED_SINGLE_TICKET_COMMENTS);
   });
 });
