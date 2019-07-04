@@ -179,3 +179,9 @@ export const EXPECTED_SINGLE_COMPANY = {
   name: 'Lake Farms',
   userIds: [1, 2, 3]
 };
+
+export const EXPECTED_SINGLE_COMPANY_USERS = [
+  { id: 1, username: 'cmoss', fullName: 'Carter Moss', isAgent: false },
+  { id: 2, username: 'francis', fullName: 'Frank Smith', isAgent: false },
+  { id: 3, username: 'yardling', fullName: 'Kim Rush', isAgent: false }
+];

@@ -10,6 +10,7 @@ export class UserService {
     return this.users;
   }
 
+  // TODO: better performance...
   findById(id: number) {
     return this.users.find(user => user.id === id);
   }
