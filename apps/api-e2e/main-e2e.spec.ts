@@ -6,7 +6,8 @@ import {
   EXPECTED_ALL_TICKETS,
   EXPECTED_SINGLE_TICKET,
   EXPECTED_SINGLE_TICKET_COMMENTS,
-  EXPECTED_ALL_EVENT_LOGS
+  EXPECTED_ALL_EVENT_LOGS,
+  EXPECTED_ALL_COMMENTS
 } from './test-constants';
 
 describe('api', () => {
@@ -51,5 +52,12 @@ describe('api', () => {
       .get('/event-logs')
       .expect(200)
       .expect(EXPECTED_ALL_EVENT_LOGS);
+  });
+
+  it('/GET comments', () => {
+    return request(app.getHttpServer())
+      .get('/comments')
+      .expect(200)
+      .expect(EXPECTED_ALL_COMMENTS);
   });
 });
