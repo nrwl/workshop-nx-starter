@@ -1,9 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { Comment, COMMENTS } from '@tuskdesk-suite/comment-utils';
+import {
+  Comment,
+  COMMENTS,
+  CreateCommentData
+} from '@tuskdesk-suite/comment-utils';
 
 @Injectable()
 export class CommentService {
   private comments: Comment[] = [...COMMENTS];
+  private lastId = this.comments.length;
 
   findById(id: number): Comment {
     return this.comments.find(comment => comment.id === id);
@@ -15,5 +20,11 @@ export class CommentService {
 
   findAll(): Comment[] {
     return this.comments;
+  }
+
+  add(createComponentObj: CreateCommentData): Comment {
+    const comment = { ...createComponentObj, id: ++this.lastId };
+    this.comments = [...this.comments, comment];
+    return comment;
   }
 }
