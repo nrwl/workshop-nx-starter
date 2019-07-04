@@ -1,15 +1,19 @@
 import { Controller, Get, Req, BadRequestException } from '@nestjs/common';
 import { Request } from 'express';
-import { CompanyService } from '@tuskdesk-suite/api/companies/data-access/src';
+import { CompanyService } from '@tuskdesk-suite/api/companies/data-access';
+import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access';
 
 @Controller('companies')
 export class CompaniesController {
-  constructor(private companyService: CompanyService) {}
+  constructor(
+    private companyService: CompanyService,
+    private eventLogService: EventLogService
+  ) {}
 
   @Get()
   getAllCompanies(@Req() request: Request) {
     const companies = this.companyService.findAll();
-    this.companyService.trackEvent(request, 'company', 'viewed all COMPANIES');
+    this.eventLogService.trackEvent(request, 'company', 'viewed all COMPANIES');
     return companies;
   }
 
@@ -21,7 +25,7 @@ export class CompaniesController {
         `No company exists at ${+request.params.id}`
       );
     }
-    this.companyService.trackEvent(
+    this.eventLogService.trackEvent(
       request,
       'company',
       `viewed COMPANY at id: ${company.id}`,
@@ -44,7 +48,7 @@ export class CompaniesController {
         `No Users exist for Company at id: ${+request.params.id}.`
       );
     }
-    this.companyService.trackEvent(
+    this.eventLogService.trackEvent(
       request,
       'user',
       `viewed USERS at COMPANY id: ${company.id}`

@@ -10,9 +10,7 @@ import {
   TICKETS
 } from '@tuskdesk-suite/ticket-utils';
 import { Request } from 'express';
-import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access';
 import { CommentService } from '@tuskdesk-suite/api/comments/data-access';
-import { ResourceType } from '@tuskdesk-suite/event-log-utils';
 
 @Injectable()
 export class TicketService {
@@ -20,7 +18,6 @@ export class TicketService {
 
   constructor(
     private userService: UserService,
-    private eventLogService: EventLogService,
     private commentService: CommentService
   ) {}
 
@@ -46,15 +43,6 @@ export class TicketService {
 
   findTicketById(id: number): Ticket {
     return this.tickets.find(ticket => ticket.id === id);
-  }
-
-  trackEvent(
-    request: Request,
-    context: ResourceType,
-    intent = 'viewed',
-    itemId?: number
-  ) {
-    this.eventLogService.trackEvent(request, context, intent, itemId);
   }
 
   getComments(ticket: Ticket) {
