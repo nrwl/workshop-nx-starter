@@ -13,8 +13,11 @@ import {
   EXPECTED_SINGLE_TICKET_COMMENTS,
   EXPECTED_USERS,
   EXPECTED_USERS_WITH_SEARCH_TERM,
-  EXPECTED_SINGLE_USER
+  EXPECTED_SINGLE_USER,
+  EXPECTED_CREATE_TICKET,
+  EXPECTED_UPDATED_TICKETS
 } from './test-constants';
+import { resolve } from 'url';
 
 describe('api', () => {
   let app: INestApplication;
@@ -137,5 +140,141 @@ describe('api', () => {
     return request(app.getHttpServer())
       .get('/users/4000')
       .expect(400);
+  });
+
+  it('/POST to create new ticket', () => {
+    const ticket = { message: 'test', companyId: 1, submittedByUserId: 1 };
+    return request(app.getHttpServer())
+      .post('/tickets')
+      .send(ticket)
+      .expect(201)
+      .expect({
+        id: 8,
+        message: ticket.message,
+        status: 'open',
+        companyId: 1,
+        submittedByUserId: 1,
+        assignedToUserId: null,
+        assignedToUserFullName: null
+      })
+      .then(res =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(200)
+          .expect(EXPECTED_CREATE_TICKET)
+      );
+  });
+
+  it('/POST to update exisiting ticket', () => {
+    const update = { id: 7, assignedToUserId: 10, status: 'closed' };
+    return request(app.getHttpServer())
+      .post('/tickets')
+      .send(update)
+      .expect(201)
+      .expect({
+        id: 7,
+        message: 'Cannot connect to WiFi at our office from my second laptop',
+        status: 'closed',
+        companyId: 1,
+        submittedByUserId: 1,
+        assignedToUserId: 10,
+        assignedToUserFullName: 'Zack Nrwl'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(200)
+          .expect(EXPECTED_UPDATED_TICKETS)
+      );
+  });
+
+  it('/POST to ticket with malformed body', () => {
+    const body = { foo: 'foo' };
+    return request(app.getHttpServer())
+      .post('/tickets')
+      .send(body)
+      .expect(400);
+  });
+
+  it('/POST ticket with create body; bad reporting user id', () => {
+    const ticket = { message: 'test', companyId: 1, submittedByUserId: 111 };
+    return request(app.getHttpServer())
+      .post('/tickets')
+      .send(ticket)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No User found at id: 111.'
+      });
+  });
+
+  it('/POST ticket with create body; bad company id', () => {
+    const ticket = { message: 'test', companyId: 999, submittedByUserId: 1 };
+    return request(app.getHttpServer())
+      .post('/tickets')
+      .send(ticket)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No Company found at id: 999'
+      });
+  });
+
+  it('/POST ticket with create body; bad assigned user id', () => {
+    const ticket = {
+      message: 'test',
+      companyId: 1,
+      submittedByUserId: 1,
+      assignedToUserId: 999
+    };
+    return request(app.getHttpServer())
+      .post('/tickets')
+      .send(ticket)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No User found at id: 999'
+      });
+  });
+
+  it('/POST ticket update; bad ticket id', () => {
+    const update = { id: 9999, assignedToUserId: 10, status: 'closed' };
+    return request(app.getHttpServer())
+      .post('/tickets')
+      .send(update)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No Ticket found at id: 9999'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(200)
+          .expect(EXPECTED_ALL_TICKETS)
+      );
+  });
+
+  it('/POST ticket update; bad assigneduser id', () => {
+    const update = { id: 7, assignedToUserId: 9999, status: 'closed' };
+    return request(app.getHttpServer())
+      .post('/tickets')
+      .send(update)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No User found at id: 9999'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(200)
+          .expect(EXPECTED_ALL_TICKETS)
+      );
   });
 });

@@ -1,4 +1,10 @@
-import { Controller, Get, Req, BadRequestException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Req,
+  BadRequestException,
+  Post
+} from '@nestjs/common';
 import { Request } from 'express';
 import { TicketService } from '@tuskdesk-suite/api/tickets/data-access';
 import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access';
@@ -59,5 +65,19 @@ export class TicketController {
       `viewed COMMENT for TICKET at id: ${ticketId}`
     );
     return ticketComments;
+  }
+
+  @Post()
+  postTicket(@Req() request: Request) {
+    const body = request.body;
+    if (this.ticketService.validateBodyForCreate(body)) {
+      return this.ticketService.createTicket(body);
+    }
+    if (this.ticketService.validateBodyForUpdate(body)) {
+      return this.ticketService.updateTicket(body);
+    }
+    throw new BadRequestException(
+      'Invalid body; could not validate a create or update request'
+    );
   }
 }
