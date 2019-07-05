@@ -574,7 +574,7 @@ describe('api', () => {
       );
   });
 
-  it('/POST to assign ticket', () => {
+  it('/POST to complete ticket', () => {
     const update = { ticketId: 1 };
     return request(app.getHttpServer())
       .post('/complete')
