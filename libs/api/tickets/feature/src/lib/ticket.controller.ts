@@ -1,26 +1,44 @@
 import {
+  BadRequestException,
   Controller,
   Get,
-  Req,
-  BadRequestException,
-  Post
+  Post,
+  Req
 } from '@nestjs/common';
-import { Request } from 'express';
-import { TicketService } from '@tuskdesk-suite/api/tickets/data-access';
+import { CommentService } from '@tuskdesk-suite/api/comments/data-access';
+import { CompanyService } from '@tuskdesk-suite/api/companies/data-access';
 import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access';
+import { TicketService } from '@tuskdesk-suite/api/tickets/data-access';
+import { UserService } from '@tuskdesk-suite/api/users/data-access';
+import {
+  byMessage,
+  byStatus,
+  CreateTicketPostRequestBody,
+  createTicketRequestFromRequest,
+  isAssignedTo,
+  isCreateTicketPostRequestBody,
+  isSubmittedBy,
+  isUpdateTicketPostRequestBody,
+  Ticket,
+  UpdateTicketPostRequestBody
+} from '@tuskdesk-suite/ticket-utils';
+import { Request } from 'express';
 
 @Controller('tickets')
 export class TicketController {
   constructor(
     private ticketService: TicketService,
-    private eventLogService: EventLogService
+    private eventLogService: EventLogService,
+    private userService: UserService,
+    private commentService: CommentService,
+    private companyService: CompanyService
   ) {}
 
   @Get()
   getMatchingTickets(@Req() request: Request) {
-    const matchingTickets = this.ticketService.findMatchingTickets(request);
+    const matchingTickets = this.findMatchingTickets(request);
     this.eventLogService.trackEvent(
-      request,
+      this.userService.findById(+request.headers.userid),
       'ticket',
       `viewed TICKETS at ids [ ${matchingTickets
         .map(ticket => ticket.id)
@@ -38,7 +56,7 @@ export class TicketController {
       throw new BadRequestException(`No Ticket exists at id: ${ticketId}.`);
     }
     this.eventLogService.trackEvent(
-      request,
+      this.userService.findById(+request.headers.userid),
       'ticket',
       `viewed TICKET at id ${ticket.id}.`,
       ticket.id
@@ -53,14 +71,14 @@ export class TicketController {
     if (!ticket) {
       throw new BadRequestException(`No Ticket exists at id: ${ticketId}.`);
     }
-    const ticketComments = this.ticketService.getComments(ticket);
+    const ticketComments = this.commentService.findByTicketId(ticket.id);
     if (!ticketComments) {
       throw new BadRequestException(
         `No Comments exists at Ticket id: ${ticketId}.`
       );
     }
     this.eventLogService.trackEvent(
-      request,
+      this.userService.findById(+request.headers.userid),
       'comment',
       `viewed COMMENT for TICKET at id: ${ticketId}`
     );
@@ -70,20 +88,62 @@ export class TicketController {
   @Post()
   postTicket(@Req() request: Request) {
     const body = request.body;
-    if (this.ticketService.validateBodyForCreate(body)) {
-      const newTicket = this.ticketService.createTicket(body);
+    if (this.validateBodyForCreate(body)) {
+      const company = this.companyService.findById(body.companyId);
+      if (!company) {
+        throw new BadRequestException(
+          `No Company found at id: ${body.companyId}`
+        );
+      }
+      const submittingUser = this.userService.findById(body.submittedByUserId);
+      if (!submittingUser) {
+        throw new BadRequestException(
+          `No User found at id: ${body.submittedByUserId}.`
+        );
+      }
+      const assignedUser = body.assignedToUserId
+        ? this.userService.findById(body.assignedToUserId)
+        : null;
+      if (!assignedUser && body.assignedToUserId) {
+        throw new BadRequestException(
+          `No User found at id: ${body.assignedToUserId}`
+        );
+      }
+      const newTicket = this.ticketService.createTicket(
+        body,
+        company.id,
+        submittingUser.id,
+        assignedUser && assignedUser.id,
+        assignedUser && assignedUser.fullName
+      );
       this.eventLogService.trackEvent(
-        request,
+        this.userService.findById(+request.headers.userid),
         'ticket',
         `CREATE TICKET at id: ${newTicket.id}`,
         newTicket.id
       );
       return newTicket;
     }
-    if (this.ticketService.validateBodyForUpdate(body)) {
-      const updatedTicket = this.ticketService.updateTicket(body);
+    if (this.validateBodyForUpdate(body)) {
+      const ticket = this.ticketService.findTicketById(body.id);
+      if (!ticket) {
+        throw new BadRequestException(`No Ticket found at id: ${body.id}`);
+      }
+      const assignedUser = this.userService.findById(body.assignedToUserId);
+      if (!assignedUser && body.assignedToUserId) {
+        throw new BadRequestException(
+          `No User found at id: ${body.assignedToUserId}`
+        );
+      }
+      const updatedTicket = this.ticketService.updateTicket(
+        body.id,
+        body.status,
+        body.message,
+        assignedUser && assignedUser.id,
+        assignedUser && assignedUser.fullName
+      );
       this.eventLogService.trackEvent(
-        request,
+        this.userService.findById(+request.headers.userid),
         'ticket',
         `UPDATE TICKET at id: ${updatedTicket.id}`,
         updatedTicket.id
@@ -93,5 +153,34 @@ export class TicketController {
     throw new BadRequestException(
       'Invalid body; could not validate a create or update request'
     );
+  }
+
+  private findMatchingTickets(request: Request): Ticket[] {
+    const ticketRequest = createTicketRequestFromRequest(
+      request,
+      this.userService.findAll()
+    );
+    const assignedUser = this.userService.findByFullName(
+      ticketRequest.assignedToUser
+    );
+    const ticketsToReturn = this.ticketService
+      .findAll()
+      .filter(isSubmittedBy(ticketRequest.currentUser))
+      .filter(isAssignedTo(assignedUser))
+      .filter(byMessage(ticketRequest.searchTerm))
+      .filter(byStatus(ticketRequest.status));
+    return ticketsToReturn;
+  }
+
+  private validateBodyForCreate(
+    body: any
+  ): body is CreateTicketPostRequestBody {
+    return isCreateTicketPostRequestBody(body);
+  }
+
+  private validateBodyForUpdate(
+    body: any
+  ): body is UpdateTicketPostRequestBody {
+    return isUpdateTicketPostRequestBody(body);
   }
 }

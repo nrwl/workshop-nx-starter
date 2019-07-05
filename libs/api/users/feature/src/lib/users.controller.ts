@@ -18,7 +18,7 @@ export class UsersController {
         : null;
     const users = this.userService.findByPartialName(searchTerm);
     this.eventLogService.trackEvent(
-      request,
+      this.userService.findById(+request.headers.userid),
       'user',
       `view USERS at ids: [ ${users.map(x => x.id).join(', ')} ].`
     );
@@ -33,7 +33,7 @@ export class UsersController {
       throw new BadRequestException(`No User exists at id: ${userId}`);
     }
     this.eventLogService.trackEvent(
-      request,
+      this.userService.findById(+request.headers.userid),
       'user',
       `viewed USER at id: ${user.id}`,
       user.id

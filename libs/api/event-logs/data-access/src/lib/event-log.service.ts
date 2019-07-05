@@ -4,25 +4,21 @@ import {
   EVENTLOGS,
   ResourceType
 } from '@tuskdesk-suite/event-log-utils';
-import { Request } from 'express';
-import { UserService } from '@tuskdesk-suite/api/users/data-access';
+import { User } from '@tuskdesk-suite/user-utils';
 
 @Injectable()
 export class EventLogService {
   private eventLogs: EventLog[] = [...EVENTLOGS];
   private lastEventLogId = this.eventLogs.length;
 
-  constructor(private userService: UserService) {}
-
   trackEvent(
-    request: Request,
+    requestingUser: User,
     context: ResourceType,
     intent = 'viewed',
     itemId?: number
   ) {
-    const currentUser = this.userService.currentUserForRequest(request);
     this.addEventLog(
-      currentUser ? currentUser.id : null,
+      requestingUser ? requestingUser.id : null,
       intent,
       context,
       itemId
