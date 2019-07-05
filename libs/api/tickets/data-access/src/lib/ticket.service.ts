@@ -55,12 +55,33 @@ export class TicketService {
       assignedUserId,
       assignedUserFullName
     );
-    const indexToReplace = this.tickets.indexOf(ticket);
+    this.replaceTicket(ticket, updatedTicket);
+    return updatedTicket;
+  }
+
+  assignUserToTicket(
+    ticketId: number,
+    assignedToUserId: number,
+    assignedToUserFullName: string
+  ): Ticket {
+    const updatedTicket = {
+      ...this.findTicketById(ticketId),
+      assignedToUserId,
+      assignedToUserFullName
+    };
+    this.replaceTicket(this.findTicketById(ticketId), updatedTicket);
+    return updatedTicket;
+  }
+
+  private replaceTicket(oldTicket: Ticket, newTicket: Ticket) {
+    const indexToReplace = this.tickets.indexOf(oldTicket);
+    if (indexToReplace === -1) {
+      throw new Error('old ticket not found');
+    }
     this.tickets = [
       ...this.tickets.slice(0, indexToReplace),
-      updatedTicket,
+      newTicket,
       ...this.tickets.slice(indexToReplace + 1)
     ];
-    return updatedTicket;
   }
 }
