@@ -32,7 +32,9 @@ import {
   EXPECTED_COMMENTS_AFTER_CREATE,
   EVENTLOG_AFTER_CREATE_COMMENT,
   EXPECTED_TICKETS_AFTER_ASSIGN,
-  EVENT_LOG_AFTER_ASSIGN
+  EVENT_LOG_AFTER_ASSIGN,
+  EXPECTED_TICKETS_AFTER_COMPLETE,
+  EVENT_LOG_AFTER_COMPLETE
 } from './test-constants';
 import { resolve } from 'url';
 
@@ -569,6 +571,98 @@ describe('api', () => {
           .get('/tickets')
           .expect(EXPECTED_ALL_TICKETS)
           .expect(200)
+      );
+  });
+
+  it('/POST to assign ticket', () => {
+    const update = { ticketId: 1 };
+    return request(app.getHttpServer())
+      .post('/complete')
+      .set({ userid: 10 })
+      .send(update)
+      .expect(201)
+      .expect({
+        id: 1,
+        message: 'PC keeps rebooting after startup',
+        status: 'completed',
+        companyId: 1,
+        submittedByUserId: 1,
+        assignedToUserId: null,
+        assignedToUserFullName: null
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .set({ userid: 10 })
+          .expect(200)
+          .expect(EXPECTED_TICKETS_AFTER_COMPLETE)
+      )
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .set({ userid: 10 })
+          .expect(200)
+          .expect(EVENT_LOG_AFTER_COMPLETE)
+      );
+  });
+
+  it('/POST complete ticket; malformed body', () => {
+    const comment = { foo: 'foo' };
+    return request(app.getHttpServer())
+      .post('/complete')
+      .set({ userid: 10 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'Invalid request body.'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(200)
+          .expect(EXPECTED_ALL_TICKETS)
+      );
+  });
+
+  it('/POST complete ticket; bad user id for submitter', () => {
+    const comment = { ticketId: 1 };
+    return request(app.getHttpServer())
+      .post('/complete')
+      .set({ userid: 10000 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: "Could not validate requestor's identity."
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(200)
+          .expect(EXPECTED_ALL_TICKETS)
+      );
+  });
+
+  it('/POST complete ticket; bad ticket id', () => {
+    const comment = { ticketId: 1000 };
+    return request(app.getHttpServer())
+      .post('/complete')
+      .set({ userid: 10 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No ticket exists at id: 1000.'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(200)
+          .expect(EXPECTED_ALL_TICKETS)
       );
   });
 });

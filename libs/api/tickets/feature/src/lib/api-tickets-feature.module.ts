@@ -6,6 +6,7 @@ import { ApiTicketsDataAccessModule } from '@tuskdesk-suite/api/tickets/data-acc
 import { ApiUsersDataAccessModule } from '@tuskdesk-suite/api/users/data-access';
 import { TicketController } from './ticket.controller';
 import { AssignController } from './assign/assign.controller';
+import { CompleteController } from './complete.controller';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { AssignController } from './assign/assign.controller';
     ApiCommentsDataAccessModule,
     ApiCompaniesDataAccessModule
   ],
-  controllers: [TicketController, AssignController],
+  controllers: [TicketController, AssignController, CompleteController],
   providers: []
 })
 export class ApiTicketsFeatureModule {}
