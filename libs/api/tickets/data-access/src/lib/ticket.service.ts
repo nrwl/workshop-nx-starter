@@ -73,6 +73,16 @@ export class TicketService {
     return updatedTicket;
   }
 
+  complete(ticketId: number): Ticket {
+    const ticket = this.findTicketById(ticketId);
+    if (!ticket) {
+      throw new Error('Attempted to retrieve a ticket id that does not exist');
+    }
+    const completedTicket: Ticket = { ...ticket, status: 'completed' };
+    this.replaceTicket(ticket, completedTicket);
+    return completedTicket;
+  }
+
   private replaceTicket(oldTicket: Ticket, newTicket: Ticket) {
     const indexToReplace = this.tickets.indexOf(oldTicket);
     if (indexToReplace === -1) {
