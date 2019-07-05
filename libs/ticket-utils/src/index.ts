@@ -8,6 +8,7 @@ export * from './lib/is-create-ticket-post-request-body.function';
 export * from './lib/is-submitted-by.filter';
 export * from './lib/is-update-ticket-post-request-body.function';
 export * from './lib/ticket-request.interface';
+export * from './lib/ticket-status.type';
 export * from './lib/ticket.data';
 export * from './lib/ticket.interface';
 export * from './lib/update-ticket-post-request-body.interface';

@@ -27,7 +27,11 @@ export class CommentsController {
   @Get()
   findAll(@Req() request: Request) {
     const comments = this.commentService.findAll();
-    this.eventLogService.trackEvent(request, 'comment', 'viewed all COMMENTS');
+    this.eventLogService.trackEvent(
+      this.userService.findById(+request.headers.userid),
+      'comment',
+      'viewed all COMMENTS'
+    );
     return comments;
   }
 
@@ -36,7 +40,7 @@ export class CommentsController {
     const createComponentInfo = this.validateCreateRequest(request);
     const comment = this.commentService.add(createComponentInfo);
     this.eventLogService.trackEvent(
-      request,
+      this.userService.findById(+request.headers.userid),
       'comment',
       `created COMMENT at id: ${comment.id}.`,
       comment.id
