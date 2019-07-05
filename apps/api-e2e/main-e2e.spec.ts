@@ -30,7 +30,9 @@ import {
   EVENTLOG_AFTER_CREATE_TICKET,
   EVENTLOG_AFTER_UPDATE_TICKET,
   EXPECTED_COMMENTS_AFTER_CREATE,
-  EVENTLOG_AFTER_CREATE_COMMENT
+  EVENTLOG_AFTER_CREATE_COMMENT,
+  EXPECTED_TICKETS_AFTER_ASSIGN,
+  EVENT_LOG_AFTER_ASSIGN
 } from './test-constants';
 import { resolve } from 'url';
 
@@ -475,6 +477,38 @@ describe('api', () => {
           .get('/comments')
           .expect(200)
           .expect(EXPECTED_ALL_COMMENTS)
+      );
+  });
+
+  it('/POST to assign ticket', () => {
+    const update = { ticketId: 1, assignToUserId: 10 };
+    return request(app.getHttpServer())
+      .post('/assign')
+      .set({ userid: 10 })
+      .send(update)
+      .expect(201)
+      .expect({
+        id: 1,
+        message: 'PC keeps rebooting after startup',
+        status: 'open',
+        companyId: 1,
+        submittedByUserId: 1,
+        assignedToUserId: 10,
+        assignedToUserFullName: 'Zack Nrwl'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .set({ userid: 10 })
+          .expect(200)
+          .expect(EXPECTED_TICKETS_AFTER_ASSIGN)
+      )
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/event-logs')
+          .set({ userid: 10 })
+          .expect(200)
+          .expect(EVENT_LOG_AFTER_ASSIGN)
       );
   });
 });
