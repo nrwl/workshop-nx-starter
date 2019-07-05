@@ -15,6 +15,11 @@ export class AssignController {
 
   @Post()
   assign(@Req() request: Request) {
+    const requestUserId = +request.headers.userid;
+    const requestingUser = this.userService.findById(requestUserId);
+    if (!requestingUser) {
+      throw new BadRequestException(`Unable to verify requestor's identity.`);
+    }
     if (!isAssignTicketRequestBody(request.body)) {
       throw new BadRequestException('Invalid request body');
     }

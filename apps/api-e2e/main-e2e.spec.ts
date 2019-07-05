@@ -511,4 +511,64 @@ describe('api', () => {
           .expect(EVENT_LOG_AFTER_ASSIGN)
       );
   });
+
+  it('/POST assign ticket; bad user id for submitter', () => {
+    const comment = { ticketId: 1, assignToUserId: 10 };
+    return request(app.getHttpServer())
+      .post('/assign')
+      .set({ userid: 10000 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: "Unable to verify requestor's identity."
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(200)
+          .expect(EXPECTED_ALL_TICKETS)
+      );
+  });
+
+  it('/POST assign ticket; bad user id for assignee', () => {
+    const comment = { ticketId: 1, assignToUserId: 100 };
+    return request(app.getHttpServer())
+      .post('/assign')
+      .set({ userid: 10 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No user exists at id: 100.'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(EXPECTED_ALL_TICKETS)
+          .expect(200)
+      );
+  });
+
+  it('/POST assign ticket; bad ticket id', () => {
+    const comment = { ticketId: 1000, assignToUserId: 10 };
+    return request(app.getHttpServer())
+      .post('/assign')
+      .set({ userid: 10 })
+      .send(comment)
+      .expect(400)
+      .expect({
+        statusCode: 400,
+        error: 'Bad Request',
+        message: 'No ticket exists at id: 1000.'
+      })
+      .then(() =>
+        request(app.getHttpServer())
+          .get('/tickets')
+          .expect(EXPECTED_ALL_TICKETS)
+          .expect(200)
+      );
+  });
 });
