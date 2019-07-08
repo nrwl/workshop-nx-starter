@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-import { DataPersistence } from '@nrwl/nx';
+import { DataPersistence } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 import { LoadLoggedInUser } from './authentication-state-model.actions';
 import { UserService } from '@tuskdesk-suite/backend';
@@ -25,5 +25,9 @@ export class AuthenticationStateModelEffects {
     }
   });
 
-  constructor(private actions: Actions, private d: DataPersistence<any>, private userService: UserService) {}
+  constructor(
+    private actions: Actions,
+    private d: DataPersistence<any>,
+    private userService: UserService
+  ) {}
 }
