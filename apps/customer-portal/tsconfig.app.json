@@ -2,13 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/customer-portal"
-},
-  "include": [
-    "**/*.ts",
-    "../../libs/ticket-list-view/src/index.ts"
-  ],
-  "exclude": [
-    "**/*.spec.ts",
-    "src/test.ts"
-  ]
+  },
+  "include": ["**/*.ts", "../../libs/ticket-list-view/src/index.ts"],
+  "exclude": ["**/*.spec.ts", "src/test.ts"]
 }

@@ -1,6 +1,9 @@
 export const APP_ROUTES = [
   {
     path: '',
-    loadChildren: () => import('@tuskdesk-suite/ticket-list-view').then(m => m.TicketListViewModule)
+    loadChildren: () =>
+      import('../../../../libs/ticket-list-view/src/lib/ticket-list-view.module').then(
+        m => m.TicketListViewModule
+      )
   }
 ];
