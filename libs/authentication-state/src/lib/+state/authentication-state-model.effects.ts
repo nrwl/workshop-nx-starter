@@ -1,32 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
+import { createEffect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/angular';
-import { map } from 'rxjs/operators';
-import { LoadLoggedInUser } from './authentication-state-model.actions';
 import { UserService } from '@tuskdesk-suite/backend';
+import { map } from 'rxjs/operators';
+import {
+  loadLoggedInUser,
+  loggedInUserError,
+  loggedInUserLoaded
+} from './authentication-state-model.actions';
 
 @Injectable()
 export class AuthenticationStateModelEffects {
-  @Effect()
-  loadLoggedInUser = this.d.fetch('LOAD_LOGGED_IN_USER', {
-    run: (a: LoadLoggedInUser) => {
-      return this.userService.userById(a.payload).pipe(
-        map(user => {
-          return {
-            type: 'LOGGED_IN_USER_LOADED',
-            payload: user
-          };
-        })
-      );
-    },
-
-    onError: (a: LoadLoggedInUser, error) => {
-      return { type: 'LOAD_LOGGED_IN_USER_FAILED' };
-    }
-  });
+  loadLoggedInUser = createEffect(() =>
+    this.d.fetch(loadLoggedInUser.type, {
+      run: (a: ReturnType<typeof loadLoggedInUser>) =>
+        this.userService
+          .userById(a.userId)
+          .pipe(map(user => loggedInUserLoaded({ user }))),
+      onError: (a: ReturnType<typeof loadLoggedInUser>, error) =>
+        loggedInUserError({ error })
+    })
+  );
 
   constructor(
-    private actions: Actions,
     private d: DataPersistence<any>,
     private userService: UserService
   ) {}

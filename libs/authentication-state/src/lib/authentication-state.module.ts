@@ -1,17 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
+import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
-import { authenticationStateModelReducer } from './+state/authentication-state-model.reducer';
-import { authenticationStateModelInitialState } from './+state/authentication-state-model.init';
+import { StoreModule } from '@ngrx/store';
 import { AuthenticationStateModelEffects } from './+state/authentication-state-model.effects';
+import { reducer } from './+state/authentication-state-model.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('authenticationStateModel', authenticationStateModelReducer, {
-      initialState: authenticationStateModelInitialState
-    }),
+    StoreModule.forFeature('authenticationStateModel', reducer),
     EffectsModule.forFeature([AuthenticationStateModelEffects])
   ],
   providers: [AuthenticationStateModelEffects]

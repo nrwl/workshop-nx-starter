@@ -1,13 +1,17 @@
+import { createAction, props } from '@ngrx/store';
 import { User } from '@tuskdesk-suite/data-models';
 
-export interface LoadLoggedInUser {
-  type: 'LOAD_LOGGED_IN_USER';
-  payload: number;
-}
+export const loadLoggedInUser = createAction(
+  'LOAD_LOGGED_IN_USER',
+  props<{ userId: number }>()
+);
 
-export interface LoggedInUserLoaded {
-  type: 'LOGGED_IN_USER_LOADED';
-  payload: User;
-}
+export const loggedInUserLoaded = createAction(
+  'LOGGED_IN_USER_LOADED',
+  props<{ user: User }>()
+);
 
-export type AuthenticationStateModelAction = LoadLoggedInUser | LoggedInUserLoaded;
+export const loggedInUserError = createAction(
+  'LOAD_LOGGED_IN_USER_FAILED',
+  props<{ error: any }>()
+);
