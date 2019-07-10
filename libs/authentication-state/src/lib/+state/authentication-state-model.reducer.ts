@@ -1,16 +1,19 @@
 import { AuthenticationStateModel } from './authentication-state-model.interfaces';
-import { AuthenticationStateModelAction } from './authentication-state-model.actions';
+import { createReducer, on, Action } from '@ngrx/store';
+import { loggedInUserLoaded } from './authentication-state-model.actions';
+import { authenticationStateModelInitialState } from './authentication-state-model.init';
 
-export function authenticationStateModelReducer(
-  state: AuthenticationStateModel,
-  action: AuthenticationStateModelAction
-): AuthenticationStateModel {
-  switch (action.type) {
-    case 'LOGGED_IN_USER_LOADED': {
-      return { ...state, user: action.payload };
-    }
-    default: {
-      return state;
-    }
-  }
+const featureReducer = createReducer(
+  authenticationStateModelInitialState,
+  on(loggedInUserLoaded, (state, { user }) => ({
+    ...state,
+    user
+  }))
+);
+
+export function reducer(
+  state: AuthenticationStateModel | undefined,
+  action: Action
+) {
+  return featureReducer(state, action);
 }

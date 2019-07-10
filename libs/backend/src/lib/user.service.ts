@@ -8,7 +8,10 @@ import { ApiConfig } from './api-config';
 export class UserService {
   private _rootUrl = '';
 
-  constructor(@Optional() private apiConfig: ApiConfig, private http: HttpClient) {
+  constructor(
+    @Optional() private apiConfig: ApiConfig,
+    private http: HttpClient
+  ) {
     if (apiConfig) {
       this._rootUrl = apiConfig.rootUrl;
     }
@@ -19,6 +22,8 @@ export class UserService {
   }
 
   users(searchTerm?: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this._rootUrl}/api/users`, { params: searchTerm ? { searchTerm } : null });
+    return this.http.get<User[]>(`${this._rootUrl}/api/users`, {
+      params: searchTerm ? { searchTerm } : null
+    });
   }
 }
