@@ -29,6 +29,13 @@ const StoreDevTools = !environment.production
   ? StoreDevtoolsModule.instrument()
   : [];
 
+const runtimeChecks = !environment.production
+  ? {
+      strictStateImmutability: true,
+      strictActionImmutability: true
+    }
+  : {};
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -41,10 +48,7 @@ const StoreDevTools = !environment.production
       {},
       {
         metaReducers,
-        runtimeChecks: {
-          strictStateImmutability: true,
-          strictActionImmutability: true
-        }
+        runtimeChecks
       }
     ),
     EffectsModule.forRoot([]),
