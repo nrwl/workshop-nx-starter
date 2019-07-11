@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '@tuskdesk-suite/data-models';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 
 export const loadLoggedInUser = createAction(
   'LOAD_LOGGED_IN_USER',

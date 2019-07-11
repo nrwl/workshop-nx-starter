@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TicketService } from '@tuskdesk-suite/backend';
-import { Ticket } from '@tuskdesk-suite/data-models';
+import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 

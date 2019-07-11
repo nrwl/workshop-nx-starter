@@ -1,4 +1,4 @@
-import { Ticket } from '@tuskdesk-suite/data-models';
+import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
 import { FEATURE_TICKETS } from '@tuskdesk-suite/tickets-state/src/lib/+state/tickets.reducer';
 
 export interface TicketsState {

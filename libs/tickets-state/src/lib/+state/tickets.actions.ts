@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Ticket } from '@tuskdesk-suite/data-models';
+import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
 
 export const loadAllTickets = createAction('[Tickets] Load All Tickets');
 export const allTicketsLoadError = createAction(

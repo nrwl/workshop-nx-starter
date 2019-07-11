@@ -275,33 +275,6 @@
       },
       "prefix": "app"
     },
-    "data-models": {
-      "root": "libs/data-models",
-      "sourceRoot": "libs/data-models/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/data-models/tsconfig.lib.json",
-              "libs/data-models/tsconfig.spec.json",
-              "libs/data-models/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/data-models/jest.config.js",
-            "tsConfig": "libs/data-models/tsconfig.spec.json",
-            "setupFile": "libs/data-models/src/test-setup.ts"
-          }
-        }
-      },
-      "prefix": "app"
-    },
     "reporting-dashboard-view": {
       "root": "libs/reporting-dashboard-view",
       "sourceRoot": "libs/reporting-dashboard-view/src",
