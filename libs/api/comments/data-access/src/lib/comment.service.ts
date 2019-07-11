@@ -3,7 +3,7 @@ import {
   Comment,
   COMMENTS,
   CreateCommentData
-} from '@tuskdesk-suite/comment-utils';
+} from '@tuskdesk-suite/shared/comment-utils';
 
 @Injectable()
 export class CommentService {

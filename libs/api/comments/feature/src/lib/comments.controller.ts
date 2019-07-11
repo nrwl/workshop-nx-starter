@@ -13,7 +13,7 @@ import { TicketService } from '@tuskdesk-suite/api/tickets/data-access';
 import {
   isCreateCommentRequestBody,
   CreateCommentData
-} from '@tuskdesk-suite/comment-utils';
+} from '@tuskdesk-suite/shared/comment-utils';
 
 @Controller('comments')
 export class CommentsController {

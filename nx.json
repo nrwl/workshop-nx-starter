@@ -52,7 +52,7 @@
     "company-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
-    "comment-utils": {
+    "shared-comment-utils": {
       "tags": ["platform:server", "type:util"]
     },
     "api-e2e": {
