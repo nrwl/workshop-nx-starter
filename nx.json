@@ -32,7 +32,7 @@
       "tags": []
     },
     "utils": {
-      "tags": []
+      "tags": ["type:utils", "platform:client", "platform:server"]
     },
     "ui-material": {
       "tags": []

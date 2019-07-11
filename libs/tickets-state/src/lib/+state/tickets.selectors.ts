@@ -1,5 +1,4 @@
 import { Ticket } from '@tuskdesk-suite/data-models';
-
 import { PartialAppState } from './tickets.interfaces';
 import { FEATURE_TICKETS } from './tickets.reducer';
 
