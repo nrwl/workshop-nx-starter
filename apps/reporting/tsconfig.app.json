@@ -2,12 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/reporting"
-},
-  "include": [
-    "**/*.ts"
-  ],
-  "exclude": [
-    "**/*.spec.ts",
-    "src/test.ts"
-  ]
+  },
+  "include": ["**/*.ts", "../../libs/reporting/feature/src/index.ts"],
+  "exclude": ["**/*.spec.ts", "src/test.ts"]
 }
