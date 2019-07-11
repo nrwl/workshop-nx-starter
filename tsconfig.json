@@ -20,7 +20,7 @@
       ],
       "@tuskdesk-suite/backend": ["libs/backend/src/index.ts"],
       "@tuskdesk-suite/data-models": ["libs/data-models/src/index.ts"],
-      "@tuskdesk-suite/utils": ["libs/utils/src/index.ts"],
+      "@tuskdesk-suite/shared/utils": ["libs/shared/utils/src/index.ts"],
       "@tuskdesk-suite/shared/ticket-utils": [
         "libs/shared/ticket-utils/src/index.ts"
       ],
