@@ -46,7 +46,7 @@
     "shared-user-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
-    "event-log-utils": {
+    "shared-event-log-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
     "company-utils": {

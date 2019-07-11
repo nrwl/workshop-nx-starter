@@ -539,9 +539,9 @@
         }
       }
     },
-    "event-log-utils": {
-      "root": "libs/event-log-utils",
-      "sourceRoot": "libs/event-log-utils/src",
+    "shared-event-log-utils": {
+      "root": "libs/shared/event-log-utils",
+      "sourceRoot": "libs/shared/event-log-utils/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -549,17 +549,17 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/event-log-utils/tsconfig.lib.json",
-              "libs/event-log-utils/tsconfig.spec.json"
+              "libs/shared/event-log-utils/tsconfig.lib.json",
+              "libs/shared/event-log-utils/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/event-log-utils/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/event-log-utils/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/event-log-utils/jest.config.js",
-            "tsConfig": "libs/event-log-utils/tsconfig.spec.json"
+            "jestConfig": "libs/shared/event-log-utils/jest.config.js",
+            "tsConfig": "libs/shared/event-log-utils/tsconfig.spec.json"
           }
         }
       }
