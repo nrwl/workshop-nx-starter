@@ -807,31 +807,31 @@
         }
       }
     },
-    "customer-portal-tickets-feature": {
+    "client-customer-portal-tickets-feature": {
       "projectType": "library",
-      "root": "libs/customer-portal/tickets-feature",
-      "sourceRoot": "libs/customer-portal/tickets-feature/src",
+      "root": "libs/client/customer-portal/tickets-feature",
+      "sourceRoot": "libs/client/customer-portal/tickets-feature/src",
       "prefix": "tuskdesk-suite",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/customer-portal/tickets-feature/tsconfig.lib.json",
-              "libs/customer-portal/tickets-feature/tsconfig.spec.json"
+              "libs/client/customer-portal/tickets-feature/tsconfig.lib.json",
+              "libs/client/customer-portal/tickets-feature/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/customer-portal/tickets-feature/**"
+              "!libs/client/customer-portal/tickets-feature/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/customer-portal/tickets-feature/jest.config.js",
-            "tsConfig": "libs/customer-portal/tickets-feature/tsconfig.spec.json",
-            "setupFile": "libs/customer-portal/tickets-feature/src/test-setup.ts"
+            "jestConfig": "libs/client/customer-portal/tickets-feature/jest.config.js",
+            "tsConfig": "libs/client/customer-portal/tickets-feature/tsconfig.spec.json",
+            "setupFile": "libs/client/customer-portal/tickets-feature/src/test-setup.ts"
           }
         }
       },
@@ -841,31 +841,31 @@
         }
       }
     },
-    "customer-portal-tickets-data-access": {
+    "client-customer-portal-tickets-data-access": {
       "projectType": "library",
-      "root": "libs/customer-portal/tickets-data-access",
-      "sourceRoot": "libs/customer-portal/tickets-data-access/src",
+      "root": "libs/client/customer-portal/tickets-data-access",
+      "sourceRoot": "libs/client/customer-portal/tickets-data-access/src",
       "prefix": "tuskdesk-suite",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/customer-portal/tickets-data-access/tsconfig.lib.json",
-              "libs/customer-portal/tickets-data-access/tsconfig.spec.json"
+              "libs/client/customer-portal/tickets-data-access/tsconfig.lib.json",
+              "libs/client/customer-portal/tickets-data-access/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/customer-portal/tickets-data-access/**"
+              "!libs/client/customer-portal/tickets-data-access/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/customer-portal/tickets-data-access/jest.config.js",
-            "tsConfig": "libs/customer-portal/tickets-data-access/tsconfig.spec.json",
-            "setupFile": "libs/customer-portal/tickets-data-access/src/test-setup.ts"
+            "jestConfig": "libs/client/customer-portal/tickets-data-access/jest.config.js",
+            "tsConfig": "libs/client/customer-portal/tickets-data-access/tsconfig.spec.json",
+            "setupFile": "libs/client/customer-portal/tickets-data-access/src/test-setup.ts"
           }
         }
       },
@@ -875,31 +875,31 @@
         }
       }
     },
-    "customer-portal-authentication-data-access": {
+    "client-customer-portal-authentication-data-access": {
       "projectType": "library",
-      "root": "libs/customer-portal/authentication-data-access",
-      "sourceRoot": "libs/customer-portal/authentication-data-access/src",
+      "root": "libs/client/customer-portal/authentication-data-access",
+      "sourceRoot": "libs/client/customer-portal/authentication-data-access/src",
       "prefix": "tuskdesk-suite",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/customer-portal/authentication-data-access/tsconfig.lib.json",
-              "libs/customer-portal/authentication-data-access/tsconfig.spec.json"
+              "libs/client/customer-portal/authentication-data-access/tsconfig.lib.json",
+              "libs/client/customer-portal/authentication-data-access/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/customer-portal/authentication-data-access/**"
+              "!libs/client/customer-portal/authentication-data-access/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/customer-portal/authentication-data-access/jest.config.js",
-            "tsConfig": "libs/customer-portal/authentication-data-access/tsconfig.spec.json",
-            "setupFile": "libs/customer-portal/authentication-data-access/src/test-setup.ts"
+            "jestConfig": "libs/client/customer-portal/authentication-data-access/jest.config.js",
+            "tsConfig": "libs/client/customer-portal/authentication-data-access/tsconfig.spec.json",
+            "setupFile": "libs/client/customer-portal/authentication-data-access/src/test-setup.ts"
           }
         }
       },

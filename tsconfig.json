@@ -72,14 +72,14 @@
       "@tuskdesk-suite/client/tuskdesk-api-data-access": [
         "libs/client/tuskdesk-api-data-access/src/index.ts"
       ],
-      "@tuskdesk-suite/customer-portal/tickets-feature": [
-        "libs/customer-portal/tickets-feature/src/index.ts"
+      "@tuskdesk-suite/client/customer-portal/tickets-feature": [
+        "libs/client/customer-portal/tickets-feature/src/index.ts"
       ],
-      "@tuskdesk-suite/customer-portal/tickets-data-access": [
-        "libs/customer-portal/tickets-data-access/src/index.ts"
+      "@tuskdesk-suite/client/customer-portal/tickets-data-access": [
+        "libs/client/customer-portal/tickets-data-access/src/index.ts"
       ],
-      "@tuskdesk-suite/customer-portal/authentication-data-access": [
-        "libs/customer-portal/authentication-data-access/src/index.ts"
+      "@tuskdesk-suite/client/customer-portal/authentication-data-access": [
+        "libs/client/customer-portal/authentication-data-access/src/index.ts"
       ]
     }
   },
