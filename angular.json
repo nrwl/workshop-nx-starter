@@ -589,9 +589,9 @@
         }
       }
     },
-    "comment-utils": {
-      "root": "libs/comment-utils",
-      "sourceRoot": "libs/comment-utils/src",
+    "shared-comment-utils": {
+      "root": "libs/shared/comment-utils",
+      "sourceRoot": "libs/shared/comment-utils/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -599,17 +599,17 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/comment-utils/tsconfig.lib.json",
-              "libs/comment-utils/tsconfig.spec.json"
+              "libs/shared/comment-utils/tsconfig.lib.json",
+              "libs/shared/comment-utils/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/comment-utils/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/comment-utils/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/comment-utils/jest.config.js",
-            "tsConfig": "libs/comment-utils/tsconfig.spec.json"
+            "jestConfig": "libs/shared/comment-utils/jest.config.js",
+            "tsConfig": "libs/shared/comment-utils/tsconfig.spec.json"
           }
         }
       }
