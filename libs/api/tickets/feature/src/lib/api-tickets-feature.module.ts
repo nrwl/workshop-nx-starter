@@ -5,7 +5,7 @@ import { ApiEventLogsDataAccessModule } from '@tuskdesk-suite/api/event-logs/dat
 import { ApiTicketsDataAccessModule } from '@tuskdesk-suite/api/tickets/data-access';
 import { ApiUsersDataAccessModule } from '@tuskdesk-suite/api/users/data-access';
 import { TicketController } from './ticket.controller';
-import { AssignController } from './assign/assign.controller';
+import { AssignController } from './assign.controller';
 import { CompleteController } from './complete.controller';
 
 @Module({
