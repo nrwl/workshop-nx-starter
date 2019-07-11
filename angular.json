@@ -742,28 +742,31 @@
         }
       }
     },
-    "reporting-feature": {
+    "client-reporting-feature": {
       "projectType": "library",
-      "root": "libs/reporting/feature",
-      "sourceRoot": "libs/reporting/feature/src",
+      "root": "libs/client/reporting/feature",
+      "sourceRoot": "libs/client/reporting/feature/src",
       "prefix": "tuskdesk-suite",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/reporting/feature/tsconfig.lib.json",
-              "libs/reporting/feature/tsconfig.spec.json"
+              "libs/client/reporting/feature/tsconfig.lib.json",
+              "libs/client/reporting/feature/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/reporting/feature/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/client/reporting/feature/**"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/reporting/feature/jest.config.js",
-            "tsConfig": "libs/reporting/feature/tsconfig.spec.json",
-            "setupFile": "libs/reporting/feature/src/test-setup.ts"
+            "jestConfig": "libs/client/reporting/feature/jest.config.js",
+            "tsConfig": "libs/client/reporting/feature/tsconfig.spec.json",
+            "setupFile": "libs/client/reporting/feature/src/test-setup.ts"
           }
         }
       },

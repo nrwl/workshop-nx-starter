@@ -67,12 +67,12 @@
     "api-comments-data-access": {
       "tags": ["type:data-access", "platform:server"]
     },
-    "reporting-feature": {
+    "client-reporting-feature": {
       "tags": ["type:feature", "scope:reporting", "platform:client"]
     },
     "client-tuskdesk-api-data-access": {
       "tags": [
-        "type:data-acces",
+        "type:data-access",
         "platform:client",
         "scope:reporting",
         "scope:customer-portal"
