@@ -1,9 +1,9 @@
 module.exports = {
-  name: 'company-utils',
+  name: 'shared-company-utils',
   preset: '../../jest.config.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/company-utils'
+  coverageDirectory: '../../coverage/libs/shared/shared/company-utils'
 };

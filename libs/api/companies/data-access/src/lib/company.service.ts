@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Company, COMPANIES } from '@tuskdesk-suite/company-utils';
+import { Company, COMPANIES } from '@tuskdesk-suite/shared/company-utils';
 import { User } from '@tuskdesk-suite/shared/user-utils';
 
 @Injectable()
