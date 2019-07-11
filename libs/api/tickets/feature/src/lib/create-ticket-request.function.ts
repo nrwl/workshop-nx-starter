@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { TicketRequest } from './ticket-request.interface';
-import { User } from '@tuskdesk-suite/user-utils';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 
 export const createTicketRequestFromRequest = (
   req: Request,

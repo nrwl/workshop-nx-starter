@@ -1,4 +1,4 @@
-import { User } from '@tuskdesk-suite/user-utils';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 import { Ticket } from './ticket.interface';
 
 export function isAssignedTo(user: User): (ticket: Ticket) => boolean {

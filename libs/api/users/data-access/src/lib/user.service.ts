@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User, USERS } from '@tuskdesk-suite/user-utils';
+import { User, USERS } from '@tuskdesk-suite/shared/user-utils';
 import { Request } from 'express';
 
 @Injectable()
