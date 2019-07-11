@@ -77,6 +77,9 @@
       ],
       "@tuskdesk-suite/customer-portal/tickets-data-access": [
         "libs/customer-portal/tickets-data-access/src/index.ts"
+      ],
+      "@tuskdesk-suite/customer-portal/authentication-data-access": [
+        "libs/customer-portal/authentication-data-access/src/index.ts"
       ]
     }
   },

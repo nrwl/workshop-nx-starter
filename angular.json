@@ -221,33 +221,6 @@
       },
       "prefix": "app"
     },
-    "authentication-state": {
-      "root": "libs/authentication-state",
-      "sourceRoot": "libs/authentication-state/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/authentication-state/tsconfig.lib.json",
-              "libs/authentication-state/tsconfig.spec.json",
-              "libs/authentication-state/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/authentication-state/jest.config.js",
-            "tsConfig": "libs/authentication-state/tsconfig.spec.json",
-            "setupFile": "libs/authentication-state/src/test-setup.ts"
-          }
-        }
-      },
-      "prefix": "app"
-    },
     "utils": {
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",
@@ -901,6 +874,36 @@
           "styleext": "less"
         }
       }
+    },
+    "customer-portal-authentication-data-access": {
+      "projectType": "library",
+      "root": "libs/customer-portal/authentication-data-access",
+      "sourceRoot": "libs/customer-portal/authentication-data-access/src",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer-portal/authentication-data-access/tsconfig.lib.json",
+              "libs/customer-portal/authentication-data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/customer-portal/authentication-data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer-portal/authentication-data-access/jest.config.js",
+            "tsConfig": "libs/customer-portal/authentication-data-access/tsconfig.spec.json",
+            "setupFile": "libs/customer-portal/authentication-data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "defaultProject": "customer-portal",
