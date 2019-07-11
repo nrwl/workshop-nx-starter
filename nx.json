@@ -78,13 +78,13 @@
         "scope:customer-portal"
       ]
     },
-    "customer-portal-tickets-feature": {
+    "client-customer-portal-tickets-feature": {
       "tags": ["type:feature", "scope:customer-portal", "platform:client"]
     },
-    "customer-portal-tickets-data-access": {
+    "client-customer-portal-tickets-data-access": {
       "tags": ["type:data-access", "scope:customer-porta"]
     },
-    "customer-portal-authentication-data-access": {
+    "client-customer-portal-authentication-data-access": {
       "tags": ["type:data-access", "scope:customer-portal", "platform:client"]
     }
   },

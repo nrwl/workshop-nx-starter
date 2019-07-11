@@ -34,8 +34,8 @@ const runtimeChecks = !environment.production
         {
           path: '',
           loadChildren: () =>
-            import('@tuskdesk-suite/customer-portal/tickets-feature').then(
-              module => module.CustomerPortalTicketsFeatureModule
+            import('@tuskdesk-suite/client/customer-portal/tickets-feature').then(
+              module => module.ClientCustomerPortalTicketsFeatureModule
             )
         }
       ],
