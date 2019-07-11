@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/customer-portal"
   },
-  "include": ["**/*.ts", "../../libs/ticket-list-view/src/index.ts"],
+  "include": ["**/*.ts"],
   "exclude": ["**/*.spec.ts", "src/test.ts"]
 }

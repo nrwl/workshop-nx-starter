@@ -20,12 +20,8 @@
       ],
       "@tuskdesk-suite/backend": ["libs/backend/src/index.ts"],
       "@tuskdesk-suite/data-models": ["libs/data-models/src/index.ts"],
-      "@tuskdesk-suite/ticket-list-view": [
-        "libs/ticket-list-view/src/index.ts"
-      ],
       "@tuskdesk-suite/tickets-state": ["libs/tickets-state/src/index.ts"],
       "@tuskdesk-suite/utils": ["libs/utils/src/index.ts"],
-      "@tuskdesk-suite/ui-material": ["libs/ui-material/src/index.ts"],
       "@tuskdesk-suite/shared/ticket-utils": [
         "libs/shared/ticket-utils/src/index.ts"
       ],
@@ -73,6 +69,12 @@
       ],
       "@tuskdesk-suite/reporting/feature": [
         "libs/reporting/feature/src/index.ts"
+      ],
+      "@tuskdesk-suite/client/tuskdesk-api-data-access": [
+        "libs/client/tuskdesk-api-data-access/src/index.ts"
+      ],
+      "@tuskdesk-suite/customer-portal/tickets-feature": [
+        "libs/customer-portal/tickets-feature/src/index.ts"
       ]
     }
   },

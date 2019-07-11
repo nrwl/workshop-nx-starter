@@ -16,20 +16,11 @@
     "authentication-state": {
       "tags": []
     },
-    "backend": {
-      "tags": []
-    },
-    "ticket-list-view": {
-      "tags": []
-    },
     "tickets-state": {
       "tags": []
     },
     "utils": {
       "tags": ["type:utils", "platform:client", "platform:server"]
-    },
-    "ui-material": {
-      "tags": []
     },
     "api": {
       "tags": ["type:app", "platform:server"]
@@ -84,6 +75,17 @@
     },
     "reporting-feature": {
       "tags": ["type:feature", "scope:reporting", "platform:client"]
+    },
+    "client-tuskdesk-api-data-access": {
+      "tags": [
+        "type:data-acces",
+        "platform:client",
+        "scope:reporting",
+        "scope:customer-portal"
+      ]
+    },
+    "customer-portal-tickets-feature": {
+      "tags": ["type:feature", "scope:customer-portal", "platform:client"]
     }
   },
   "implicitDependencies": {

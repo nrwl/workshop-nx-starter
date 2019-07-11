@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CompanyService, TicketService } from '@tuskdesk-suite/backend';
+import {
+  CompanyService,
+  TicketService
+} from '@tuskdesk-suite/client/tuskdesk-api-data-access';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({

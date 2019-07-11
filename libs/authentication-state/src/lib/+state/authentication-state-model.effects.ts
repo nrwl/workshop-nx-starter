@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createEffect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/angular';
-import { UserService } from '@tuskdesk-suite/backend';
+import { UserService } from '@tuskdesk-suite/client/tuskdesk-api-data-access';
 import { map } from 'rxjs/operators';
 import {
   loadLoggedInUser,
