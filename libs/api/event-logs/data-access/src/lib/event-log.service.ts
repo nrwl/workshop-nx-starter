@@ -4,7 +4,7 @@ import {
   EVENTLOGS,
   ResourceType
 } from '@tuskdesk-suite/event-log-utils';
-import { User } from '@tuskdesk-suite/user-utils';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 
 @Injectable()
 export class EventLogService {

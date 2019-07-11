@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Company, COMPANIES } from '@tuskdesk-suite/company-utils';
-import { User } from '@tuskdesk-suite/user-utils';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 
 @Injectable()
 export class CompanyService {

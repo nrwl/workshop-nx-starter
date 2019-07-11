@@ -1,4 +1,4 @@
-import { User } from '@tuskdesk-suite/user-utils';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 
 export interface TicketRequest {
   currentUser: User;

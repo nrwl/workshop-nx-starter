@@ -43,7 +43,7 @@
     "shared-ticket-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
-    "user-utils": {
+    "shared-user-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
     "event-log-utils": {

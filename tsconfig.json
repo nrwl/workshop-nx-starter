@@ -32,7 +32,9 @@
       "@tuskdesk-suite/shared/ticket-utils": [
         "libs/shared/ticket-utils/src/index.ts"
       ],
-      "@tuskdesk-suite/user-utils": ["libs/user-utils/src/index.ts"],
+      "@tuskdesk-suite/shared/user-utils": [
+        "libs/shared/user-utils/src/index.ts"
+      ],
       "@tuskdesk-suite/event-log-utils": ["libs/event-log-utils/src/index.ts"],
       "@tuskdesk-suite/company-utils": ["libs/company-utils/src/index.ts"],
       "@tuskdesk-suite/shared/comment-utils": [
