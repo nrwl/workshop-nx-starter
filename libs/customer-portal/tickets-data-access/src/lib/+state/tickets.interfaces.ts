@@ -1,5 +1,5 @@
 import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
-import { FEATURE_TICKETS } from '@tuskdesk-suite/tickets-state/src/lib/+state/tickets.reducer';
+import { FEATURE_TICKETS } from './tickets.reducer';
 
 export interface TicketsState {
   list: Ticket[];
