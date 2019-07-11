@@ -1,4 +1,4 @@
-import { hasAllRequiredFields } from '@tuskdesk-suite/utils';
+import { hasAllRequiredFields } from '@tuskdesk-suite/shared/utils';
 import { UpdateTicketPostRequestBody } from './update-ticket-post-request-body.interface';
 
 function allFieldsAreOfProperType(

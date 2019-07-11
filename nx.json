@@ -13,7 +13,7 @@
     "reporting-e2e": {
       "tags": ["type:e2e-app", "platform:client"]
     },
-    "utils": {
+    "shared-utils": {
       "tags": ["type:utils", "platform:client", "platform:server"]
     },
     "api": {

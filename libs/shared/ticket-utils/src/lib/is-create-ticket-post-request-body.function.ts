@@ -1,5 +1,5 @@
 import { CreateTicketPostRequestBody } from './create-ticket-post-request-body.interface';
-import { hasAllRequiredFields } from '@tuskdesk-suite/utils';
+import { hasAllRequiredFields } from '@tuskdesk-suite/shared/utils';
 
 function allFieldsAreOfProperType(
   arg: any,
