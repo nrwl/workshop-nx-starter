@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
-import { AuthenticationStateModelEffects } from './+state/authentication-state-model.effects';
+import { CommonModule } from '@angular/common';
 import { reducer } from './+state/authentication-state-model.reducer';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthenticationStateModelEffects } from './+state/authentication-state-model.effects';
 
 @NgModule({
   imports: [
@@ -13,4 +13,4 @@ import { reducer } from './+state/authentication-state-model.reducer';
   ],
   providers: [AuthenticationStateModelEffects]
 })
-export class AuthenticationStateModule {}
+export class CustomerPortalAuthenticationDataAccessModule {}

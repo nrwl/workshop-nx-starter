@@ -13,9 +13,6 @@
     "reporting-e2e": {
       "tags": ["type:e2e-app", "platform:client"]
     },
-    "authentication-state": {
-      "tags": []
-    },
     "utils": {
       "tags": ["type:utils", "platform:client", "platform:server"]
     },
@@ -86,6 +83,9 @@
     },
     "customer-portal-tickets-data-access": {
       "tags": ["type:data-access", "scope:customer-porta"]
+    },
+    "customer-portal-authentication-data-access": {
+      "tags": ["type:data-access", "scope:customer-portal", "platform:client"]
     }
   },
   "implicitDependencies": {
