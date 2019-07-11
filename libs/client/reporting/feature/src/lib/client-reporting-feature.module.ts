@@ -33,4 +33,4 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     }
   ]
 })
-export class ReportingFeatureModule {}
+export class ClientReportingFeatureModule {}

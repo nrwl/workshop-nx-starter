@@ -10,8 +10,10 @@ import { RouterModule } from '@angular/router';
       [
         {
           path: '',
-          loadChildren:
-            '@tuskdesk-suite/reporting/feature#ReportingFeatureModule',
+          loadChildren: () =>
+            import('@tuskdesk-suite/client/reporting/feature').then(
+              module => module.ClientReportingFeatureModule
+            ),
           pathMatch: 'full'
         }
       ],
