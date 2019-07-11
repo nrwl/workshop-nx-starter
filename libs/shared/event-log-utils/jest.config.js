@@ -1,9 +1,9 @@
 module.exports = {
-  name: 'event-log-utils',
+  name: 'shared-event-log-utils',
   preset: '../../jest.config.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/event-log-utils'
+  coverageDirectory: '../../coverage/libs/shared/event-log-utils'
 };

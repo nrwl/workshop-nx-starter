@@ -3,7 +3,7 @@ import {
   EventLog,
   EVENTLOGS,
   ResourceType
-} from '@tuskdesk-suite/event-log-utils';
+} from '@tuskdesk-suite/shared/event-log-utils';
 import { User } from '@tuskdesk-suite/shared/user-utils';
 
 @Injectable()
