@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import {
   TicketService,
   UserService
-} from '@tuskdesk-suite/client/tuskdesk-api-data-access';
+} from '@tuskdesk-suite/client/shared/tuskdesk-api-data-access';
 import { User } from '@tuskdesk-suite/shared/user-utils';
 
 interface SearchResult {

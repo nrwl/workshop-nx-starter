@@ -70,7 +70,7 @@
     "client-reporting-feature": {
       "tags": ["type:feature", "scope:reporting", "platform:client"]
     },
-    "client-tuskdesk-api-data-access": {
+    "client-shared-tuskdesk-api-data-access": {
       "tags": [
         "type:data-access",
         "platform:client",

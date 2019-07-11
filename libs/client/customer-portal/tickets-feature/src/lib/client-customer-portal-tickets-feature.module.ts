@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UiMaterialModule } from './ui-material.module';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { ClientTuskdeskApiDataAccessModule } from '@tuskdesk-suite/client/tuskdesk-api-data-access';
+import { ClientSharedTuskdeskApiDataAccessModule } from '@tuskdesk-suite/client/shared/tuskdesk-api-data-access';
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import { ClientTuskdeskApiDataAccessModule } from '@tuskdesk-suite/client/tuskde
     FlexLayoutModule,
     UiMaterialModule,
     StoreRouterConnectingModule,
-    ClientTuskdeskApiDataAccessModule,
+    ClientSharedTuskdeskApiDataAccessModule,
     RouterModule.forChild([
       {
         path: '',

@@ -69,8 +69,8 @@
       "@tuskdesk-suite/client/reporting/feature": [
         "libs/client/reporting/feature/src/index.ts"
       ],
-      "@tuskdesk-suite/client/tuskdesk-api-data-access": [
-        "libs/client/tuskdesk-api-data-access/src/index.ts"
+      "@tuskdesk-suite/client/shared/tuskdesk-api-data-access": [
+        "libs/client/shared/tuskdesk-api-data-access/src/index.ts"
       ],
       "@tuskdesk-suite/client/customer-portal/tickets-feature": [
         "libs/client/customer-portal/tickets-feature/src/index.ts"

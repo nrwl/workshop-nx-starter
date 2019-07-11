@@ -776,31 +776,31 @@
         }
       }
     },
-    "client-tuskdesk-api-data-access": {
+    "client-shared-tuskdesk-api-data-access": {
       "projectType": "library",
-      "root": "libs/client/tuskdesk-api-data-access",
-      "sourceRoot": "libs/client/tuskdesk-api-data-access/src",
+      "root": "libs/client/shared/tuskdesk-api-data-access",
+      "sourceRoot": "libs/client/shared/tuskdesk-api-data-access/src",
       "prefix": "tuskdesk-suite",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/client/tuskdesk-api-data-access/tsconfig.lib.json",
-              "libs/client/tuskdesk-api-data-access/tsconfig.spec.json"
+              "libs/client/shared/tuskdesk-api-data-access/tsconfig.lib.json",
+              "libs/client/shared/tuskdesk-api-data-access/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/client/tuskdesk-api-data-access/**"
+              "!libs/client/shared/tuskdesk-api-data-access/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/client/tuskdesk-api-data-access/jest.config.js",
-            "tsConfig": "libs/client/tuskdesk-api-data-access/tsconfig.spec.json",
-            "setupFile": "libs/client/tuskdesk-api-data-access/src/test-setup.ts"
+            "jestConfig": "libs/client/shared/tuskdesk-api-data-access/jest.config.js",
+            "tsConfig": "libs/client/shared/tuskdesk-api-data-access/tsconfig.spec.json",
+            "setupFile": "libs/client/shared/tuskdesk-api-data-access/src/test-setup.ts"
           }
         }
       },
