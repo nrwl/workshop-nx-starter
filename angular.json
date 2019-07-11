@@ -248,33 +248,6 @@
       },
       "prefix": "app"
     },
-    "tickets-state": {
-      "root": "libs/tickets-state",
-      "sourceRoot": "libs/tickets-state/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/tickets-state/tsconfig.lib.json",
-              "libs/tickets-state/tsconfig.spec.json",
-              "libs/tickets-state/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/tickets-state/jest.config.js",
-            "tsConfig": "libs/tickets-state/tsconfig.spec.json",
-            "setupFile": "libs/tickets-state/src/test-setup.ts"
-          }
-        }
-      },
-      "prefix": "tickets"
-    },
     "utils": {
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",
@@ -886,6 +859,40 @@
             "jestConfig": "libs/customer-portal/tickets-feature/jest.config.js",
             "tsConfig": "libs/customer-portal/tickets-feature/tsconfig.spec.json",
             "setupFile": "libs/customer-portal/tickets-feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "customer-portal-tickets-data-access": {
+      "projectType": "library",
+      "root": "libs/customer-portal/tickets-data-access",
+      "sourceRoot": "libs/customer-portal/tickets-data-access/src",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer-portal/tickets-data-access/tsconfig.lib.json",
+              "libs/customer-portal/tickets-data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/customer-portal/tickets-data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer-portal/tickets-data-access/jest.config.js",
+            "tsConfig": "libs/customer-portal/tickets-data-access/tsconfig.spec.json",
+            "setupFile": "libs/customer-portal/tickets-data-access/src/test-setup.ts"
           }
         }
       },

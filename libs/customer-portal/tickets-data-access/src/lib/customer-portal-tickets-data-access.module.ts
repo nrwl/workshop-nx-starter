@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  imports: [CommonModule, EffectsModule.forFeature([])],
-  providers: []
+  imports: [CommonModule, EffectsModule.forFeature([])]
 })
-export class TicketsStateModule {}
+export class CustomerPortalTicketsDataAccessModule {}

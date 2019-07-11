@@ -16,9 +16,6 @@
     "authentication-state": {
       "tags": []
     },
-    "tickets-state": {
-      "tags": []
-    },
     "utils": {
       "tags": ["type:utils", "platform:client", "platform:server"]
     },
@@ -86,6 +83,9 @@
     },
     "customer-portal-tickets-feature": {
       "tags": ["type:feature", "scope:customer-portal", "platform:client"]
+    },
+    "customer-portal-tickets-data-access": {
+      "tags": ["type:data-access", "scope:customer-porta"]
     }
   },
   "implicitDependencies": {
