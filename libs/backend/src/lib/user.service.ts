@@ -1,6 +1,6 @@
 import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '@tuskdesk-suite/data-models';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 import { Observable } from 'rxjs/Observable';
 import { ApiConfig } from './api-config';
 

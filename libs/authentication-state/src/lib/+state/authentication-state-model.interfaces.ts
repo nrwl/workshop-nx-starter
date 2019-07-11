@@ -1,4 +1,4 @@
-import { User } from '@tuskdesk-suite/data-models';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 
 export interface AuthenticationStateModel {
   user: User;

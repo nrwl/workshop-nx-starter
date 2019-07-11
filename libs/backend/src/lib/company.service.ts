@@ -1,14 +1,18 @@
 import { Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { Company, User } from '@tuskdesk-suite/data-models';
+import { Company } from '@tuskdesk-suite/shared/company-utils';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 import { ApiConfig } from './api-config';
 
 @Injectable()
 export class CompanyService {
   private _rootUrl = '';
 
-  constructor(@Optional() private apiConfig: ApiConfig, private http: HttpClient) {
+  constructor(
+    @Optional() private apiConfig: ApiConfig,
+    private http: HttpClient
+  ) {
     if (apiConfig) {
       this._rootUrl = apiConfig.rootUrl;
     }

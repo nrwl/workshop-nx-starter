@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { TicketService, UserService } from '@tuskdesk-suite/backend';
-import { User } from '@tuskdesk-suite/data-models';
+import { User } from '@tuskdesk-suite/shared/user-utils';
 
 interface SearchResult {
   id: number;
@@ -22,7 +22,10 @@ export class SearchTicketsComponent implements OnInit {
   usersFound: User[];
   searchResults$: Observable<SearchResult[]>;
 
-  constructor(private ticketService: TicketService, private userService: UserService) {}
+  constructor(
+    private ticketService: TicketService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {}
 

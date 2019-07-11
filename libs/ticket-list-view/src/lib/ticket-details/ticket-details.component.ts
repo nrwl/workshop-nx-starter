@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Ticket, TicketComment } from '@tuskdesk-suite/data-models';
+import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
+import { Comment } from '@tuskdesk-suite/shared/comment-utils';
 import { FormControl } from '@angular/forms';
 import { TicketService } from '@tuskdesk-suite/backend';
 
@@ -12,7 +13,7 @@ import { TicketService } from '@tuskdesk-suite/backend';
 })
 export class TicketDetailsComponent implements OnInit {
   ticket$: Observable<Ticket>;
-  comments$: Observable<TicketComment[]>;
+  comments$: Observable<Comment[]>;
   ticketMessage = new FormControl();
   timer$: Observable<number>;
 
