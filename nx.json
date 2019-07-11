@@ -14,7 +14,7 @@
       "tags": ["type:e2e-app", "platform:client"]
     },
     "shared-utils": {
-      "tags": ["type:utils", "platform:client", "platform:server"]
+      "tags": ["type:util", "platform:client", "platform:server"]
     },
     "api": {
       "tags": ["type:app", "platform:server"]
