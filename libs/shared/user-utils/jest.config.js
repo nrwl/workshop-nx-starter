@@ -1,6 +1,6 @@
 module.exports = {
   name: 'shared-user-utils',
-  preset: '../../jest.config.js',
+  preset: '../../../jest.config.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
