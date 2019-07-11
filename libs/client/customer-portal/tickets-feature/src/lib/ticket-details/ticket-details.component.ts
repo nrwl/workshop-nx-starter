@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
 import { Comment } from '@tuskdesk-suite/shared/comment-utils';
 import { FormControl } from '@angular/forms';
-import { TicketService } from '@tuskdesk-suite/client/tuskdesk-api-data-access';
+import { TicketService } from '@tuskdesk-suite/client/shared/tuskdesk-api-data-access';
 
 @Component({
   selector: 'app-ticket-details',

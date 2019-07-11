@@ -1,19 +1,19 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CompanyService } from './company.service';
-import { TicketService } from './ticket.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CompanyService } from './company.service';
 import { UserService } from './user.service';
+import { TicketService } from './ticket.service';
 import { ApiConfig } from './api-config';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   providers: [CompanyService, TicketService, UserService]
 })
-export class ClientTuskdeskApiDataAccessModule {
+export class ClientSharedTuskdeskApiDataAccessModule {
   static forRoot(rootUrl: string = ''): ModuleWithProviders {
     return {
-      ngModule: ClientTuskdeskApiDataAccessModule,
+      ngModule: ClientSharedTuskdeskApiDataAccessModule,
       providers: [{ provide: ApiConfig, useValue: { rootUrl } }]
     };
   }
