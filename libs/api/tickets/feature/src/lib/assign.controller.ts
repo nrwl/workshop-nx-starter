@@ -1,6 +1,6 @@
 import { Controller, Post, Req, BadRequestException } from '@nestjs/common';
 import { Request } from 'express';
-import { isAssignTicketRequestBody } from '@tuskdesk-suite/ticket-utils';
+import { isAssignTicketRequestBody } from '@tuskdesk-suite/shared/ticket-utils';
 import { TicketService } from '@tuskdesk-suite/api/tickets/data-access';
 import { UserService } from '@tuskdesk-suite/api/users/data-access/src';
 import { EventLogService } from '@tuskdesk-suite/api/event-logs/data-access/src';

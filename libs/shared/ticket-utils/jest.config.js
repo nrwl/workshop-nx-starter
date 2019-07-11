@@ -1,9 +1,9 @@
 module.exports = {
-  name: 'ticket-utils',
+  name: 'shared-ticket-utils',
   preset: '../../jest.config.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/ticket-utils'
+  coverageDirectory: '../../coverage/libs/shared/ticket-utils'
 };

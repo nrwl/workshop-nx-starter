@@ -6,7 +6,7 @@ import {
   TICKETS,
   TicketStatus,
   updateTicket
-} from '@tuskdesk-suite/ticket-utils';
+} from '@tuskdesk-suite/shared/ticket-utils';
 
 @Injectable()
 export class TicketService {

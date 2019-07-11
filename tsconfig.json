@@ -29,7 +29,9 @@
       "@tuskdesk-suite/tickets-state": ["libs/tickets-state/src/index.ts"],
       "@tuskdesk-suite/utils": ["libs/utils/src/index.ts"],
       "@tuskdesk-suite/ui-material": ["libs/ui-material/src/index.ts"],
-      "@tuskdesk-suite/ticket-utils": ["libs/ticket-utils/src/index.ts"],
+      "@tuskdesk-suite/shared/ticket-utils": [
+        "libs/shared/ticket-utils/src/index.ts"
+      ],
       "@tuskdesk-suite/user-utils": ["libs/user-utils/src/index.ts"],
       "@tuskdesk-suite/event-log-utils": ["libs/event-log-utils/src/index.ts"],
       "@tuskdesk-suite/company-utils": ["libs/company-utils/src/index.ts"],

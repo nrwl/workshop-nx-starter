@@ -40,28 +40,23 @@
     "api": {
       "tags": ["type:app", "platform:server"]
     },
-    "ticket-utils": {
-      "tags": ["platform:server", "type:util"]
+    "shared-ticket-utils": {
+      "tags": ["platform:server", "platform:client", "type:util"]
     },
     "user-utils": {
-      "tags": ["platform:server", "type:util"]
+      "tags": ["platform:server", "platform:client", "type:util"]
     },
     "event-log-utils": {
-      "tags": ["platform:server", "type:util"]
+      "tags": ["platform:server", "platform:client", "type:util"]
     },
     "company-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
     "shared-comment-utils": {
-      "tags": ["platform:server", "type:util"]
+      "tags": ["platform:server", "platform:client", "type:util"]
     },
     "api-e2e": {
-      "tags": [
-        "platform:server",
-        "platform:server",
-        "type:e2e-app",
-        "scope:api"
-      ]
+      "tags": ["platform:server", "type:e2e-app", "scope:api"]
     },
     "api-tickets-feature": {
       "tags": ["type:feature", "platform:server"]

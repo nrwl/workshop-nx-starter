@@ -20,7 +20,7 @@ import {
   isUpdateTicketPostRequestBody,
   Ticket,
   UpdateTicketPostRequestBody
-} from '@tuskdesk-suite/ticket-utils';
+} from '@tuskdesk-suite/shared/ticket-utils';
 import { Request } from 'express';
 import { createTicketRequestFromRequest } from './create-ticket-request.function';
 

@@ -489,9 +489,9 @@
         }
       }
     },
-    "ticket-utils": {
-      "root": "libs/ticket-utils",
-      "sourceRoot": "libs/ticket-utils/src",
+    "shared-ticket-utils": {
+      "root": "libs/shared/ticket-utils",
+      "sourceRoot": "libs/shared/ticket-utils/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -499,17 +499,17 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/ticket-utils/tsconfig.lib.json",
-              "libs/ticket-utils/tsconfig.spec.json"
+              "libs/shared/ticket-utils/tsconfig.lib.json",
+              "libs/shared/ticket-utils/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ticket-utils/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ticket-utils/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/ticket-utils/jest.config.js",
-            "tsConfig": "libs/ticket-utils/tsconfig.spec.json"
+            "jestConfig": "libs/shared/ticket-utils/jest.config.js",
+            "tsConfig": "libs/shared/ticket-utils/tsconfig.spec.json"
           }
         }
       }
