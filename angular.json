@@ -275,33 +275,6 @@
       },
       "prefix": "app"
     },
-    "reporting-dashboard-view": {
-      "root": "libs/reporting-dashboard-view",
-      "sourceRoot": "libs/reporting-dashboard-view/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/reporting-dashboard-view/tsconfig.lib.json",
-              "libs/reporting-dashboard-view/tsconfig.spec.json",
-              "libs/reporting-dashboard-view/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/reporting-dashboard-view/jest.config.js",
-            "tsConfig": "libs/reporting-dashboard-view/tsconfig.spec.json",
-            "setupFile": "libs/reporting-dashboard-view/src/test-setup.ts"
-          }
-        }
-      },
-      "prefix": "app"
-    },
     "ticket-list-view": {
       "root": "libs/ticket-list-view",
       "sourceRoot": "libs/ticket-list-view/src",
@@ -900,6 +873,37 @@
             "jestConfig": "libs/api/comments/data-access/jest.config.js",
             "tsConfig": "libs/api/comments/data-access/tsconfig.spec.json"
           }
+        }
+      }
+    },
+    "reporting-feature": {
+      "projectType": "library",
+      "root": "libs/reporting/feature",
+      "sourceRoot": "libs/reporting/feature/src",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/reporting/feature/tsconfig.lib.json",
+              "libs/reporting/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/reporting/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/reporting/feature/jest.config.js",
+            "tsConfig": "libs/reporting/feature/tsconfig.spec.json",
+            "setupFile": "libs/reporting/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

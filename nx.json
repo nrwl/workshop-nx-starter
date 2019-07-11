@@ -19,9 +19,6 @@
     "backend": {
       "tags": []
     },
-    "reporting-dashboard-view": {
-      "tags": []
-    },
     "ticket-list-view": {
       "tags": []
     },
@@ -84,6 +81,9 @@
     },
     "api-comments-data-access": {
       "tags": ["type:data-access", "platform:server"]
+    },
+    "reporting-feature": {
+      "tags": ["type:feature", "scope:reporting", "platform:client"]
     }
   },
   "implicitDependencies": {

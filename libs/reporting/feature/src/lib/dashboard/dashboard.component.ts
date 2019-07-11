@@ -3,7 +3,7 @@ import { CompanyService, TicketService } from '@tuskdesk-suite/backend';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'tuskdesk-suite-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -11,7 +11,10 @@ import { map, mergeMap } from 'rxjs/operators';
 export class DashboardComponent implements OnInit {
   model$;
 
-  constructor(private companyService: CompanyService, private ticketService: TicketService) {}
+  constructor(
+    private companyService: CompanyService,
+    private ticketService: TicketService
+  ) {}
 
   ngOnInit() {
     this.model$ = this.companyService.companies().pipe(
