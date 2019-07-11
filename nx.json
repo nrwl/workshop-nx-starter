@@ -49,7 +49,7 @@
     "shared-event-log-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
-    "company-utils": {
+    "shared-company-utils": {
       "tags": ["platform:server", "platform:client", "type:util"]
     },
     "shared-comment-utils": {

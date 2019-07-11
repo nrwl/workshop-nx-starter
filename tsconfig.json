@@ -38,7 +38,9 @@
       "@tuskdesk-suite/shared/event-log-utils": [
         "libs/shared/event-log-utils/src/index.ts"
       ],
-      "@tuskdesk-suite/company-utils": ["libs/company-utils/src/index.ts"],
+      "@tuskdesk-suite/shared/company-utils": [
+        "libs/shared/company-utils/src/index.ts"
+      ],
       "@tuskdesk-suite/shared/comment-utils": [
         "libs/shared/comment-utils/src/index.ts"
       ],
