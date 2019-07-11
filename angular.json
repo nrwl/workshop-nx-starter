@@ -248,60 +248,6 @@
       },
       "prefix": "app"
     },
-    "backend": {
-      "root": "libs/backend",
-      "sourceRoot": "libs/backend/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/backend/tsconfig.lib.json",
-              "libs/backend/tsconfig.spec.json",
-              "libs/backend/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/backend/jest.config.js",
-            "tsConfig": "libs/backend/tsconfig.spec.json",
-            "setupFile": "libs/backend/src/test-setup.ts"
-          }
-        }
-      },
-      "prefix": "app"
-    },
-    "ticket-list-view": {
-      "root": "libs/ticket-list-view",
-      "sourceRoot": "libs/ticket-list-view/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ticket-list-view/tsconfig.lib.json",
-              "libs/ticket-list-view/tsconfig.spec.json",
-              "libs/ticket-list-view/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/ticket-list-view/jest.config.js",
-            "tsConfig": "libs/ticket-list-view/tsconfig.spec.json",
-            "setupFile": "libs/ticket-list-view/src/test-setup.ts"
-          }
-        }
-      },
-      "prefix": "app"
-    },
     "tickets-state": {
       "root": "libs/tickets-state",
       "sourceRoot": "libs/tickets-state/src",
@@ -351,32 +297,6 @@
             "jestConfig": "libs/utils/jest.config.js",
             "tsConfig": "libs/utils/tsconfig.spec.json",
             "setupFile": "libs/utils/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "ui-material": {
-      "root": "libs/ui-material",
-      "sourceRoot": "libs/ui-material/src",
-      "projectType": "library",
-      "prefix": "tuskdesk-suite",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ui-material/tsconfig.lib.json",
-              "libs/ui-material/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/ui-material/jest.config.js",
-            "tsConfig": "libs/ui-material/tsconfig.spec.json",
-            "setupFile": "libs/ui-material/src/test-setup.ts"
           }
         }
       }
@@ -904,6 +824,74 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "client-tuskdesk-api-data-access": {
+      "projectType": "library",
+      "root": "libs/client/tuskdesk-api-data-access",
+      "sourceRoot": "libs/client/tuskdesk-api-data-access/src",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/client/tuskdesk-api-data-access/tsconfig.lib.json",
+              "libs/client/tuskdesk-api-data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/client/tuskdesk-api-data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/client/tuskdesk-api-data-access/jest.config.js",
+            "tsConfig": "libs/client/tuskdesk-api-data-access/tsconfig.spec.json",
+            "setupFile": "libs/client/tuskdesk-api-data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "customer-portal-tickets-feature": {
+      "projectType": "library",
+      "root": "libs/customer-portal/tickets-feature",
+      "sourceRoot": "libs/customer-portal/tickets-feature/src",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer-portal/tickets-feature/tsconfig.lib.json",
+              "libs/customer-portal/tickets-feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/customer-portal/tickets-feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer-portal/tickets-feature/jest.config.js",
+            "tsConfig": "libs/customer-portal/tickets-feature/tsconfig.spec.json",
+            "setupFile": "libs/customer-portal/tickets-feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
         }
       }
     }
