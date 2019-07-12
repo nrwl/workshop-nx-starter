@@ -11,6 +11,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/client/shared/asset-utils"]
+            },
             "outputPath": "dist/apps/customer-portal",
             "index": "apps/customer-portal/src/index.html",
             "main": "apps/customer-portal/src/main.ts",
@@ -19,7 +22,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "libs/shared-assets",
+                "input": "libs/client/shared/asset-utils",
                 "output": "/assets"
               },
               "apps/customer-portal/src/assets",
@@ -120,6 +123,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/client/shared/asset-utils"]
+            },
             "outputPath": "dist/apps/reporting",
             "index": "apps/reporting/src/index.html",
             "main": "apps/reporting/src/main.ts",
@@ -128,7 +134,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "libs/shared-assets",
+                "input": "libs/client/shared/asset-utils",
                 "output": "/assets"
               },
               "apps/reporting/src/assets",
@@ -907,6 +913,34 @@
         }
       },
       "schematics": {}
+    },
+    "client-shared-asset-utils": {
+      "root": "libs/client/shared/asset-utils",
+      "sourceRoot": "libs/client/shared/asset-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/client/shared/asset-utils/tsconfig.lib.json",
+              "libs/client/shared/asset-utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/client/shared/asset-utils/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/client/shared/asset-utils/jest.config.js",
+            "tsConfig": "libs/client/shared/asset-utils/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "defaultProject": "customer-portal",

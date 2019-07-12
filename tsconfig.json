@@ -80,6 +80,9 @@
       ],
       "@tuskdesk-suite/client/customer-portal/authentication-data-access": [
         "libs/client/customer-portal/authentication-data-access/src/index.ts"
+      ],
+      "@tuskdesk-suite/client/shared/asset-utils": [
+        "libs/client/shared/asset-utils/src/index.ts"
       ]
     }
   },
