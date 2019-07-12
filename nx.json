@@ -86,6 +86,9 @@
     },
     "client-customer-portal-authentication-data-access": {
       "tags": ["type:data-access", "scope:customer-portal", "platform:client"]
+    },
+    "client-shared-asset-utils": {
+      "tags": ["type:util", "platform:client"]
     }
   },
   "implicitDependencies": {

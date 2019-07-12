@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url("https://fonts.googleapis.com/css?family=Material+Icons");
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Material+Icons');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import '~@angular/material/_theming';
 
@@ -12,7 +12,7 @@ $light-theme: mat-light-theme($primary, $accent);
 @include mat-core();
 @include angular-material-theme($light-theme);
 
-@import "./libs/styles/main.scss";
+@import 'main.scss';
 
 button {
   cursor: pointer;
@@ -38,7 +38,6 @@ button {
     background: #83f27f;
   }
 }
-
 
 .marked {
   background: #83f27f;
@@ -89,7 +88,7 @@ button {
 .ticket-meta {
   font-weight: 600;
   padding: 6px;
-  font-size: .8em;
+  font-size: 0.8em;
 
   > span {
     &:last-child {
@@ -110,14 +109,15 @@ button {
   border: 1px solid #d5d5d5;
 
   span:last-child {
-    font-size: .8em;
+    font-size: 0.8em;
     font-style: italic;
     min-width: 180px;
     text-align: right;
   }
 }
 
-.ticket-message-form, .ticket-comment-form {
+.ticket-message-form,
+.ticket-comment-form {
   label {
     display: flex;
     margin-bottom: 6px;
@@ -157,14 +157,14 @@ button {
   min-width: 545px;
 
   label {
-    font-size: 1.0em;
+    font-size: 1em;
     font-weight: bold;
 
-    input[name=searchTerm] {
+    input[name='searchTerm'] {
       width: 120px;
     }
 
-    input[name=assignedToUser] {
+    input[name='assignedToUser'] {
       width: 120px;
     }
   }
@@ -176,7 +176,7 @@ button {
       margin-top: 0px;
       margin-left: 101px;
       position: absolute;
-      font-size: .8em;
+      font-size: 0.8em;
       list-style: none;
       background: #e8e8e8;
       padding: 0;
