@@ -65,6 +65,19 @@
             }
           }
         },
+        "serve-with-api": {
+          "builder": "@angular-devkit/architect:allOf",
+          "options": {
+            "targets": [
+              {
+                "target": "customer-portal:serve"
+              },
+              {
+                "target": "api:serve"
+              }
+            ]
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -175,6 +188,19 @@
             "production": {
               "browserTarget": "reporting:build:production"
             }
+          }
+        },
+        "serve-with-api": {
+          "builder": "@angular-devkit/architect:allOf",
+          "options": {
+            "targets": [
+              {
+                "target": "reporting:serve"
+              },
+              {
+                "target": "api:serve"
+              }
+            ]
           }
         },
         "extract-i18n": {
