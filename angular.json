@@ -78,6 +78,22 @@
             ]
           }
         },
+        "serve-all": {
+          "builder": "@angular-devkit/architect:allOf",
+          "options": {
+            "targets": [
+              {
+                "target": "customer-portal:serve"
+              },
+              {
+                "target": "reporting:serve"
+              },
+              {
+                "target": "api:serve"
+              }
+            ]
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
