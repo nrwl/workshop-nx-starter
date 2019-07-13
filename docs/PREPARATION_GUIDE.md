@@ -54,7 +54,7 @@ We will be working with an existing Nx Workspace project repo during the worksho
 
 You can clone the repo onto your local machine by using the following git command at the terminal:
 
-```terminal
+```
 git clone https://github.com/nrwl/workshop-nx-starter.git
 ```
 
@@ -62,7 +62,7 @@ git clone https://github.com/nrwl/workshop-nx-starter.git
 
 Once you have that cloned you will want to change to that directory and use NPM (or Yarn) to install the project dependencies:
 
-```terminal
+```
 cd ./workshop-nx-starter
 yarn install
 ```
