@@ -79,7 +79,7 @@ To confirm that they all work, run the following bash script in your terminal:
 
 This will start all 3 of these apps in watch mode in your terminal. You can cancel the watch mode with `Ctrl+C` when you are ready to stop them. Make sure that these all run without errors.
 
-Then open up a browser and navigate to the two applications
+Then open up a browser and navigate to all applications:
 
 | App                 | Address                                                          |
 | ------------------- | ---------------------------------------------------------------- |
