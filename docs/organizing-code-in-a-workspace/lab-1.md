@@ -66,6 +66,10 @@ After selecting a schematic, you'll be presented with a list of required options
 
 ## Instructions
 
+1. Run the command `yarn dep-graph` from the terminal. A dependency graph will open up in your browser displaying dependencies of the project. Take a second to examine the chart. What patterns do you see? Anything odd? How do you imagine the dep-graph will/SHOULD change from adding another Angular Application to the chart?
+
+   > Bonus: There is an enhanced && interactive Dependency Graph feature in the Angular Console, but it requires you connect your Nrwl Connect Account [free] to the Angular Console plugin.
+
 1. Use the `app` schematic to create a new app named **logs**. Include the `--routing` flag. Use the `--dry-run` (or `-d` for short) to view what files will be created before hand.
 
 1. Remove the default content in the `app.component.html` in the **logs** app and replace with an `h1` element for "TuskDesk Logs" and the `router-outlet` element.
@@ -80,9 +84,9 @@ After selecting a schematic, you'll be presented with a list of required options
 
    > Bonus: Look at the `architect` object of the `customer-portal` and the `reporting` app to see their `serve-with-api` target. See if you can implement a similar architect property for our new `logs` app!
 
-1. Use the `lib` schematic to create a new feature lib. We'll give this feature lib the name **feature** and a directory of `client/logs`. The Nx Schematic will create an Angular module called `ClientLogsFeatureModule` in the library.
+1. Use the `lib` schematic to create a new data-access lib. We'll give this lib the name **data-access** and a directory of `client/logs`. The Nx Schematic will create an Angular module called `ClientLogsDataAccessModule` in the library.
 
-1. Import the `ClientLogsFeatureModule` into the **logs** app module. Use the import path `@tuskdesk-suite/client/logs/feature`.
+1. Import the `ClientLogsDataAccessModule` into the **logs** app module. Use the import path `@tuskdesk-suite/client/logs/data-access`.
 
 ## Viewing in the Browser
 
