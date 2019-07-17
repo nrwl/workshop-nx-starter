@@ -86,6 +86,9 @@
       ],
       "@tuskdesk-suite/client/logs/feature": [
         "libs/client/logs/feature/src/index.ts"
+      ],
+      "@tuskdesk-suite/client/logs/data-access": [
+        "libs/client/logs/data-access/src/index.ts"
       ]
     }
   },
