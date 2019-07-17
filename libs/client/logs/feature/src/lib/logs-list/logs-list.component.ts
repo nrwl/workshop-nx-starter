@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { LogService } from '@tuskdesk-suite/client/logs/data-access';
 
 @Component({
   selector: 'tuskdesk-suite-logs-list',
   templateUrl: './logs-list.component.html',
   styleUrls: ['./logs-list.component.css']
 })
-export class LogsListComponent implements OnInit {
-  logs: { message: string }[];
+export class LogsListComponent {
+  logs = this.logService.logs();
 
-  constructor() {}
-
-  ngOnInit() {
-    this.logs = [{ message: 'log one' }, { message: 'log two' }];
-  }
+  constructor(private logService: LogService) {}
 }
