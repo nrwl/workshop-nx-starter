@@ -4,6 +4,6 @@
     "outDir": "../../dist/out-tsc",
     "types": []
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "../../libs/client/logs/feature/src/index.ts"],
   "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
 }
