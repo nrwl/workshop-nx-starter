@@ -95,6 +95,9 @@
     },
     "logs": {
       "tags": []
+    },
+    "client-logs-feature": {
+      "tags": []
     }
   },
   "implicitDependencies": {

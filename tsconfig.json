@@ -83,6 +83,9 @@
       ],
       "@tuskdesk-suite/client/shared/asset-utils": [
         "libs/client/shared/asset-utils/src/index.ts"
+      ],
+      "@tuskdesk-suite/client/logs/feature": [
+        "libs/client/logs/feature/src/index.ts"
       ]
     }
   },
