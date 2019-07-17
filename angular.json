@@ -983,6 +983,131 @@
           }
         }
       }
+    },
+    "logs": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/logs",
+      "sourceRoot": "apps/logs/src",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/logs",
+            "index": "apps/logs/src/index.html",
+            "main": "apps/logs/src/main.ts",
+            "polyfills": "apps/logs/src/polyfills.ts",
+            "tsConfig": "apps/logs/tsconfig.app.json",
+            "assets": ["apps/logs/src/favicon.ico", "apps/logs/src/assets"],
+            "styles": ["apps/logs/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/logs/src/environments/environment.ts",
+                  "with": "apps/logs/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "logs:build",
+            "port": 4204,
+            "proxyConfig": "proxy.config.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "logs:build:production"
+            }
+          }
+        },
+        "serve-with-api": {
+          "builder": "@angular-devkit/architect:allOf",
+          "options": {
+            "targets": [
+              {
+                "target": "logs:serve"
+              },
+              {
+                "target": "api:serve"
+              }
+            ]
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "logs:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/logs/tsconfig.app.json",
+              "apps/logs/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/logs/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/logs/jest.config.js",
+            "tsConfig": "apps/logs/tsconfig.spec.json",
+            "setupFile": "apps/logs/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "logs-e2e": {
+      "root": "apps/logs-e2e",
+      "sourceRoot": "apps/logs-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/logs-e2e/cypress.json",
+            "tsConfig": "apps/logs-e2e/tsconfig.e2e.json",
+            "devServerTarget": "logs:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "logs:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/logs-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/logs-e2e/**"]
+          }
+        }
+      }
     }
   },
   "defaultProject": "customer-portal",
@@ -991,5 +1116,14 @@
       "typescriptMismatch": false
     },
     "defaultCollection": "@nrwl/nest"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
   }
 }
