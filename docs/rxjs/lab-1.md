@@ -16,7 +16,7 @@ Let's start with a search for Tickets matching the letter '**a**' for assigned u
 
 ---
 
-You should NOT use the `async` pipe. For now, you will manually subscribe to `assignedToUser` value changes. As such you will also need to manually unsubscribe.
+For this lesson, don't use the `async` pipe yet! For now, you will manually subscribe to `assignedToUser` value changes. As such you will also need to manually unsubscribe.
 
 ---
 
