@@ -5,9 +5,10 @@ import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
 import { Comment } from '@tuskdesk-suite/shared/comment-utils';
 import { FormControl } from '@angular/forms';
 import { TicketService } from '@tuskdesk-suite/client/shared/tuskdesk-api-data-access';
+import { TicketTimerService } from '../ticket-timer.service';
 
 @Component({
-  selector: 'app-ticket-details',
+  selector: 'tuskdesk-suite-ticket-details',
   templateUrl: './ticket-details.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -17,7 +18,11 @@ export class TicketDetailsComponent implements OnInit {
   ticketMessage = new FormControl();
   timer$: Observable<number>;
 
-  constructor(private service: TicketService, private route: ActivatedRoute) {}
+  constructor(
+    private service: TicketService,
+    private route: ActivatedRoute,
+    private ticketTimerService: TicketTimerService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -32,7 +37,9 @@ export class TicketDetailsComponent implements OnInit {
 
   saveEdit() {}
 
-  startTimer() {}
+  startTimer() {
+    this.timer$ = this.ticketTimerService.timer$;
+  }
 
   markToWork(ticketId: number) {}
 }
