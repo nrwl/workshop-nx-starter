@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { UiMaterialModule } from './ui-material.module';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ClientSharedTuskdeskApiDataAccessModule } from '@tuskdesk-suite/client/shared/tuskdesk-api-data-access';
+import { TicketTimerService } from './ticket-timer.service';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { ClientSharedTuskdeskApiDataAccessModule } from '@tuskdesk-suite/client/
     SearchTicketsComponent,
     TicketListComponent,
     TicketDetailsComponent
-  ]
+  ],
+  providers: [TicketTimerService]
 })
 export class ClientCustomerPortalTicketsFeatureModule {}
