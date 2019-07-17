@@ -7,6 +7,13 @@ import {
 } from '@tuskdesk-suite/client/shared/tuskdesk-api-data-access';
 import { User } from '@tuskdesk-suite/shared/user-utils';
 import { Subscription } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  tap,
+  filter,
+  map
+} from 'rxjs/operators';
 
 interface SearchResult {
   id: number;
@@ -23,7 +30,7 @@ export class SearchTicketsComponent implements OnInit, OnDestroy {
   searchTerm = new FormControl();
   assignedToUser = new FormControl();
 
-  usersFound: User[];
+  users: string[];
   searchResults$: Observable<SearchResult[]>;
   subscription: Subscription;
 
@@ -33,13 +40,23 @@ export class SearchTicketsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.subscription = this.assignedToUser.valueChanges.subscribe(
-      searchTerm => {
-        this.userService.users(searchTerm).subscribe(users => {
-          this.usersFound = users;
-        });
-      }
-    );
+    this.subscription = this.assignedToUser.valueChanges
+      .pipe(
+        debounceTime(230),
+        distinctUntilChanged(),
+        tap(value => {
+          this.users = !value.length ? [] : this.users;
+        }),
+        filter(value => value.length > 0)
+      )
+      .subscribe(searchTerm => {
+        this.userService
+          .users(searchTerm)
+          .pipe(map(users => users.map(user => user.fullName)))
+          .subscribe(users => {
+            this.users = users;
+          });
+      });
   }
 
   ngOnDestroy() {
