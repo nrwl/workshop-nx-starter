@@ -91,13 +91,16 @@
       "tags": ["type:util", "platform:client"]
     },
     "logs-e2e": {
-      "tags": []
+      "tags": ["type:e2e-app", "platform:client"]
     },
     "logs": {
-      "tags": []
+      "tags": ["type:app", "platform:client"]
     },
     "client-logs-feature": {
-      "tags": []
+      "tags": ["type:feature", "scope:logs", "platform:client"]
+    },
+    "client-logs-data-access": {
+      "tags": ["type:data-access", "scope:logs", "platform:client"]
     }
   },
   "implicitDependencies": {

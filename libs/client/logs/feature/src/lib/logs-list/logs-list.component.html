@@ -1,1 +1,1 @@
-<div *ngFor="let log of logs">{{ log.message }}</div>
+<div *ngFor="let log of (logs | async)">{{ log.message }}</div>
