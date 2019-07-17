@@ -34,9 +34,9 @@ export interface EventLog {
 
 4. Add the `HttpClientModule` to the `ClientLogsDataAccessModule`.
 
-5. Use the Angular CLI schematic for generating a new service to create a new service named **log** to the **client-logs-feature** lib with the `-a` option. Include the `module` option to tell the CLI schematic to include the service in the `providers` NgModule metadata (`--module=logs-backend.module.ts`).
+5. Use the Angular CLI schematic for generating a new service to create a new service named **log** to the **client-logs-data-access** lib. Include the `module` option to tell the CLI schematic to include the service in the `providers` NgModule metadata (`--module=logs-data-access.module.ts`).
 
-   > `ng g service log --project=client-logs-feature--module=client-logs-feature.module.ts`
+   > `ng g service log --project=client-logs-data-access --module=client-logs-data-access.module.ts`
 
 6. Set up the `LogService` logic (`libs/client/logs/feature/src/lib/log.service.ts`):
    > Make sure the import path for `ApiConfig` is set to `@tuskdesk-suite/backend`. Do not use `import { ApiConfig } from '../../backend/src/lib/api-config';`
@@ -64,7 +64,9 @@ export class LogService {
 
 7. Add an export for the `LogService` to the **client-logs-data-access** `src/index.ts` file to make it public.
 
-8. Refactor the `LogsListComponent` to inject the `LogService` (use the npm scope short path for the import) and use it to get logs from the `logs` method. You can `subscribe` to that and set the `logs` class field with the data, or you can make use of the `async` pipe.
+8. Import the `ClientLogsDataAccessModule` to the `ClientLogsFeatureModule`.
+
+9. Refactor the `LogsListComponent` to inject the `LogService` (use the npm scope short path for the import) and use it to get logs from the `logs` method. You can `subscribe` to that and set the `logs` class field with the data, or you can make use of the `async` pipe.
 
 ###### libs/logs-view/src/lib/logs-list/logs-list.component.ts
 
