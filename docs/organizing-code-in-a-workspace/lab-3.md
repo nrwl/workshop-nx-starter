@@ -30,13 +30,15 @@ export interface EventLog {
 
 2. Notice that the `EventLog` is exported by `src/index.ts` file to make it "public".
 
-3. Add the `HttpClientModule` to the **client-logs-data-access** module.
+3. Use the Angular CLI to create a **client-logs-data-access** module, using the appropriate tags.
 
-4. Use the Angular CLI schematic for generating a new service to create a new service named **log** to the **client-logs-data-access** lib with the `-a` option. Include the `module` option to tell the CLI schematic to include the service in the `providers` NgModule metadata (`--module=logs-backend.module.ts`).
+4. Add the `HttpClientModule` to the `ClientLogsDataAccessModule`.
 
-   > `ng g service log --project=client-logs-data-access --module=client-logs-data-access.module.ts`
+5. Use the Angular CLI schematic for generating a new service to create a new service named **log** to the **client-logs-feature** lib with the `-a` option. Include the `module` option to tell the CLI schematic to include the service in the `providers` NgModule metadata (`--module=logs-backend.module.ts`).
 
-5. Set up the `LogService` logic (`libs/client/logs/data-access/src/lib/log.service.ts`):
+   > `ng g service log --project=client-logs-feature--module=client-logs-feature.module.ts`
+
+6. Set up the `LogService` logic (`libs/client/logs/feature/src/lib/log.service.ts`):
    > Make sure the import path for `ApiConfig` is set to `@tuskdesk-suite/backend`. Do not use `import { ApiConfig } from '../../backend/src/lib/api-config';`
 
 ```typescript
