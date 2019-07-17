@@ -89,6 +89,12 @@
     },
     "client-shared-asset-utils": {
       "tags": ["type:util", "platform:client"]
+    },
+    "logs-e2e": {
+      "tags": []
+    },
+    "logs": {
+      "tags": []
     }
   },
   "implicitDependencies": {
