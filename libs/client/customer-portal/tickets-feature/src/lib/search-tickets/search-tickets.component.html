@@ -14,13 +14,13 @@
       matInput
       placeholder=" Assigned To:"
       [formControl]="assignedToUser"
-      [matAutocomplete]="users"
+      [matAutocomplete]="dropDown"
     />
   </mat-form-field>
 
-  <mat-autocomplete #users="matAutocomplete">
-    <mat-option *ngFor="let user of usersFound" [value]="user.fullName">
-      {{ user.fullName }}
+  <mat-autocomplete #dropDown="matAutocomplete">
+    <mat-option *ngFor="let userName of users" [value]="userName">
+      {{ userName }}
     </mat-option>
   </mat-autocomplete>
 
