@@ -1108,6 +1108,33 @@
           }
         }
       }
+    },
+    "client-logs-feature": {
+      "projectType": "library",
+      "root": "libs/client/logs/feature",
+      "sourceRoot": "libs/client/logs/feature/src",
+      "prefix": "tuskdesk-suite",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/client/logs/feature/tsconfig.lib.json",
+              "libs/client/logs/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/client/logs/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/client/logs/feature/jest.config.js",
+            "tsConfig": "libs/client/logs/feature/tsconfig.spec.json",
+            "setupFile": "libs/client/logs/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "defaultProject": "customer-portal",
