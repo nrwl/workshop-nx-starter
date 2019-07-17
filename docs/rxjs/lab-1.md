@@ -6,23 +6,19 @@ In this application, we have search features and a crude dropDown `assignedToUse
 
 ![rxjs1 0](https://user-images.githubusercontent.com/210413/47622033-f1855c80-dacd-11e8-9ec0-1d26a90b3456.jpg)
 
-
-
 The dropDown menu should dynamically populate as the user types.
 
-Whenever the customer types in the `assignedToUser` input field, a RESTful service call should be dispatched to load all *matching* users using the current user-search criteria.
-
+Whenever the customer types in the `assignedToUser` input field, a RESTful service call should be dispatched to load all _matching_ users using the current user-search criteria.
 
 Let's start with a search for Tickets matching the letter '**a**' for assigned users matching **nrwl** in the "Assigned To:" field. Currently the ticket search is not automatic... you must click the **Search** button.
 
-
 <br/>
 
-----
+---
 
 You should NOT use the `async` pipe. For now, you will manually subscribe to `assignedToUser` value changes. As such you will also need to manually unsubscribe.
 
-----
+---
 
 <br/>
 
@@ -30,10 +26,10 @@ You should NOT use the `async` pipe. For now, you will manually subscribe to `as
 
 ##### In `search-tickets.component.ts`
 
- 1. subscribe to `assignedToUser.valueChanges` and make a call to the `UserService.users` method (pass in the `value` for the search term). Subscribe to that Observable and update the `usersFound` property with the server results.
- 2. Save the `subscription` reference and implement `OnDestroy` to unsubscribe from the subscription.
- 3. The Ticket Search will display a list of matching tickets using `searchResults$ | async`. When the `submit` button is clicked, search for tickets using `TicketService.searchTickets`. You can use the `FormControl.value` property to get the value from the form field (example: `this.searchTerm.value`).
- 
+1.  subscribe to `assignedToUser.valueChanges` and make a call to the `UserService.users` method (pass in the `value` for the search term). Subscribe to that Observable and update the `usersFound` property with the server results.
+2.  Save the `subscription` reference and implement `OnDestroy` to unsubscribe from the subscription.
+3.  The Ticket Search will display a list of matching tickets using `searchResults$ | async`. When the `submit` button is clicked, search for tickets using `TicketService.searchTickets`. You can use the `FormControl.value` property to get the value from the form field (example: `this.searchTerm.value`).
+
 ##### In `search-tickets.component.html`
 
 1. Use an `*ngFor` template directive to display the list of users for the suggest-on-type feature. Make use of the `user.fullName` property for both the label the value to pass to the `setAssignedToUser` class method.
@@ -52,7 +48,7 @@ You should NOT use the `async` pipe. For now, you will manually subscribe to `as
 
 <br/>
 
-----
+---
 
 <br/>
 
@@ -71,13 +67,12 @@ Be prepared to discuss what you notice!
 Run the following command(s) in individual terminals:
 
 ```console
-npm run server
-npm run customer-portal
+ng serve api
+ng serve customer portal
 ```
 
-
-*  Open the **Customer Portal** application with the browser: http://localhost:4203
-*  Confirm the **Node Server** is running with browser page:  http://localhost:3000/api/tickets
+- Open the **Customer Portal** application with the browser: http://localhost:4203
+- Confirm the **Node Server** is running with browser page: http://localhost:3000/api/tickets
 
 If you already have one(s) running and you need to restart, you can stop the run with `ctrl+c`.
 
@@ -87,7 +82,7 @@ Sometimes a change to TypeScript interfaces or adding new `*.ts` files <u>will n
 
 <br/>
 
-----
+---
 
 <br/>
 
