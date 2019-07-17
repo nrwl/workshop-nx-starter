@@ -19,7 +19,7 @@
   </mat-form-field>
 
   <mat-autocomplete #dropDown="matAutocomplete">
-    <mat-option *ngFor="let userName of users" [value]="userName">
+    <mat-option *ngFor="let userName of (users$ | async)" [value]="userName">
       {{ userName }}
     </mat-option>
   </mat-autocomplete>
