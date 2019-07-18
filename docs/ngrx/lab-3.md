@@ -1,6 +1,5 @@
 # NgRx Lab 3: Effects and Redux Tools
 
-
 ### Scenario
 
 Our Tickets view components use the HttpClient service to directly load ticket REST data. This is another poor design... views should never know how to load REST data.
@@ -15,29 +14,28 @@ Such async activity should be relegated to NgRx **Effects** classes!
 
 In this lab, you will:
 
-  * Create an Effects class to handle async activity to load ticket REST data 
-  * Update the view components to remove HttpClient usages; replaced with **LoadTicket** actions
-  
+- Create an Effects class to handle async activity to load ticket REST data
+- Update the view components to remove HttpClient usages; replaced with **LoadTicket** actions
+
 <br/>
 
-----
-  
+---
+
 ##### In `libs/tickets-state/src/lib/+state/tickets.effects.ts`
 
-1. Implement a `@Effect loadAllTicket$` property that uses `this.actions.pipe()` for `TicketActionTypes.LOAD_ALL_TICKETS`, calls `ticketService.getTickets()` and then dispatches a LoadTicketsDone action.
-2. Implement a `@Effect loadTicket$` property that uses `this.actions.pipe()` for `TicketActionTypes.LOAD_TICKET`, calls `ticketService.ticketById()` and then dispatches a LoadTicketDone action.
+1. Implement a `loadAllTickets$` effect that uses `this.actions.pipe()` for `loadALlTickets`, calls `ticketService.getTickets()` and then dispatches an `allTicketsLoaded` action.
+2. Implement a `loadTicket$` property that uses `this.actions.pipe()` for `loadTicket`, calls `ticketService.ticketById()` and then dispatches a `ticketLoaded` action.
 
 > Do not forget to register this Effects class in the `tickets-state.module.ts` **EffectsModule.forFeature()**
-  
+
 ##### In `ticket-list.component.ts`
 
 1. Remove the usage of `this.service.getTickets()`
-2. Simply dispatch a `LoadTickets` action. 
+2. Simply dispatch a `LoadTickets` action.
 
 ##### In `ticket-details.component.ts`
 
-1. Dispatch a `LoadTicket` action in the `ngOnInit()` 
-
+1. Dispatch a `LoadTicket` action in the `ngOnInit()`
 
 <br/>
 
@@ -45,31 +43,79 @@ In this lab, you will:
 
 ###### `tickets.effects.ts`
 
-![tickets.effects.ts](https://user-images.githubusercontent.com/210413/47936640-4cdb9400-deac-11e8-94d5-46facc5d917b.png)
+```ts
+@Injectable()
+export class TicketEffects {
+  loadAllTickets$ = createEffect(() =>
+    this.actions.pipe(
+      ofType(loadAllTickets),
+      switchMap(() => this.ticketService.getTickets()),
+      map(tickets => allTicketsLoaded({ tickets }))
+    )
+  );
+
+  ticketLoaded$ = createEffect(() =>
+    this.actions.pipe(
+      ofType(loadTicket),
+      map(action => action.ticketId),
+      switchMap(ticketId => this.ticketService.ticketById(ticketId)),
+      map(ticket => ticketLoaded({ ticket }))
+    )
+  );
+
+  constructor(
+    private store: Store<any>,
+    private actions: Actions,
+    private ticketService: TicketService
+  ) {}
+}
+```
 
 ###### `tickets-list.component.ts`
 
-![tickets-list.component.ts](https://user-images.githubusercontent.com/210413/48272613-d8e14480-e3f3-11e8-9bbb-82d70bab19a6.png)
+```ts
+export class TicketListComponent {
+  tickets$: Observable<Ticket[]> = this.store.pipe(
+    select(ticketsQuery.getAllTickets)
+  );
 
+  constructor(private store: Store<any>) {
+    this.store.dispatch(loadAllTickets());
+  }
+}
+```
 
 ###### `ticket-details.component.ts`
 
-![ticket-details.component.ts](https://user-images.githubusercontent.com/210413/47936682-798fab80-deac-11e8-9543-443bd895157c.png)
+```ts
+ngOnInit() {
+  // get a ticket to render to the UI
+  this.ticket$ = combineLatest([
+    this.store.pipe(select(ticketsQuery.getAllTickets)),
+    this.id$
+  ]).pipe(map(([tickets, id]) => tickets.find(ticket => ticket.id === id)));
+
+  // request a ticket
+  this.id$
+    .pipe(
+      take(1),
+      tap(ticketId => this.store.dispatch(loadTicket({ ticketId })))
+    )
+    .subscribe();
+}
+```
 
 <br/>
 
-
-----
+---
 
 <br/>
-
 
 ### Investigate
 
 Why are we dispatching a LoadTicket action in the TicketDetails component? What issue does this solve.
 
-
-### Using Redux DevTools 
+### Using Redux DevTools
 
 Open the Redux DevTools in Browser and watch the state changes and you route in the Customer-Portal application.
 
@@ -77,33 +123,26 @@ Open the Redux DevTools in Browser and watch the state changes and you route in 
 
 > Install Chrome Extension: [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
 
-
 <br/>
 
 ### Running the Application
 
-*  Open the **Customer Portal** application with the browser: http://localhost:4203
-*  Confirm the **Node Server** is running with browser page:  http://localhost:3000/api/tickets
+- Open the **Customer Portal** application with the browser: http://localhost:4203
+- Confirm the **Node Server** is running with browser page: http://localhost:3000/api/tickets
 
-Run the following command(s) in individual terminals:
-
-```console
-yarn server
-```
+Run the following command:
 
 ```console
-yarn customer-portal -- -o
+ng run customer-portal:serve-with-api
 ```
 
 > If you already have one(s) running and need to restart, you can stop the run with `ctrl+c`.
 
-
 <br/>
 
-----
+---
 
 <br/>
-
 
 ### Next Lab
 
