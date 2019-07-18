@@ -1,32 +1,17 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
-import { Comment } from '@tuskdesk-suite/shared/comment-utils';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { TicketService } from '@tuskdesk-suite/client/shared/tuskdesk-api-data-access';
-import { TicketTimerService } from '../ticket-timer.service';
-import { Store, select } from '@ngrx/store';
+import { ActivatedRoute } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import {
-  ticketsQuery,
-  ClientCustomerPortalTicketsDataAccessModule,
-  ticketLoaded
+  loadTicket,
+  ticketsQuery
 } from '@tuskdesk-suite/client/customer-portal/tickets-data-access';
-import {
-  map,
-  publishReplay,
-  refCount,
-  switchMap,
-  tap,
-  takeUntil,
-  take
-} from 'rxjs/operators';
-import { combineLatest, Subscription, Subject } from 'rxjs';
+import { Comment } from '@tuskdesk-suite/shared/comment-utils';
+import { Ticket } from '@tuskdesk-suite/shared/ticket-utils';
+import { combineLatest, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { map, take, tap } from 'rxjs/operators';
+import { TicketTimerService } from '../ticket-timer.service';
 
 @Component({
   selector: 'tuskdesk-suite-ticket-details',
@@ -43,7 +28,6 @@ export class TicketDetailsComponent implements OnInit {
 
   constructor(
     private store: Store<any>,
-    private service: TicketService,
     private route: ActivatedRoute,
     private ticketTimerService: TicketTimerService
   ) {}
@@ -55,12 +39,11 @@ export class TicketDetailsComponent implements OnInit {
       this.id$
     ]).pipe(map(([tickets, id]) => tickets.find(ticket => ticket.id === id)));
 
-    // retrieve the ticket from the api and stash it in the store
+    // request a ticket
     this.id$
       .pipe(
         take(1),
-        switchMap(id => this.service.ticketById(id)),
-        tap(ticket => this.store.dispatch(ticketLoaded({ ticket })))
+        tap(ticketId => this.store.dispatch(loadTicket({ ticketId })))
       )
       .subscribe();
   }

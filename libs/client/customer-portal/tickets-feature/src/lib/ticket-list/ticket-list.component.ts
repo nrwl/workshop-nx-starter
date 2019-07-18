@@ -6,11 +6,12 @@ import { map, tap } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import {
   allTicketsLoaded,
-  ticketsQuery
+  ticketsQuery,
+  loadAllTickets
 } from '@tuskdesk-suite/client/customer-portal/tickets-data-access';
 
 @Component({
-  selector: 'app-ticket-list',
+  selector: 'tuskdesk-suite-ticket-list',
   templateUrl: './ticket-list.component.html',
   styleUrls: ['./ticket-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,11 +21,8 @@ export class TicketListComponent {
     select(ticketsQuery.getAllTickets)
   );
 
-  constructor(private store: Store<any>, private ticketService: TicketService) {
-    this.ticketService
-      .getTickets()
-      .pipe(tap(tickets => this.store.dispatch(allTicketsLoaded({ tickets }))))
-      .subscribe();
+  constructor(private store: Store<any>) {
+    this.store.dispatch(loadAllTickets());
   }
 }
 
